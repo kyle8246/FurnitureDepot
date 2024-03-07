@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\LoginController.cs" />
     <Compile Include="DAL\FurnitureDepotDBConnection.cs" />
     <Compile Include="DAL\LoginDAL.cs" />
     <Compile Include="Program.cs" />
@@ -98,7 +99,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controller\" />
     <Folder Include="DB\" />
     <Folder Include="Model\" />
   </ItemGroup>

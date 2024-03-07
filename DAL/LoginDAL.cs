@@ -15,7 +15,7 @@ namespace FurnitureDepot.DAL
         /// <param name="username">The username.</param>
         /// <param name="password">The password.</param>
         /// <returns></returns>
-        public static bool Authenticate(string username, string password)
+        public bool Authenticate(string username, string password)
         {
             using (SqlConnection connection = FurnitureDepotDBConnection.GetConnection())
             {
