@@ -23,17 +23,22 @@ namespace FurnitureDepot.View
         private void LoginButton_Click(object sender, EventArgs e)
         {
             LoginController loginController = new LoginController();
+            EmployeeController employeeController = new EmployeeController();
 
             var username = this.usernameTextBox.Text;
             var password = this.passwordTextBox.Text;
 
             if (loginController.Authenticate(username, password))
             {
+                string fullName = employeeController.GetUserFullName(username);
+                string fullNameWithUsername = fullName + " (" + username + ")";
+
                 using (MainDashboard mainForm = new MainDashboard())
                 {
                     this.Hide();
 
-                    mainForm.SetUser(username);
+                    mainForm.SetUser(fullNameWithUsername);
+
                     DialogResult result = mainForm.ShowDialog();
 
                     if (result == DialogResult.OK)

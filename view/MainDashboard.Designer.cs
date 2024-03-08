@@ -31,9 +31,9 @@
             this.dashboardTabControl = new System.Windows.Forms.TabControl();
             this.registrationTabPage = new System.Windows.Forms.TabPage();
             this.editTabPage = new System.Windows.Forms.TabPage();
+            this.searchTabPage = new System.Windows.Forms.TabPage();
             this.usernameLabel = new System.Windows.Forms.Label();
             this.logoutLinkLabel = new System.Windows.Forms.LinkLabel();
-            this.searchTabPage = new System.Windows.Forms.TabPage();
             this.dashboardTabControl.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -69,10 +69,19 @@
             this.editTabPage.Text = "Edit Customer";
             this.editTabPage.UseVisualStyleBackColor = true;
             // 
+            // searchTabPage
+            // 
+            this.searchTabPage.Location = new System.Drawing.Point(4, 25);
+            this.searchTabPage.Name = "searchTabPage";
+            this.searchTabPage.Size = new System.Drawing.Size(792, 387);
+            this.searchTabPage.TabIndex = 2;
+            this.searchTabPage.Text = "Search Customer";
+            this.searchTabPage.UseVisualStyleBackColor = true;
+            // 
             // usernameLabel
             // 
             this.usernameLabel.AutoSize = true;
-            this.usernameLabel.Location = new System.Drawing.Point(638, 15);
+            this.usernameLabel.Location = new System.Drawing.Point(577, 15);
             this.usernameLabel.Name = "usernameLabel";
             this.usernameLabel.Size = new System.Drawing.Size(0, 16);
             this.usernameLabel.TabIndex = 0;
@@ -87,15 +96,6 @@
             this.logoutLinkLabel.TabStop = true;
             this.logoutLinkLabel.Text = "Logout";
             this.logoutLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LogoutLinkLabel_LinkClicked);
-            // 
-            // searchTabPage
-            // 
-            this.searchTabPage.Location = new System.Drawing.Point(4, 25);
-            this.searchTabPage.Name = "searchTabPage";
-            this.searchTabPage.Size = new System.Drawing.Size(792, 387);
-            this.searchTabPage.TabIndex = 2;
-            this.searchTabPage.Text = "Search Customer";
-            this.searchTabPage.UseVisualStyleBackColor = true;
             // 
             // MainDashboard
             // 
