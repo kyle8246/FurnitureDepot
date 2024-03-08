@@ -49,7 +49,7 @@ namespace FurnitureDepot.Model
         /// <value>
         /// The date of birth.
         /// </value>
-/        [Required(ErrorMessage = "Date of birth is required.")]
+        [Required(ErrorMessage = "Date of birth is required.")]
         public DateTime DateOfBirth { get; set; }
 
 
