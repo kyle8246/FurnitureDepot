@@ -19,7 +19,7 @@ namespace FurnitureDepot.DAL
         {
             using (SqlConnection connection = FurnitureDepotDBConnection.GetConnection())
             {
-                string query = "SELECT COUNT(1) FROM Employee WHERE Username = @Username AND Password = @Password";
+                string query = "SELECT COUNT(1) FROM Login WHERE Username = @Username AND Password = @Password";
                 SqlCommand command = new SqlCommand(query, connection);
 
                 command.Parameters.Add(new SqlParameter("@Username", SqlDbType.NVarChar, 50) { Value = username });
