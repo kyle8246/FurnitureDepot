@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace FurnitureDepot.View
 {
-    public partial class RegisterCustomerForm : Form
+    public partial class RegisterCustomer : UserControl
     {
-        public RegisterCustomerForm()
+        public RegisterCustomer()
         {
             InitializeComponent();
-
-            sexComboBox.Items.Add("Male");
-            sexComboBox.Items.Add("Female");
-            sexComboBox.Items.Add("Other");
-            sexComboBox.SelectedIndex = 0;
         }
     }
 }

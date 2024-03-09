@@ -86,11 +86,11 @@
     <Compile Include="View\MainDashboard.Designer.cs">
       <DependentUpon>MainDashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\RegisterCustomerForm.cs">
-      <SubType>Form</SubType>
+    <Compile Include="View\RegisterCustomer.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View\RegisterCustomerForm.Designer.cs">
-      <DependentUpon>RegisterCustomerForm.cs</DependentUpon>
+    <Compile Include="View\RegisterCustomer.Designer.cs">
+      <DependentUpon>RegisterCustomer.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -108,8 +108,8 @@
     <EmbeddedResource Include="View\MainDashboard.resx">
       <DependentUpon>MainDashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\RegisterCustomerForm.resx">
-      <DependentUpon>RegisterCustomerForm.cs</DependentUpon>
+    <EmbeddedResource Include="View\RegisterCustomer.resx">
+      <DependentUpon>RegisterCustomer.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
