@@ -1,4 +1,6 @@
-﻿namespace FurnitureDepot.View
+﻿using System;
+
+namespace FurnitureDepot.View
 {
     partial class RegisterCustomer
     {
@@ -88,7 +90,7 @@
             // streetAddressLabel
             // 
             this.streetAddressLabel.AutoSize = true;
-            this.streetAddressLabel.Location = new System.Drawing.Point(39, 152);
+            this.streetAddressLabel.Location = new System.Drawing.Point(287, 22);
             this.streetAddressLabel.Name = "streetAddressLabel";
             this.streetAddressLabel.Size = new System.Drawing.Size(79, 13);
             this.streetAddressLabel.TabIndex = 4;
@@ -97,7 +99,7 @@
             // cityLabel
             // 
             this.cityLabel.AutoSize = true;
-            this.cityLabel.Location = new System.Drawing.Point(91, 191);
+            this.cityLabel.Location = new System.Drawing.Point(339, 61);
             this.cityLabel.Name = "cityLabel";
             this.cityLabel.Size = new System.Drawing.Size(27, 13);
             this.cityLabel.TabIndex = 5;
@@ -106,7 +108,7 @@
             // stateLabel
             // 
             this.stateLabel.AutoSize = true;
-            this.stateLabel.Location = new System.Drawing.Point(83, 232);
+            this.stateLabel.Location = new System.Drawing.Point(331, 102);
             this.stateLabel.Name = "stateLabel";
             this.stateLabel.Size = new System.Drawing.Size(35, 13);
             this.stateLabel.TabIndex = 6;
@@ -115,7 +117,7 @@
             // zipLabel
             // 
             this.zipLabel.AutoSize = true;
-            this.zipLabel.Location = new System.Drawing.Point(93, 269);
+            this.zipLabel.Location = new System.Drawing.Point(341, 139);
             this.zipLabel.Name = "zipLabel";
             this.zipLabel.Size = new System.Drawing.Size(25, 13);
             this.zipLabel.TabIndex = 7;
@@ -124,7 +126,7 @@
             // phoneLabel
             // 
             this.phoneLabel.AutoSize = true;
-            this.phoneLabel.Location = new System.Drawing.Point(77, 306);
+            this.phoneLabel.Location = new System.Drawing.Point(77, 158);
             this.phoneLabel.Name = "phoneLabel";
             this.phoneLabel.Size = new System.Drawing.Size(41, 13);
             this.phoneLabel.TabIndex = 8;
@@ -141,7 +143,7 @@
             // stateComboBox
             // 
             this.stateComboBox.FormattingEnabled = true;
-            this.stateComboBox.Location = new System.Drawing.Point(125, 232);
+            this.stateComboBox.Location = new System.Drawing.Point(373, 102);
             this.stateComboBox.Name = "stateComboBox";
             this.stateComboBox.Size = new System.Drawing.Size(121, 21);
             this.stateComboBox.TabIndex = 10;
@@ -170,40 +172,41 @@
             // 
             // streetAddressTextBox
             // 
-            this.streetAddressTextBox.Location = new System.Drawing.Point(125, 152);
+            this.streetAddressTextBox.Location = new System.Drawing.Point(373, 22);
             this.streetAddressTextBox.Name = "streetAddressTextBox";
             this.streetAddressTextBox.Size = new System.Drawing.Size(121, 20);
             this.streetAddressTextBox.TabIndex = 14;
             // 
             // cityTextBox
             // 
-            this.cityTextBox.Location = new System.Drawing.Point(125, 191);
+            this.cityTextBox.Location = new System.Drawing.Point(373, 61);
             this.cityTextBox.Name = "cityTextBox";
             this.cityTextBox.Size = new System.Drawing.Size(121, 20);
             this.cityTextBox.TabIndex = 15;
             // 
             // zipTextBox
             // 
-            this.zipTextBox.Location = new System.Drawing.Point(125, 269);
+            this.zipTextBox.Location = new System.Drawing.Point(373, 139);
             this.zipTextBox.Name = "zipTextBox";
             this.zipTextBox.Size = new System.Drawing.Size(121, 20);
             this.zipTextBox.TabIndex = 16;
             // 
             // phoneTextBox
             // 
-            this.phoneTextBox.Location = new System.Drawing.Point(125, 306);
+            this.phoneTextBox.Location = new System.Drawing.Point(125, 158);
             this.phoneTextBox.Name = "phoneTextBox";
             this.phoneTextBox.Size = new System.Drawing.Size(121, 20);
             this.phoneTextBox.TabIndex = 17;
             // 
             // submitButton
             // 
-            this.submitButton.Location = new System.Drawing.Point(171, 344);
+            this.submitButton.Location = new System.Drawing.Point(275, 222);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(75, 23);
             this.submitButton.TabIndex = 18;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new EventHandler(SubmitButton_Click);
             // 
             // RegisterCustomer
             // 
@@ -229,7 +232,7 @@
             this.Controls.Add(this.lastNameLabel);
             this.Controls.Add(this.firstNameLabel);
             this.Name = "RegisterCustomer";
-            this.Size = new System.Drawing.Size(536, 392);
+            this.Size = new System.Drawing.Size(616, 405);
             this.ResumeLayout(false);
             this.PerformLayout();
 
