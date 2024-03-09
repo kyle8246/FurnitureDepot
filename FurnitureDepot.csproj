@@ -70,6 +70,12 @@
     <Compile Include="Model\Customer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControls\EditCustomerUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\EditCustomerUserControl.Designer.cs">
+      <DependentUpon>EditCustomerUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +98,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UserControls\EditCustomerUserControl.resx">
+      <DependentUpon>EditCustomerUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
