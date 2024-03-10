@@ -16,67 +16,24 @@ namespace FurnitureDepot.View
         /// Initializes a new instance of the <see cref="RegisterCustomerUserControl"/> class.
         /// </summary>
         public RegisterCustomerUserControl()
-		{
-			InitializeComponent();
-			customerController = new CustomerController();
+        {
+            InitializeComponent();
+            customerController = new CustomerController();
 
-			sexComboBox.Items.Add("M");
-			sexComboBox.Items.Add("F");
-			sexComboBox.Items.Add("Other");
-			sexComboBox.SelectedIndex = 0;
+            sexComboBox.Items.Insert(0, "-- Select --");
+            stateComboBox.Items.Insert(0, "-- Select --");
+            sexComboBox.SelectedIndex = 0;
+            stateComboBox.SelectedIndex = 0;
 
-			stateComboBox.Items.Add("AL");
-			stateComboBox.Items.Add("AK");
-			stateComboBox.Items.Add("AZ");
-			stateComboBox.Items.Add("AR");
-			stateComboBox.Items.Add("CA");
-			stateComboBox.Items.Add("CO");
-			stateComboBox.Items.Add("CT");
-			stateComboBox.Items.Add("DE");
-			stateComboBox.Items.Add("FL");
-			stateComboBox.Items.Add("GA");
-			stateComboBox.Items.Add("HI");
-			stateComboBox.Items.Add("ID");
-			stateComboBox.Items.Add("IL");
-			stateComboBox.Items.Add("IN");
-			stateComboBox.Items.Add("IA");
-			stateComboBox.Items.Add("KS");
-			stateComboBox.Items.Add("KY");
-			stateComboBox.Items.Add("LA");
-			stateComboBox.Items.Add("ME");
-			stateComboBox.Items.Add("MD");
-			stateComboBox.Items.Add("MA");
-			stateComboBox.Items.Add("MI");
-			stateComboBox.Items.Add("MN");
-			stateComboBox.Items.Add("MS");
-			stateComboBox.Items.Add("MO");
-			stateComboBox.Items.Add("MT");
-			stateComboBox.Items.Add("NE");
-			stateComboBox.Items.Add("NV");
-			stateComboBox.Items.Add("NH");
-			stateComboBox.Items.Add("NJ");
-			stateComboBox.Items.Add("NM");
-			stateComboBox.Items.Add("NY");
-			stateComboBox.Items.Add("NC");
-			stateComboBox.Items.Add("ND");
-			stateComboBox.Items.Add("OH");
-			stateComboBox.Items.Add("OK");
-			stateComboBox.Items.Add("OR");
-			stateComboBox.Items.Add("PA");
-			stateComboBox.Items.Add("RI");
-			stateComboBox.Items.Add("SC");
-			stateComboBox.Items.Add("SD");
-			stateComboBox.Items.Add("TN");
-			stateComboBox.Items.Add("TX");
-			stateComboBox.Items.Add("UT");
-			stateComboBox.Items.Add("VT");
-			stateComboBox.Items.Add("VA");
-			stateComboBox.Items.Add("WA");
-			stateComboBox.Items.Add("WV");
-			stateComboBox.Items.Add("WI");
-			stateComboBox.Items.Add("WY");
-			stateComboBox.SelectedIndex = 0;
-		}
+            PopulateStates();
+            sexComboBox.Items.AddRange(new object[] { "M", "F", "Other" });
+        }
+
+        private void PopulateStates()
+        {
+            string[] states = { "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY" };
+            stateComboBox.Items.AddRange(states);
+        }
 
         private void SubmitButton_Click(object sender, EventArgs e)
         {
@@ -110,6 +67,23 @@ namespace FurnitureDepot.View
             }
         }
 
+        private void ClearForm()
+        {
+            firstNameTextBox.Clear();
+            lastNameTextBox.Clear();
+            streetAddressTextBox.Clear();
+            cityTextBox.Clear();
+            zipTextBox.Clear();
+            phoneTextBox.Clear();
+
+            sexComboBox.SelectedIndex = 0;
+            stateComboBox.SelectedIndex = 0;
+
+            dobPicker.Value = DateTime.Now;
+
+            statusLabel.Visible = false;
+        }
+
         private bool IsFormValid()
         {
             if (string.IsNullOrWhiteSpace(firstNameTextBox.Text) ||
@@ -122,6 +96,14 @@ namespace FurnitureDepot.View
                 stateComboBox.SelectedIndex == -1)
             {
                 statusLabel.Text = "All fields are required.";
+                statusLabel.ForeColor = Color.Red;
+                statusLabel.Visible = true;
+                return false;
+            }
+
+            if (sexComboBox.SelectedIndex == 0 || stateComboBox.SelectedIndex == 0)
+            {
+                statusLabel.Text = "Please select a value for Sex and State.";
                 statusLabel.ForeColor = Color.Red;
                 statusLabel.Visible = true;
                 return false;
@@ -144,6 +126,11 @@ namespace FurnitureDepot.View
             }
 
             return true;
+        }
+
+        private void ClearButton_Click(object sender, EventArgs e)
+        {
+            ClearForm();
         }
     }
 }
