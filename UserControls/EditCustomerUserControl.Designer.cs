@@ -71,7 +71,7 @@
             this.editCustomerLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 109F));
             this.editCustomerLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
             this.editCustomerLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 183F));
-            this.editCustomerLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
+            this.editCustomerLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.editCustomerLayoutPanel.Controls.Add(this.memberIDLabel, 1, 1);
             this.editCustomerLayoutPanel.Controls.Add(this.lastNameLabel, 1, 3);
             this.editCustomerLayoutPanel.Controls.Add(this.firstNameLabel, 1, 5);
@@ -276,6 +276,7 @@
             this.getMemberInfoButton.TabIndex = 1;
             this.getMemberInfoButton.Text = "Get";
             this.getMemberInfoButton.UseVisualStyleBackColor = true;
+            this.getMemberInfoButton.Click += new System.EventHandler(this.getMemberInfoButton_Click);
             // 
             // lastNameTextBox
             // 
@@ -343,6 +344,7 @@
             this.idErrorLabel.Size = new System.Drawing.Size(64, 13);
             this.idErrorLabel.TabIndex = 20;
             this.idErrorLabel.Text = "id error label";
+            this.idErrorLabel.Visible = false;
             // 
             // lastNameErrorLabel
             // 
@@ -354,6 +356,7 @@
             this.lastNameErrorLabel.Size = new System.Drawing.Size(101, 13);
             this.lastNameErrorLabel.TabIndex = 21;
             this.lastNameErrorLabel.Text = "last name error label";
+            this.lastNameErrorLabel.Visible = false;
             // 
             // firstNameErrorLabel
             // 
@@ -365,6 +368,7 @@
             this.firstNameErrorLabel.Size = new System.Drawing.Size(101, 13);
             this.firstNameErrorLabel.TabIndex = 22;
             this.firstNameErrorLabel.Text = "first name error label";
+            this.firstNameErrorLabel.Visible = false;
             // 
             // dobErrorLabel
             // 
@@ -376,6 +380,7 @@
             this.dobErrorLabel.Size = new System.Drawing.Size(83, 13);
             this.dobErrorLabel.TabIndex = 23;
             this.dobErrorLabel.Text = "d.o.b. error label";
+            this.dobErrorLabel.Visible = false;
             // 
             // streetAddressErrorLabel
             // 
@@ -387,6 +392,7 @@
             this.streetAddressErrorLabel.Size = new System.Drawing.Size(122, 13);
             this.streetAddressErrorLabel.TabIndex = 24;
             this.streetAddressErrorLabel.Text = "street address error label";
+            this.streetAddressErrorLabel.Visible = false;
             // 
             // cityErrorLabel
             // 
@@ -398,6 +404,7 @@
             this.cityErrorLabel.Size = new System.Drawing.Size(72, 13);
             this.cityErrorLabel.TabIndex = 25;
             this.cityErrorLabel.Text = "city error label";
+            this.cityErrorLabel.Visible = false;
             // 
             // zipErrorLabel
             // 
@@ -409,6 +416,7 @@
             this.zipErrorLabel.Size = new System.Drawing.Size(96, 13);
             this.zipErrorLabel.TabIndex = 26;
             this.zipErrorLabel.Text = "zip code error label";
+            this.zipErrorLabel.Visible = false;
             // 
             // contactPhoneErrorLabel
             // 
@@ -420,6 +428,7 @@
             this.contactPhoneErrorLabel.Size = new System.Drawing.Size(125, 13);
             this.contactPhoneErrorLabel.TabIndex = 27;
             this.contactPhoneErrorLabel.Text = "contact phone error label";
+            this.contactPhoneErrorLabel.Visible = false;
             // 
             // editMemberButton
             // 

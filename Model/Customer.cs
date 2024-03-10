@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.Eventing.Reader;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FurnitureDepot.Model
 {
-    internal class Customer
+    public class Customer
     {
         /// <summary>
         /// Gets or sets the member identifier.
