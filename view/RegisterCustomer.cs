@@ -1,22 +1,24 @@
-﻿using FurnitureDepot.DAL;
+﻿using FurnitureDepot.Controller;
 using FurnitureDepot.Model;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FurnitureDepot.View
 {
 	public partial class RegisterCustomer : UserControl
 	{
-		public RegisterCustomer()
+
+		private readonly CustomerController customerController;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RegisterCustomer"/> class.
+        /// </summary>
+        public RegisterCustomer()
 		{
 			InitializeComponent();
+			customerController = new CustomerController();
 
 			sexComboBox.Items.Add("M");
 			sexComboBox.Items.Add("F");
@@ -76,60 +78,72 @@ namespace FurnitureDepot.View
 			stateComboBox.SelectedIndex = 0;
 		}
 
-		private void SubmitButton_Click(object sender, EventArgs e)
-		{
-			if (
-				string.IsNullOrWhiteSpace(firstNameTextBox.Text) ||
-				string.IsNullOrWhiteSpace(lastNameTextBox.Text) ||
-				string.IsNullOrWhiteSpace(streetAddressTextBox.Text) ||
-				string.IsNullOrWhiteSpace(cityTextBox.Text) ||
-				string.IsNullOrWhiteSpace(zipTextBox.Text) ||
-				string.IsNullOrWhiteSpace(phoneTextBox.Text) ||
-				sexComboBox.SelectedIndex == -1 ||
-				stateComboBox.SelectedIndex == -1)
-			{
-				MessageBox.Show("All fields required.");
-				return;
-			}
-
-            if (
-				phoneTextBox.Text.Length != 10 || !phoneTextBox.Text.All(char.IsDigit))
-			{
-				MessageBox.Show("Phone number must be exactly 10 digits.");
-                return;
-            }
-
-            if (
-                zipTextBox.Text.Length != 5 || !zipTextBox.Text.All(char.IsDigit))
+        private void SubmitButton_Click(object sender, EventArgs e)
+        {
+            if (IsFormValid())
             {
-                MessageBox.Show("Valid zip code required.");
-                return;
+                var customer = new Customer
+                {
+                    FirstName = firstNameTextBox.Text,
+                    LastName = lastNameTextBox.Text,
+                    Sex = sexComboBox.SelectedItem.ToString(),
+                    DateOfBirth = dobPicker.Value,
+                    StreetAddress = streetAddressTextBox.Text,
+                    City = cityTextBox.Text,
+                    State = stateComboBox.SelectedItem.ToString(),
+                    ZipCode = zipTextBox.Text,
+                    ContactPhone = phoneTextBox.Text
+                };
+
+                bool success = customerController.RegisterCustomer(customer);
+                if (success)
+                {
+                    statusLabel.Text = "Customer registered successfully.";
+                    statusLabel.ForeColor = Color.Green;
+                }
+                else
+                {
+                    statusLabel.Text = "There was an error registering the customer.";
+                    statusLabel.ForeColor = Color.Red;
+                }
+                statusLabel.Visible = true;
+            }
+        }
+
+        private bool IsFormValid()
+        {
+            if (string.IsNullOrWhiteSpace(firstNameTextBox.Text) ||
+                string.IsNullOrWhiteSpace(lastNameTextBox.Text) ||
+                string.IsNullOrWhiteSpace(streetAddressTextBox.Text) ||
+                string.IsNullOrWhiteSpace(cityTextBox.Text) ||
+                string.IsNullOrWhiteSpace(zipTextBox.Text) ||
+                string.IsNullOrWhiteSpace(phoneTextBox.Text) ||
+                sexComboBox.SelectedIndex == -1 ||
+                stateComboBox.SelectedIndex == -1)
+            {
+                statusLabel.Text = "All fields are required.";
+                statusLabel.ForeColor = Color.Red;
+                statusLabel.Visible = true;
+                return false;
             }
 
-            Customer customer = new Customer()
-			{
-				FirstName = firstNameTextBox.Text,
-				LastName = lastNameTextBox.Text,
-				Sex = sexComboBox.SelectedItem.ToString(),
-				DateOfBirth = dobPicker.Value,
-				StreetAddress = streetAddressTextBox.Text,
-				City = cityTextBox.Text,
-				State = stateComboBox.SelectedItem.ToString(),
-				ZipCode = zipTextBox.Text,
-				ContactPhone = phoneTextBox.Text
-			};
+            if (phoneTextBox.Text.Length != 10 || !phoneTextBox.Text.All(char.IsDigit))
+            {
+                statusLabel.Text = "Phone number must be exactly 10 digits.";
+                statusLabel.ForeColor = Color.Red;
+                statusLabel.Visible = true;
+                return false;
+            }
 
-			CustomerDAL dal = new CustomerDAL();
-			bool success = dal.AddCustomer(customer);
+            if (zipTextBox.Text.Length != 5 || !zipTextBox.Text.All(char.IsDigit))
+            {
+                statusLabel.Text = "Valid zip code is required.";
+                statusLabel.ForeColor = Color.Red;
+                statusLabel.Visible = true;
+                return false;
+            }
 
-			if (success)
-			{
-				MessageBox.Show("Customer registered successfully.");
-			}
-			else
-			{
-				MessageBox.Show("There was an error registering the customer.");
-			}
-		}
-	}
+            return true;
+        }
+    }
 }

@@ -49,6 +49,7 @@ namespace FurnitureDepot.View
             this.zipTextBox = new System.Windows.Forms.TextBox();
             this.phoneTextBox = new System.Windows.Forms.TextBox();
             this.submitButton = new System.Windows.Forms.Button();
+            this.statusLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // firstNameLabel
@@ -63,7 +64,7 @@ namespace FurnitureDepot.View
             // lastNameLabel
             // 
             this.lastNameLabel.AutoSize = true;
-            this.lastNameLabel.Location = new System.Drawing.Point(60, 52);
+            this.lastNameLabel.Location = new System.Drawing.Point(60, 70);
             this.lastNameLabel.Name = "lastNameLabel";
             this.lastNameLabel.Size = new System.Drawing.Size(58, 13);
             this.lastNameLabel.TabIndex = 1;
@@ -72,7 +73,7 @@ namespace FurnitureDepot.View
             // sexLabel
             // 
             this.sexLabel.AutoSize = true;
-            this.sexLabel.Location = new System.Drawing.Point(90, 83);
+            this.sexLabel.Location = new System.Drawing.Point(90, 116);
             this.sexLabel.Name = "sexLabel";
             this.sexLabel.Size = new System.Drawing.Size(28, 13);
             this.sexLabel.TabIndex = 2;
@@ -81,7 +82,7 @@ namespace FurnitureDepot.View
             // dobLabel
             // 
             this.dobLabel.AutoSize = true;
-            this.dobLabel.Location = new System.Drawing.Point(49, 118);
+            this.dobLabel.Location = new System.Drawing.Point(49, 165);
             this.dobLabel.Name = "dobLabel";
             this.dobLabel.Size = new System.Drawing.Size(69, 13);
             this.dobLabel.TabIndex = 3;
@@ -99,7 +100,7 @@ namespace FurnitureDepot.View
             // cityLabel
             // 
             this.cityLabel.AutoSize = true;
-            this.cityLabel.Location = new System.Drawing.Point(339, 61);
+            this.cityLabel.Location = new System.Drawing.Point(339, 70);
             this.cityLabel.Name = "cityLabel";
             this.cityLabel.Size = new System.Drawing.Size(27, 13);
             this.cityLabel.TabIndex = 5;
@@ -108,7 +109,7 @@ namespace FurnitureDepot.View
             // stateLabel
             // 
             this.stateLabel.AutoSize = true;
-            this.stateLabel.Location = new System.Drawing.Point(331, 102);
+            this.stateLabel.Location = new System.Drawing.Point(331, 116);
             this.stateLabel.Name = "stateLabel";
             this.stateLabel.Size = new System.Drawing.Size(35, 13);
             this.stateLabel.TabIndex = 6;
@@ -117,7 +118,7 @@ namespace FurnitureDepot.View
             // zipLabel
             // 
             this.zipLabel.AutoSize = true;
-            this.zipLabel.Location = new System.Drawing.Point(341, 139);
+            this.zipLabel.Location = new System.Drawing.Point(341, 165);
             this.zipLabel.Name = "zipLabel";
             this.zipLabel.Size = new System.Drawing.Size(25, 13);
             this.zipLabel.TabIndex = 7;
@@ -126,7 +127,7 @@ namespace FurnitureDepot.View
             // phoneLabel
             // 
             this.phoneLabel.AutoSize = true;
-            this.phoneLabel.Location = new System.Drawing.Point(77, 158);
+            this.phoneLabel.Location = new System.Drawing.Point(77, 218);
             this.phoneLabel.Name = "phoneLabel";
             this.phoneLabel.Size = new System.Drawing.Size(41, 13);
             this.phoneLabel.TabIndex = 8;
@@ -135,15 +136,16 @@ namespace FurnitureDepot.View
             // sexComboBox
             // 
             this.sexComboBox.FormattingEnabled = true;
-            this.sexComboBox.Location = new System.Drawing.Point(125, 83);
+            this.sexComboBox.Location = new System.Drawing.Point(125, 116);
             this.sexComboBox.Name = "sexComboBox";
             this.sexComboBox.Size = new System.Drawing.Size(121, 21);
             this.sexComboBox.TabIndex = 9;
             // 
             // stateComboBox
             // 
+            this.stateComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.stateComboBox.FormattingEnabled = true;
-            this.stateComboBox.Location = new System.Drawing.Point(373, 102);
+            this.stateComboBox.Location = new System.Drawing.Point(372, 116);
             this.stateComboBox.Name = "stateComboBox";
             this.stateComboBox.Size = new System.Drawing.Size(121, 21);
             this.stateComboBox.TabIndex = 10;
@@ -151,7 +153,7 @@ namespace FurnitureDepot.View
             // dobPicker
             // 
             this.dobPicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dobPicker.Location = new System.Drawing.Point(125, 118);
+            this.dobPicker.Location = new System.Drawing.Point(125, 165);
             this.dobPicker.Name = "dobPicker";
             this.dobPicker.Size = new System.Drawing.Size(121, 20);
             this.dobPicker.TabIndex = 11;
@@ -165,7 +167,7 @@ namespace FurnitureDepot.View
             // 
             // lastNameTextBox
             // 
-            this.lastNameTextBox.Location = new System.Drawing.Point(125, 52);
+            this.lastNameTextBox.Location = new System.Drawing.Point(125, 70);
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(121, 20);
             this.lastNameTextBox.TabIndex = 13;
@@ -179,39 +181,48 @@ namespace FurnitureDepot.View
             // 
             // cityTextBox
             // 
-            this.cityTextBox.Location = new System.Drawing.Point(373, 61);
+            this.cityTextBox.Location = new System.Drawing.Point(372, 70);
             this.cityTextBox.Name = "cityTextBox";
             this.cityTextBox.Size = new System.Drawing.Size(121, 20);
             this.cityTextBox.TabIndex = 15;
             // 
             // zipTextBox
             // 
-            this.zipTextBox.Location = new System.Drawing.Point(373, 139);
+            this.zipTextBox.Location = new System.Drawing.Point(372, 162);
             this.zipTextBox.Name = "zipTextBox";
             this.zipTextBox.Size = new System.Drawing.Size(121, 20);
             this.zipTextBox.TabIndex = 16;
             // 
             // phoneTextBox
             // 
-            this.phoneTextBox.Location = new System.Drawing.Point(125, 158);
+            this.phoneTextBox.Location = new System.Drawing.Point(125, 215);
             this.phoneTextBox.Name = "phoneTextBox";
             this.phoneTextBox.Size = new System.Drawing.Size(121, 20);
             this.phoneTextBox.TabIndex = 17;
             // 
             // submitButton
             // 
-            this.submitButton.Location = new System.Drawing.Point(275, 222);
+            this.submitButton.Location = new System.Drawing.Point(267, 259);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(75, 23);
             this.submitButton.TabIndex = 18;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
-            this.submitButton.Click += new EventHandler(SubmitButton_Click);
+            this.submitButton.Click += new System.EventHandler(this.SubmitButton_Click);
+            // 
+            // statusLabel
+            // 
+            this.statusLabel.AutoSize = true;
+            this.statusLabel.Location = new System.Drawing.Point(246, 243);
+            this.statusLabel.Name = "statusLabel";
+            this.statusLabel.Size = new System.Drawing.Size(0, 13);
+            this.statusLabel.TabIndex = 19;
             // 
             // RegisterCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.statusLabel);
             this.Controls.Add(this.submitButton);
             this.Controls.Add(this.phoneTextBox);
             this.Controls.Add(this.zipTextBox);
@@ -259,5 +270,6 @@ namespace FurnitureDepot.View
         private System.Windows.Forms.TextBox zipTextBox;
         private System.Windows.Forms.TextBox phoneTextBox;
         private System.Windows.Forms.Button submitButton;
+        private System.Windows.Forms.Label statusLabel;
     }
 }
