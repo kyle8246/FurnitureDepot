@@ -1,5 +1,6 @@
 ﻿using FurnitureDepot.DAL;
 using FurnitureDepot.Model;
+using System.Collections.Generic;
 
 namespace FurnitureDepot.Controller
 {
@@ -26,6 +27,19 @@ namespace FurnitureDepot.Controller
         public bool RegisterCustomer(Customer customer)
         {
             return customerDAL.AddCustomer(customer);
+        }
+
+        /// <summary>
+        /// Searches the customers.
+        /// </summary>
+        /// <param name="memberId">The member identifier.</param>
+        /// <param name="contactPhone">The contact phone.</param>
+        /// <param name="lastName">The last name.</param>
+        /// <param name="firstName">The first name.</param>
+        /// <returns></returns>
+        public List<Customer> SearchCustomers(string memberId, string contactPhone, string lastName, string firstName)
+        {
+            return customerDAL.SearchCustomers(memberId, contactPhone, lastName, firstName);
         }
     }
 }
