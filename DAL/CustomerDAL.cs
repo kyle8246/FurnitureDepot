@@ -67,7 +67,7 @@ namespace FurnitureDepot.DAL
                         {
                             customer = new Customer
                             {
-                                MemberID = reader.GetInt32(reader.GetOrdinal("MemberID")),
+                                //MemberID = reader.GetInt32(reader.GetOrdinal("MemberID")),
                                 LastName = reader.GetString(reader.GetOrdinal("LastName")),
                                 FirstName = reader.GetString(reader.GetOrdinal("FirstName")),
                                 Sex = reader.GetString(reader.GetOrdinal("Sex")),

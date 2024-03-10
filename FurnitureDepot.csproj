@@ -81,6 +81,12 @@
     <Compile Include="UserControls\EditCustomerUserControl.Designer.cs">
       <DependentUpon>EditCustomerUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\SearchCustomerUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\SearchCustomerUserControl.Designer.cs">
+      <DependentUpon>SearchCustomerUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,6 +117,9 @@
     </Compile>
     <EmbeddedResource Include="UserControls\EditCustomerUserControl.resx">
       <DependentUpon>EditCustomerUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\SearchCustomerUserControl.resx">
+      <DependentUpon>SearchCustomerUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
