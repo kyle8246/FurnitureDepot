@@ -7,15 +7,15 @@ using System.Windows.Forms;
 
 namespace FurnitureDepot.View
 {
-	public partial class RegisterCustomer : UserControl
+	public partial class RegisterCustomerUserControl : UserControl
 	{
 
 		private readonly CustomerController customerController;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RegisterCustomer"/> class.
+        /// Initializes a new instance of the <see cref="RegisterCustomerUserControl"/> class.
         /// </summary>
-        public RegisterCustomer()
+        public RegisterCustomerUserControl()
 		{
 			InitializeComponent();
 			customerController = new CustomerController();

@@ -2,7 +2,7 @@
 
 namespace FurnitureDepot.View
 {
-    partial class RegisterCustomer
+    partial class RegisterCustomerUserControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -135,11 +135,12 @@ namespace FurnitureDepot.View
             // 
             // sexComboBox
             // 
+            this.sexComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.sexComboBox.FormattingEnabled = true;
             this.sexComboBox.Location = new System.Drawing.Point(125, 116);
             this.sexComboBox.Name = "sexComboBox";
             this.sexComboBox.Size = new System.Drawing.Size(121, 21);
-            this.sexComboBox.TabIndex = 9;
+            this.sexComboBox.TabIndex = 3;
             // 
             // stateComboBox
             // 
@@ -148,7 +149,7 @@ namespace FurnitureDepot.View
             this.stateComboBox.Location = new System.Drawing.Point(372, 116);
             this.stateComboBox.Name = "stateComboBox";
             this.stateComboBox.Size = new System.Drawing.Size(121, 21);
-            this.stateComboBox.TabIndex = 10;
+            this.stateComboBox.TabIndex = 8;
             // 
             // dobPicker
             // 
@@ -156,56 +157,56 @@ namespace FurnitureDepot.View
             this.dobPicker.Location = new System.Drawing.Point(125, 165);
             this.dobPicker.Name = "dobPicker";
             this.dobPicker.Size = new System.Drawing.Size(121, 20);
-            this.dobPicker.TabIndex = 11;
+            this.dobPicker.TabIndex = 4;
             // 
             // firstNameTextBox
             // 
             this.firstNameTextBox.Location = new System.Drawing.Point(125, 22);
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(121, 20);
-            this.firstNameTextBox.TabIndex = 12;
+            this.firstNameTextBox.TabIndex = 0;
             // 
             // lastNameTextBox
             // 
             this.lastNameTextBox.Location = new System.Drawing.Point(125, 70);
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(121, 20);
-            this.lastNameTextBox.TabIndex = 13;
+            this.lastNameTextBox.TabIndex = 1;
             // 
             // streetAddressTextBox
             // 
             this.streetAddressTextBox.Location = new System.Drawing.Point(373, 22);
             this.streetAddressTextBox.Name = "streetAddressTextBox";
             this.streetAddressTextBox.Size = new System.Drawing.Size(121, 20);
-            this.streetAddressTextBox.TabIndex = 14;
+            this.streetAddressTextBox.TabIndex = 6;
             // 
             // cityTextBox
             // 
             this.cityTextBox.Location = new System.Drawing.Point(372, 70);
             this.cityTextBox.Name = "cityTextBox";
             this.cityTextBox.Size = new System.Drawing.Size(121, 20);
-            this.cityTextBox.TabIndex = 15;
+            this.cityTextBox.TabIndex = 7;
             // 
             // zipTextBox
             // 
             this.zipTextBox.Location = new System.Drawing.Point(372, 162);
             this.zipTextBox.Name = "zipTextBox";
             this.zipTextBox.Size = new System.Drawing.Size(121, 20);
-            this.zipTextBox.TabIndex = 16;
+            this.zipTextBox.TabIndex = 9;
             // 
             // phoneTextBox
             // 
             this.phoneTextBox.Location = new System.Drawing.Point(125, 215);
             this.phoneTextBox.Name = "phoneTextBox";
             this.phoneTextBox.Size = new System.Drawing.Size(121, 20);
-            this.phoneTextBox.TabIndex = 17;
+            this.phoneTextBox.TabIndex = 5;
             // 
             // submitButton
             // 
             this.submitButton.Location = new System.Drawing.Point(267, 259);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(75, 23);
-            this.submitButton.TabIndex = 18;
+            this.submitButton.TabIndex = 10;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
             this.submitButton.Click += new System.EventHandler(this.SubmitButton_Click);
@@ -218,7 +219,7 @@ namespace FurnitureDepot.View
             this.statusLabel.Size = new System.Drawing.Size(0, 13);
             this.statusLabel.TabIndex = 19;
             // 
-            // RegisterCustomer
+            // RegisterCustomerUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -242,7 +243,7 @@ namespace FurnitureDepot.View
             this.Controls.Add(this.sexLabel);
             this.Controls.Add(this.lastNameLabel);
             this.Controls.Add(this.firstNameLabel);
-            this.Name = "RegisterCustomer";
+            this.Name = "RegisterCustomerUserControl";
             this.Size = new System.Drawing.Size(616, 405);
             this.ResumeLayout(false);
             this.PerformLayout();

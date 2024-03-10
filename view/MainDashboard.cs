@@ -15,7 +15,7 @@ namespace FurnitureDepot.View
         {
             InitializeComponent();
             this.dashboardTabControl.Selected += new TabControlEventHandler(DashboardTabControl_Selected);
-            RegisterCustomer registerCustomerControl = new RegisterCustomer();
+            RegisterCustomerUserControl registerCustomerControl = new RegisterCustomerUserControl();
             registerCustomerControl.Dock = DockStyle.Fill;
             registrationTabPage.Controls.Add(registerCustomerControl);
         }
@@ -38,7 +38,7 @@ namespace FurnitureDepot.View
         {
             if (e.TabPage == registrationTabPage && e.TabPage.Controls.Count == 0)
             {
-                RegisterCustomer registerCustomerControl = new RegisterCustomer();
+                RegisterCustomerUserControl registerCustomerControl = new RegisterCustomerUserControl();
                 registerCustomerControl.Dock = DockStyle.Fill;
                 registrationTabPage.Controls.Add(registerCustomerControl);
             }
