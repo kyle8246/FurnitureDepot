@@ -1,6 +1,8 @@
 ﻿using FurnitureDepot.Model;
 using System.Data.SqlClient;
 using System.Data;
+using System.Collections.Generic;
+using System;
 
 namespace FurnitureDepot.DAL
 {
@@ -67,7 +69,7 @@ namespace FurnitureDepot.DAL
                         {
                             customer = new Customer
                             {
-                                //MemberID = reader.GetInt32(reader.GetOrdinal("MemberID")),
+                                MemberID = reader.GetInt32(reader.GetOrdinal("MemberID")),
                                 LastName = reader.GetString(reader.GetOrdinal("LastName")),
                                 FirstName = reader.GetString(reader.GetOrdinal("FirstName")),
                                 Sex = reader.GetString(reader.GetOrdinal("Sex")),
@@ -84,6 +86,61 @@ namespace FurnitureDepot.DAL
             }
             return customer;
         }
+
+        /// <summary>
+        /// Searches the customers.
+        /// </summary>
+        /// <param name="memberId">The member identifier.</param>
+        /// <param name="contactPhone">The contact phone.</param>
+        /// <param name="lastName">The last name.</param>
+        /// <param name="firstName">The first name.</param>
+        /// <returns></returns>
+        public List<Customer> SearchCustomers(string memberId, string contactPhone, string lastName, string firstName)
+        {
+            var customers = new List<Customer>();
+
+            using (SqlConnection connection = FurnitureDepotDBConnection.GetConnection())
+            {
+                connection.Open();
+
+                var query = @"SELECT MemberID, LastName, FirstName, Sex, DateOfBirth, 
+                           StreetAddress, City, State, ZipCode, ContactPhone FROM Member WHERE 
+                          (@MemberID IS NULL OR MemberID = @MemberID) AND
+                          (@ContactPhone IS NULL OR ContactPhone = @ContactPhone) AND
+                          (@LastName IS NULL OR LastName = @LastName) AND
+                          (@FirstName IS NULL OR FirstName = @FirstName)";
+
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.Add("@MemberID", SqlDbType.Int).Value = string.IsNullOrEmpty(memberId) ? (object)DBNull.Value : Convert.ToInt32(memberId);
+                    command.Parameters.Add("@ContactPhone", SqlDbType.VarChar, 20).Value = string.IsNullOrEmpty(contactPhone) ? (object)DBNull.Value : contactPhone;
+                    command.Parameters.Add("@LastName", SqlDbType.VarChar, 50).Value = string.IsNullOrEmpty(lastName) ? (object)DBNull.Value : lastName;
+                    command.Parameters.Add("@FirstName", SqlDbType.VarChar, 50).Value = string.IsNullOrEmpty(firstName) ? (object)DBNull.Value : firstName;
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            customers.Add(new Customer
+                            {
+                                MemberID = reader.GetInt32(reader.GetOrdinal("MemberID")),
+                                LastName = reader.GetString(reader.GetOrdinal("LastName")),
+                                FirstName = reader.GetString(reader.GetOrdinal("FirstName")),
+                                Sex = reader.GetString(reader.GetOrdinal("Sex")),
+                                DateOfBirth = reader.GetDateTime(reader.GetOrdinal("DateOfBirth")),
+                                StreetAddress = reader.GetString(reader.GetOrdinal("StreetAddress")),
+                                City = reader.GetString(reader.GetOrdinal("City")),
+                                State = reader.GetString(reader.GetOrdinal("State")),
+                                ZipCode = reader.GetString(reader.GetOrdinal("ZipCode")),
+                                ContactPhone = reader.GetString(reader.GetOrdinal("ContactPhone"))
+                            });
+                        }
+                    }
+                }
+            }
+            return customers;
+        }
+
 
     }
 }
