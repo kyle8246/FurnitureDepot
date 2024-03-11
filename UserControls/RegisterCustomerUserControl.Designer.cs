@@ -50,6 +50,7 @@ namespace FurnitureDepot.View
             this.phoneTextBox = new System.Windows.Forms.TextBox();
             this.submitButton = new System.Windows.Forms.Button();
             this.statusLabel = new System.Windows.Forms.Label();
+            this.clearButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // firstNameLabel
@@ -203,7 +204,7 @@ namespace FurnitureDepot.View
             // 
             // submitButton
             // 
-            this.submitButton.Location = new System.Drawing.Point(267, 259);
+            this.submitButton.Location = new System.Drawing.Point(214, 269);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(75, 23);
             this.submitButton.TabIndex = 10;
@@ -213,16 +214,27 @@ namespace FurnitureDepot.View
             // 
             // statusLabel
             // 
-            this.statusLabel.AutoSize = true;
-            this.statusLabel.Location = new System.Drawing.Point(246, 243);
+            this.statusLabel.Location = new System.Drawing.Point(125, 243);
             this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(0, 13);
+            this.statusLabel.Size = new System.Drawing.Size(368, 13);
             this.statusLabel.TabIndex = 19;
+            this.statusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // clearButton
+            // 
+            this.clearButton.Location = new System.Drawing.Point(334, 269);
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(75, 23);
+            this.clearButton.TabIndex = 20;
+            this.clearButton.Text = "Clear";
+            this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
             // RegisterCustomerUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.clearButton);
             this.Controls.Add(this.statusLabel);
             this.Controls.Add(this.submitButton);
             this.Controls.Add(this.phoneTextBox);
@@ -272,5 +284,6 @@ namespace FurnitureDepot.View
         private System.Windows.Forms.TextBox phoneTextBox;
         private System.Windows.Forms.Button submitButton;
         private System.Windows.Forms.Label statusLabel;
+        private System.Windows.Forms.Button clearButton;
     }
 }
