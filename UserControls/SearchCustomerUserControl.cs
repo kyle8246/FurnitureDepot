@@ -1,6 +1,7 @@
 ﻿using FurnitureDepot.Controller;
 using System;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace FurnitureDepot.UserControls
@@ -37,10 +38,34 @@ namespace FurnitureDepot.UserControls
                 messageLabel.Text = "";
             }
 
+            if (!string.IsNullOrWhiteSpace(id) && (!int.TryParse(idTextBox.Text, out int customerID) || customerID <= 0))
+            {
+                messageLabel.Text = "Enter a valid ID";
+                messageLabel.ForeColor = Color.Red;
+                return;
+            }
+
+            if (!string.IsNullOrWhiteSpace(phone) && (phoneTextBox.Text.Length != 10 || !phoneTextBox.Text.All(char.IsDigit)))
+            {
+                messageLabel.Text = "Phone number must be 10 digits";
+                messageLabel.ForeColor = Color.Red;
+                return;
+            }
+
             CustomerController customerController = new CustomerController();
             var customers = customerController.SearchCustomers(id, phone, lastName, firstName);
 
-            searchDataGridView.DataSource = customers;
+            if (customers == null || customers.Count == 0)
+            {
+                messageLabel.Text = "No results found";
+                messageLabel.ForeColor = Color.Red;
+                searchDataGridView.DataSource = null;
+            }
+            else
+            {
+                searchDataGridView.DataSource = customers;
+                messageLabel.Text = "";
+            }
         }
 
         private bool ValidateSearchCriteria(string id, string phone, string lastName, string firstName)
