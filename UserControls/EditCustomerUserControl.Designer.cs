@@ -72,7 +72,7 @@
             this.editCustomerLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 113F));
             this.editCustomerLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 88F));
             this.editCustomerLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 147F));
-            this.editCustomerLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 18F));
+            this.editCustomerLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F));
             this.editCustomerLayoutPanel.Controls.Add(this.memberIDLabel, 1, 1);
             this.editCustomerLayoutPanel.Controls.Add(this.lastNameLabel, 1, 3);
             this.editCustomerLayoutPanel.Controls.Add(this.firstNameLabel, 1, 5);
@@ -184,6 +184,7 @@
             // sexComboBox
             // 
             this.sexComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sexComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.sexComboBox.FormattingEnabled = true;
             this.sexComboBox.Location = new System.Drawing.Point(89, 126);
             this.sexComboBox.Name = "sexComboBox";
@@ -207,7 +208,7 @@
             this.memberIDTextBox.Name = "memberIDTextBox";
             this.memberIDTextBox.Size = new System.Drawing.Size(41, 20);
             this.memberIDTextBox.TabIndex = 0;
-            this.memberIDTextBox.TextChanged += new System.EventHandler(this.memberIDTextBox_TextChanged);
+            this.memberIDTextBox.TextChanged += new System.EventHandler(this.MemberIDTextBox_TextChanged);
             // 
             // getMemberInfoButton
             // 
@@ -218,7 +219,7 @@
             this.getMemberInfoButton.TabIndex = 1;
             this.getMemberInfoButton.Text = "Get";
             this.getMemberInfoButton.UseVisualStyleBackColor = true;
-            this.getMemberInfoButton.Click += new System.EventHandler(this.getMemberInfoButton_Click);
+            this.getMemberInfoButton.Click += new System.EventHandler(this.GetMemberInfoButton_Click);
             // 
             // lastNameTextBox
             // 
@@ -227,6 +228,7 @@
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(149, 20);
             this.lastNameTextBox.TabIndex = 13;
+            this.lastNameTextBox.TextChanged += new System.EventHandler(this.LastNameTextBox_TextChanged);
             // 
             // firstNameTextBox
             // 
@@ -235,6 +237,7 @@
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(149, 20);
             this.firstNameTextBox.TabIndex = 14;
+            this.firstNameTextBox.TextChanged += new System.EventHandler(this.FirstNameTextBox_TextChanged);
             // 
             // dobTextBox
             // 
@@ -243,6 +246,7 @@
             this.dobTextBox.Name = "dobTextBox";
             this.dobTextBox.Size = new System.Drawing.Size(149, 20);
             this.dobTextBox.TabIndex = 19;
+            this.dobTextBox.TextChanged += new System.EventHandler(this.DobTextBox_TextChanged);
             // 
             // idErrorLabel
             // 
@@ -298,6 +302,7 @@
             this.streetAddressTextBox.Name = "streetAddressTextBox";
             this.streetAddressTextBox.Size = new System.Drawing.Size(134, 20);
             this.streetAddressTextBox.TabIndex = 15;
+            this.streetAddressTextBox.TextChanged += new System.EventHandler(this.StreetAddressTextBox_TextChanged);
             // 
             // streetAddressLabel
             // 
@@ -355,6 +360,7 @@
             this.contactPhoneTextBox.Name = "contactPhoneTextBox";
             this.contactPhoneTextBox.Size = new System.Drawing.Size(149, 20);
             this.contactPhoneTextBox.TabIndex = 17;
+            this.contactPhoneTextBox.TextChanged += new System.EventHandler(this.ContactPhoneTextBox_TextChanged);
             // 
             // cityTextBox
             // 
@@ -362,9 +368,11 @@
             this.cityTextBox.Name = "cityTextBox";
             this.cityTextBox.Size = new System.Drawing.Size(134, 20);
             this.cityTextBox.TabIndex = 18;
+            this.cityTextBox.TextChanged += new System.EventHandler(this.CityTextBox_TextChanged);
             // 
             // stateComboBox
             // 
+            this.stateComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.stateComboBox.FormattingEnabled = true;
             this.stateComboBox.Location = new System.Drawing.Point(445, 126);
             this.stateComboBox.Name = "stateComboBox";
@@ -377,6 +385,7 @@
             this.zipCodeTextBox.Name = "zipCodeTextBox";
             this.zipCodeTextBox.Size = new System.Drawing.Size(134, 20);
             this.zipCodeTextBox.TabIndex = 16;
+            this.zipCodeTextBox.TextChanged += new System.EventHandler(this.ZipCodeTextBox_TextChanged);
             // 
             // contactPhoneErrorLabel
             // 
@@ -411,6 +420,7 @@
             this.editMemberButton.TabIndex = 28;
             this.editMemberButton.Text = "Edit";
             this.editMemberButton.UseVisualStyleBackColor = true;
+            this.editMemberButton.Click += new System.EventHandler(this.EditMemberButton_Click);
             // 
             // clearButton
             // 
@@ -421,7 +431,7 @@
             this.clearButton.TabIndex = 29;
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = true;
-            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
+            this.clearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
             // EditCustomerUserControl
             // 

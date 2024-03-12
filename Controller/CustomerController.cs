@@ -41,5 +41,25 @@ namespace FurnitureDepot.Controller
         {
             return customerDAL.SearchCustomers(memberId, contactPhone, lastName, firstName);
         }
+
+        /// <summary>
+        /// Gets the customer by member identifier.
+        /// </summary>
+        /// <param name="memberID">The member identifier.</param>
+        /// <returns></returns>
+        public Customer GetCustomerByMemberID(int memberID)
+        {
+            return customerDAL.GetCustomerByMemberID(memberID);
+        }
+
+        /// <summary>
+        /// Updates the customer.
+        /// </summary>
+        /// <param name="customer">The customer.</param>
+        /// <returns></returns>
+        public bool UpdateCustomer(Customer customer)
+        {
+            return customerDAL.UpdateCustomer(customer);
+        }
     }
 }
