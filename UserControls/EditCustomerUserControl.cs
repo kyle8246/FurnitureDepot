@@ -56,5 +56,29 @@ namespace FurnitureDepot.UserControls
                 this.idErrorLabel.Visible = true;
             }
         }
+
+        private void clearButton_Click(object sender, EventArgs e)
+        {
+            this.memberIDTextBox.Text = string.Empty;
+            this.lastNameTextBox.Text = string.Empty;
+            this.firstNameTextBox.Text = string.Empty;
+            this.dobTextBox.Text= string.Empty;
+            this.contactPhoneTextBox.Text= string.Empty;
+            this.streetAddressTextBox.Text= string.Empty;
+            this.cityTextBox.Text= string.Empty;
+            this.zipCodeTextBox.Text = string.Empty;
+
+            this.idErrorLabel.Visible = false;
+            this.lastNameErrorLabel.Visible = false;
+            this.firstNameErrorLabel.Visible = false;
+            this.dobErrorLabel.Visible = false;
+            this.contactPhoneErrorLabel.Visible = false;
+            this.streetAddressErrorLabel.Visible = false;
+        }
+
+        private void memberIDTextBox_TextChanged(object sender, EventArgs e)
+        {
+            this.idErrorLabel.Visible = false;
+        }
     }
 }
