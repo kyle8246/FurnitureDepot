@@ -3,6 +3,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace FurnitureDepot.Model
 {
+    /// <summary>
+    /// Class to model a Customer
+    /// </summary>
     public class Customer
     {
         public int MemberID { get; set; }

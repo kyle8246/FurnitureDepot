@@ -6,6 +6,9 @@ using System;
 
 namespace FurnitureDepot.DAL
 {
+    /// <summary>
+    /// DAL for Customer 
+    /// </summary>
     internal class CustomerDAL
     {
         /// <summary>
@@ -139,6 +142,48 @@ namespace FurnitureDepot.DAL
                 }
             }
             return customers;
+        }
+
+        /// <summary>
+        /// Edits the customer.
+        /// </summary>
+        /// <param name="customer">The customer.</param>
+        /// <returns></returns>
+        public bool UpdateCustomer(Customer customer)
+        {
+            using (SqlConnection connection = FurnitureDepotDBConnection.GetConnection())
+            {
+                string query = @"
+                       UPDATE Member
+                       SET LastName = @LastName,
+                           FirstName = @FirstName,
+                           Sex = @Sex,
+                           DateOfBirth = @DateOfBirth,
+                           StreetAddress = @StreetAddress,
+                           City = @City,
+                           State = @State,
+                           ZipCode = @ZipCode,
+                           ContactPhone = @ContactPhone
+                       WHERE MemberID = @MemberID";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.Add("@MemberID", SqlDbType.Int).Value = customer.MemberID;
+                    command.Parameters.Add("@LastName", SqlDbType.NVarChar).Value = customer.LastName;
+                    command.Parameters.Add("@FirstName", SqlDbType.NVarChar).Value = customer.FirstName;
+                    command.Parameters.Add("@Sex", SqlDbType.NChar).Value = customer.Sex; 
+                    command.Parameters.Add("@DateOfBirth", SqlDbType.Date).Value = customer.DateOfBirth;
+                    command.Parameters.Add("@StreetAddress", SqlDbType.NVarChar).Value = customer.StreetAddress;
+                    command.Parameters.Add("@City", SqlDbType.NVarChar).Value = customer.City;
+                    command.Parameters.Add("@State", SqlDbType.NVarChar).Value = customer.State;
+                    command.Parameters.Add("@ZipCode", SqlDbType.NVarChar).Value = customer.ZipCode;
+                    command.Parameters.Add("@ContactPhone", SqlDbType.NVarChar).Value = customer.ContactPhone;
+
+                    connection.Open();
+                    int result = command.ExecuteNonQuery();
+                    return result == 1;
+                }
+            }
         }
 
 

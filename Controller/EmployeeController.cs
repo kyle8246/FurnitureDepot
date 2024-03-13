@@ -9,7 +9,6 @@ namespace FurnitureDepot.Controller
     public class EmployeeController
     {
         private readonly EmployeeDAL _employeeDAL;
-        private readonly CustomerDAL _customerDAL;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="EmployeeController"/> class.
@@ -17,7 +16,6 @@ namespace FurnitureDepot.Controller
         public EmployeeController()
         {
             _employeeDAL = new EmployeeDAL();
-            _customerDAL = new CustomerDAL();
         }
 
         /// <summary>
@@ -30,9 +28,5 @@ namespace FurnitureDepot.Controller
             return _employeeDAL.GetUserFullName(username);
         }
 
-        public Customer GetCustomerByMemberID(int memberID)
-        {
-            return _customerDAL.GetCustomerByMemberID(memberID);
-        }
     }
 }
