@@ -113,15 +113,11 @@
             // 
             // searchDataGridView
             // 
-            this.searchDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.searchDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.searchDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.searchDataGridView.Location = new System.Drawing.Point(3, 141);
             this.searchDataGridView.Name = "searchDataGridView";
             this.searchDataGridView.RowTemplate.Height = 24;
-            this.searchDataGridView.Size = new System.Drawing.Size(810, 308);
+            this.searchDataGridView.Size = new System.Drawing.Size(838, 376);
             this.searchDataGridView.TabIndex = 8;
             // 
             // searchButton
@@ -169,7 +165,7 @@
             this.Controls.Add(this.phoneLabel);
             this.Controls.Add(this.idLabel);
             this.Name = "SearchCustomerUserControl";
-            this.Size = new System.Drawing.Size(816, 452);
+            this.Size = new System.Drawing.Size(841, 520);
             ((System.ComponentModel.ISupportInitialize)(this.searchDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
