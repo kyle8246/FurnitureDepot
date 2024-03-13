@@ -70,7 +70,7 @@ namespace FurnitureDepot.UserControls
 
         private void MemberIDTextBox_TextChanged(object sender, EventArgs e)
         {
-            ClearErrorLabels();
+            Clear();
         }
 
         private void PopulateSexComboBox()
@@ -99,9 +99,11 @@ namespace FurnitureDepot.UserControls
             this.streetAddressErrorLabel.Visible = false;
         }
 
-        private void Clear()
+        /// <summary>
+        /// Clears this instance.
+        /// </summary>
+        public void Clear()
         {
-            this.memberIDTextBox.Text = string.Empty;
             this.lastNameTextBox.Text = string.Empty;
             this.firstNameTextBox.Text = string.Empty;
             this.dobTextBox.Text = string.Empty;
@@ -172,12 +174,6 @@ namespace FurnitureDepot.UserControls
             if (this.stateComboBox.SelectedIndex <= 0)
             {
                 this.streetAddressErrorLabel.Text = "Select a state.";
-                this.streetAddressErrorLabel.Visible = true;
-                isValid = false;
-            }
-            if (string.IsNullOrWhiteSpace(this.zipCodeTextBox.Text))
-            {
-                this.streetAddressErrorLabel.Text = "Zip required.";
                 this.streetAddressErrorLabel.Visible = true;
                 isValid = false;
             }
