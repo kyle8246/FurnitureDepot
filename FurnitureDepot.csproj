@@ -158,8 +158,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DB\create-db.sql" />
-    <Content Include="DB\populate-db.sql" />
+    <Content Include="DB\cs6232-g2-create-db-script.sql" />
+    <Content Include="DB\cs6232-g2-populate-db-script.sql" />
     <Content Include="read_me.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

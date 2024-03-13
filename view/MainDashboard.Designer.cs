@@ -116,9 +116,9 @@
             this.searchCustomerUserControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.searchCustomerUserControl1.Location = new System.Drawing.Point(3, 15);
+            this.searchCustomerUserControl1.Location = new System.Drawing.Point(3, 3);
             this.searchCustomerUserControl1.Name = "searchCustomerUserControl1";
-            this.searchCustomerUserControl1.Size = new System.Drawing.Size(848, 422);
+            this.searchCustomerUserControl1.Size = new System.Drawing.Size(841, 431);
             this.searchCustomerUserControl1.TabIndex = 0;
             // 
             // usernameLabel
