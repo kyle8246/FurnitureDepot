@@ -42,6 +42,8 @@ namespace FurnitureDepot.View
                 registerCustomerControl.Dock = DockStyle.Fill;
                 registrationTabPage.Controls.Add(registerCustomerControl);
             }
+
+            this.editCustomerUserControl?.Clear();
         }
 
     }
