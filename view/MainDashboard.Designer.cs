@@ -1,4 +1,4 @@
-﻿namespace FurnitureDepot.View
+namespace FurnitureDepot.View
 {
     partial class MainDashboard
     {
