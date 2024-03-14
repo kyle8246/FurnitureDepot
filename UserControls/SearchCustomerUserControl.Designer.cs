@@ -113,6 +113,7 @@
             // 
             // searchDataGridView
             // 
+            this.searchDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.searchDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.searchDataGridView.Location = new System.Drawing.Point(3, 141);
             this.searchDataGridView.Name = "searchDataGridView";
