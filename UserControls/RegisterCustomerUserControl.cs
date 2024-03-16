@@ -52,20 +52,30 @@ namespace FurnitureDepot.View
                     ContactPhone = phoneTextBox.Text
                 };
 
-                bool success = customerController.RegisterCustomer(customer);
-                if (success)
+                if (customerController.CheckIfCustomerExists(customer.ContactPhone))
                 {
-                    statusLabel.Text = "Customer registered successfully.";
-                    statusLabel.ForeColor = Color.Green;
+                    statusLabel.Text = "A customer with this phone number already exists.";
+                    statusLabel.ForeColor = Color.Red;
                 }
                 else
                 {
-                    statusLabel.Text = "There was an error registering the customer.";
-                    statusLabel.ForeColor = Color.Red;
+                    bool success = customerController.RegisterCustomer(customer);
+                    if (success)
+                    {
+                        statusLabel.Text = "Customer registered successfully.";
+                        statusLabel.ForeColor = Color.Green;
+                        ClearForm(); // Clear form only if registration is successful
+                    }
+                    else
+                    {
+                        statusLabel.Text = "There was an error registering the customer.";
+                        statusLabel.ForeColor = Color.Red;
+                    }
                 }
                 statusLabel.Visible = true;
             }
         }
+
 
         private void ClearForm()
         {
