@@ -145,6 +145,31 @@ namespace FurnitureDepot.DAL
         }
 
         /// <summary>
+        /// Customers the exists.
+        /// </summary>
+        /// <param name="contactPhone">The contact phone.</param>
+        /// <returns></returns>
+        public bool CustomerExists(string contactPhone)
+        {
+            using (SqlConnection connection = FurnitureDepotDBConnection.GetConnection())
+            {
+                string query = @"
+            SELECT COUNT(1)
+            FROM Member
+            WHERE ContactPhone = @ContactPhone";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.Add("@ContactPhone", SqlDbType.NVarChar).Value = contactPhone;
+                    connection.Open();
+                    int userCount = (int)command.ExecuteScalar();
+                    return userCount > 0;
+                }
+            }
+        }
+
+
+        /// <summary>
         /// Edits the customer.
         /// </summary>
         /// <param name="customer">The customer.</param>
@@ -185,7 +210,5 @@ namespace FurnitureDepot.DAL
                 }
             }
         }
-
-
     }
 }
