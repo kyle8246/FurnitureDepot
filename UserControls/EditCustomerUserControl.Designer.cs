@@ -59,6 +59,7 @@
             this.streetAddressErrorLabel = new System.Windows.Forms.Label();
             this.editMemberButton = new System.Windows.Forms.Button();
             this.clearButton = new System.Windows.Forms.Button();
+            this.sexErrorLabel = new System.Windows.Forms.Label();
             this.editCustomerLayoutPanel.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -101,6 +102,7 @@
             this.editCustomerLayoutPanel.Controls.Add(this.streetAddressErrorLabel, 5, 11);
             this.editCustomerLayoutPanel.Controls.Add(this.editMemberButton, 3, 13);
             this.editCustomerLayoutPanel.Controls.Add(this.clearButton, 4, 1);
+            this.editCustomerLayoutPanel.Controls.Add(this.sexErrorLabel, 3, 7);
             this.editCustomerLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.editCustomerLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.editCustomerLayoutPanel.Name = "editCustomerLayoutPanel";
@@ -433,6 +435,18 @@
             this.clearButton.UseVisualStyleBackColor = true;
             this.clearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
+            // sexErrorLabel
+            // 
+            this.sexErrorLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.sexErrorLabel.AutoSize = true;
+            this.sexErrorLabel.ForeColor = System.Drawing.Color.Red;
+            this.sexErrorLabel.Location = new System.Drawing.Point(244, 137);
+            this.sexErrorLabel.Name = "sexErrorLabel";
+            this.sexErrorLabel.Size = new System.Drawing.Size(72, 13);
+            this.sexErrorLabel.TabIndex = 30;
+            this.sexErrorLabel.Text = "sex error label";
+            this.sexErrorLabel.Visible = false;
+            // 
             // EditCustomerUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -481,5 +495,6 @@
         private System.Windows.Forms.Label contactPhoneErrorLabel;
         private System.Windows.Forms.Button editMemberButton;
         private System.Windows.Forms.Button clearButton;
+        private System.Windows.Forms.Label sexErrorLabel;
     }
 }
