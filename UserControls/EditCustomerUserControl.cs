@@ -11,6 +11,7 @@ namespace FurnitureDepot.UserControls
     public partial class EditCustomerUserControl : UserControl
     {
         private CustomerController customerController;
+        private Customer originalCustomerData;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="EditCustomerUserControl"/> class.
@@ -19,7 +20,6 @@ namespace FurnitureDepot.UserControls
         {
             InitializeComponent();
             this.customerController = new CustomerController();
-
             PopulateSexComboBox();
             PopulateStates();
         }
@@ -43,6 +43,8 @@ namespace FurnitureDepot.UserControls
                         this.stateComboBox.SelectedItem = customer.State;
                         this.zipCodeTextBox.Text = customer.ZipCode;
                         this.contactPhoneTextBox.Text = customer.ContactPhone;
+
+                        originalCustomerData = customer;
                     }
                     else
                     {
@@ -70,7 +72,7 @@ namespace FurnitureDepot.UserControls
 
         private void MemberIDTextBox_TextChanged(object sender, EventArgs e)
         {
-            Clear();
+            ClearErrorLabels();
         }
 
         private void PopulateSexComboBox()
@@ -97,6 +99,7 @@ namespace FurnitureDepot.UserControls
             this.dobErrorLabel.Visible = false; 
             this.contactPhoneErrorLabel.Visible = false;
             this.streetAddressErrorLabel.Visible = false;
+            this.sexErrorLabel.Visible = false;
         }
 
         /// <summary>
@@ -104,6 +107,7 @@ namespace FurnitureDepot.UserControls
         /// </summary>
         public void Clear()
         {
+            this.memberIDTextBox.Text = string.Empty;
             this.lastNameTextBox.Text = string.Empty;
             this.firstNameTextBox.Text = string.Empty;
             this.dobTextBox.Text = string.Empty;
@@ -118,6 +122,7 @@ namespace FurnitureDepot.UserControls
             this.dobErrorLabel.Visible = false;
             this.contactPhoneErrorLabel.Visible = false;
             this.streetAddressErrorLabel.Visible = false;
+            this.sexErrorLabel.Visible = false;
             this.stateComboBox.SelectedIndex = 0;
             this.sexComboBox.SelectedIndex = 0;
         }
@@ -126,6 +131,12 @@ namespace FurnitureDepot.UserControls
         {
             ClearErrorLabels();
             bool isValid = true;
+            if (originalCustomerData == null)
+            {
+                this.idErrorLabel.Text = "Member must be retrieved first.";
+                this.idErrorLabel.Visible = true;
+                return;
+            }
             if (string.IsNullOrWhiteSpace(this.memberIDTextBox.Text))
             {
                 this.idErrorLabel.Text = "ID required.";
@@ -133,7 +144,12 @@ namespace FurnitureDepot.UserControls
                 isValid = false;
             }
 
-            
+            if (!CheckForChanges())
+            {
+                this.contactPhoneErrorLabel.Text = "No updates to member.";
+                this.contactPhoneErrorLabel.Visible = true;
+                isValid = false;
+            }
 
             if (string.IsNullOrWhiteSpace(this.lastNameTextBox.Text))
             {
@@ -149,8 +165,8 @@ namespace FurnitureDepot.UserControls
             }
             if (this.sexComboBox.SelectedIndex <= 0)
             {
-                this.firstNameErrorLabel.Text = "Select a sex.";
-                this.firstNameErrorLabel.Visible = true;
+                this.sexErrorLabel.Text = "Select a sex.";
+                this.sexErrorLabel.Visible = true;
                 isValid = false;
             }
             if (!DateTime.TryParse(this.dobTextBox.Text, out DateTime dob))
@@ -227,6 +243,23 @@ namespace FurnitureDepot.UserControls
                     this.contactPhoneErrorLabel.Visible = true;
                 }
             }
+        }
+
+        private bool CheckForChanges()
+        {
+            if (originalCustomerData == null) return false;
+
+            DateTime.TryParse(dobTextBox.Text, out var dob);
+
+            return !(originalCustomerData.LastName == lastNameTextBox.Text &&
+                     originalCustomerData.FirstName == firstNameTextBox.Text &&
+                     originalCustomerData.Sex == sexComboBox.SelectedItem.ToString() &&
+                     originalCustomerData.DateOfBirth == dob.Date &&
+                     originalCustomerData.StreetAddress == streetAddressTextBox.Text &&
+                     originalCustomerData.City == cityTextBox.Text &&
+                     originalCustomerData.State == stateComboBox.SelectedItem.ToString() &&
+                     originalCustomerData.ZipCode == zipCodeTextBox.Text &&
+                     originalCustomerData.ContactPhone == contactPhoneTextBox.Text);
         }
 
         private void LastNameTextBox_TextChanged(object sender, EventArgs e)
