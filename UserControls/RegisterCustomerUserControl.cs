@@ -7,10 +7,14 @@ using System.Windows.Forms;
 
 namespace FurnitureDepot.View
 {
-	public partial class RegisterCustomerUserControl : UserControl
-	{
+    /// <summary>
+    /// Register Customer User Control
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.UserControl" />
+    public partial class RegisterCustomerUserControl : UserControl
+    {
 
-		private readonly CustomerController customerController;
+        private readonly CustomerController customerController;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RegisterCustomerUserControl"/> class.
@@ -52,30 +56,22 @@ namespace FurnitureDepot.View
                     ContactPhone = phoneTextBox.Text
                 };
 
-                if (customerController.CheckIfCustomerExists(customer.ContactPhone))
+                bool success = customerController.RegisterCustomer(customer);
+                if (success)
                 {
-                    statusLabel.Text = "A customer with this phone number already exists.";
-                    statusLabel.ForeColor = Color.Red;
+                    statusLabel.Text = "Customer registered successfully.";
+                    statusLabel.ForeColor = Color.Green;
+                    ClearForm();
                 }
                 else
                 {
-                    bool success = customerController.RegisterCustomer(customer);
-                    if (success)
-                    {
-                        statusLabel.Text = "Customer registered successfully.";
-                        statusLabel.ForeColor = Color.Green;
-                        ClearForm(); // Clear form only if registration is successful
-                    }
-                    else
-                    {
-                        statusLabel.Text = "There was an error registering the customer.";
-                        statusLabel.ForeColor = Color.Red;
-                    }
+                    statusLabel.Text = "There was an error registering the customer.";
+                    statusLabel.ForeColor = Color.Red;
                 }
+
                 statusLabel.Visible = true;
             }
         }
-
 
         private void ClearForm()
         {
