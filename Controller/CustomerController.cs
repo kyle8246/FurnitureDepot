@@ -61,15 +61,5 @@ namespace FurnitureDepot.Controller
         {
             return customerDAL.UpdateCustomer(customer);
         }
-
-        /// <summary>
-        /// Checks if customer exists.
-        /// </summary>
-        /// <param name="contactPhone">The contact phone.</param>
-        /// <returns></returns>
-        public bool CheckIfCustomerExists(string contactPhone)
-        {
-            return customerDAL.CustomerExists(contactPhone);
-        }
     }
 }
