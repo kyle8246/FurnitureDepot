@@ -12,12 +12,15 @@ namespace FurnitureDepot.UserControls
     /// <seealso cref="System.Windows.Forms.UserControl" />
     public partial class SearchCustomerUserControl : UserControl
     {
+        public event EventHandler<int> CustomerSelected;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="SearchCustomerUserControl"/> class.
         /// </summary>
         public SearchCustomerUserControl()
         {
             InitializeComponent();
+            searchDataGridView.CellClick += SearchDataGridView_CellClick;
         }
 
         private void SearchButton_Click(object sender, EventArgs e)
@@ -65,6 +68,18 @@ namespace FurnitureDepot.UserControls
             {
                 searchDataGridView.DataSource = customers;
                 messageLabel.Text = "";
+            }
+        }
+
+        private void SearchDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                var dataGridView = sender as DataGridView;
+                var row = dataGridView.Rows[e.RowIndex];
+                int customerId = Convert.ToInt32(row.Cells["MemberID"].Value);
+
+                CustomerSelected?.Invoke(this, customerId);
             }
         }
 

@@ -127,6 +127,34 @@ namespace FurnitureDepot.UserControls
             this.sexComboBox.SelectedIndex = 0;
         }
 
+        /// <summary>
+        /// Populates the customer data.
+        /// </summary>
+        /// <param name="customerId">The customer identifier.</param>
+        public void PopulateCustomerData(int customerId)
+        {
+            Customer customer = customerController.GetCustomerByMemberID(customerId);
+
+            if (customer != null)
+            {
+                memberIDTextBox.Text = customer.MemberID.ToString();
+                lastNameTextBox.Text = customer.LastName;
+                firstNameTextBox.Text = customer.FirstName;
+                sexComboBox.SelectedItem = customer.Sex;
+                dobTextBox.Text = customer.DateOfBirth.ToString();
+                streetAddressTextBox.Text = customer.StreetAddress;
+                cityTextBox.Text = customer.City;
+                stateComboBox.SelectedItem = customer.State;
+                zipCodeTextBox.Text = customer.ZipCode;
+                contactPhoneTextBox.Text = customer.ContactPhone;
+            }
+            else
+            {
+                idErrorLabel.Text = "Member not found for the given ID.";
+                idErrorLabel.Visible = true;
+            }
+        }
+
         private void EditMemberButton_Click(object sender, EventArgs e)
         {
             ClearErrorLabels();

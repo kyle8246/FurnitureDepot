@@ -118,6 +118,7 @@
             this.searchDataGridView.Location = new System.Drawing.Point(3, 141);
             this.searchDataGridView.Name = "searchDataGridView";
             this.searchDataGridView.RowTemplate.Height = 24;
+            this.searchDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.searchDataGridView.Size = new System.Drawing.Size(838, 376);
             this.searchDataGridView.TabIndex = 8;
             // 
