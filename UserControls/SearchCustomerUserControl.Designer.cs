@@ -46,7 +46,7 @@
             // idLabel
             // 
             this.idLabel.AutoSize = true;
-            this.idLabel.Location = new System.Drawing.Point(102, 17);
+            this.idLabel.Location = new System.Drawing.Point(194, 19);
             this.idLabel.Name = "idLabel";
             this.idLabel.Size = new System.Drawing.Size(23, 16);
             this.idLabel.TabIndex = 0;
@@ -55,7 +55,7 @@
             // phoneLabel
             // 
             this.phoneLabel.AutoSize = true;
-            this.phoneLabel.Location = new System.Drawing.Point(102, 54);
+            this.phoneLabel.Location = new System.Drawing.Point(194, 56);
             this.phoneLabel.Name = "phoneLabel";
             this.phoneLabel.Size = new System.Drawing.Size(49, 16);
             this.phoneLabel.TabIndex = 1;
@@ -64,7 +64,7 @@
             // firstNameLabel
             // 
             this.firstNameLabel.AutoSize = true;
-            this.firstNameLabel.Location = new System.Drawing.Point(407, 54);
+            this.firstNameLabel.Location = new System.Drawing.Point(499, 56);
             this.firstNameLabel.Name = "firstNameLabel";
             this.firstNameLabel.Size = new System.Drawing.Size(75, 16);
             this.firstNameLabel.TabIndex = 3;
@@ -73,7 +73,7 @@
             // lastNameLabel
             // 
             this.lastNameLabel.AutoSize = true;
-            this.lastNameLabel.Location = new System.Drawing.Point(407, 17);
+            this.lastNameLabel.Location = new System.Drawing.Point(499, 19);
             this.lastNameLabel.Name = "lastNameLabel";
             this.lastNameLabel.Size = new System.Drawing.Size(75, 16);
             this.lastNameLabel.TabIndex = 2;
@@ -81,7 +81,7 @@
             // 
             // idTextBox
             // 
-            this.idTextBox.Location = new System.Drawing.Point(157, 14);
+            this.idTextBox.Location = new System.Drawing.Point(249, 16);
             this.idTextBox.Name = "idTextBox";
             this.idTextBox.Size = new System.Drawing.Size(198, 22);
             this.idTextBox.TabIndex = 4;
@@ -89,7 +89,7 @@
             // 
             // phoneTextBox
             // 
-            this.phoneTextBox.Location = new System.Drawing.Point(157, 54);
+            this.phoneTextBox.Location = new System.Drawing.Point(249, 56);
             this.phoneTextBox.Name = "phoneTextBox";
             this.phoneTextBox.Size = new System.Drawing.Size(198, 22);
             this.phoneTextBox.TabIndex = 5;
@@ -97,7 +97,7 @@
             // 
             // lastNameTextBox
             // 
-            this.lastNameTextBox.Location = new System.Drawing.Point(488, 17);
+            this.lastNameTextBox.Location = new System.Drawing.Point(580, 19);
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(197, 22);
             this.lastNameTextBox.TabIndex = 6;
@@ -105,7 +105,7 @@
             // 
             // firstNameTextBox
             // 
-            this.firstNameTextBox.Location = new System.Drawing.Point(488, 54);
+            this.firstNameTextBox.Location = new System.Drawing.Point(580, 56);
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(197, 22);
             this.firstNameTextBox.TabIndex = 7;
@@ -119,12 +119,12 @@
             this.searchDataGridView.Name = "searchDataGridView";
             this.searchDataGridView.RowTemplate.Height = 24;
             this.searchDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.searchDataGridView.Size = new System.Drawing.Size(838, 376);
+            this.searchDataGridView.Size = new System.Drawing.Size(1060, 376);
             this.searchDataGridView.TabIndex = 8;
             // 
             // searchButton
             // 
-            this.searchButton.Location = new System.Drawing.Point(488, 91);
+            this.searchButton.Location = new System.Drawing.Point(580, 93);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(75, 27);
             this.searchButton.TabIndex = 9;
@@ -135,14 +135,14 @@
             // messageLabel
             // 
             this.messageLabel.AutoSize = true;
-            this.messageLabel.Location = new System.Drawing.Point(154, 91);
+            this.messageLabel.Location = new System.Drawing.Point(246, 93);
             this.messageLabel.Name = "messageLabel";
             this.messageLabel.Size = new System.Drawing.Size(0, 16);
             this.messageLabel.TabIndex = 10;
             // 
             // clearButton
             // 
-            this.clearButton.Location = new System.Drawing.Point(610, 91);
+            this.clearButton.Location = new System.Drawing.Point(702, 93);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(75, 27);
             this.clearButton.TabIndex = 11;
@@ -167,7 +167,7 @@
             this.Controls.Add(this.phoneLabel);
             this.Controls.Add(this.idLabel);
             this.Name = "SearchCustomerUserControl";
-            this.Size = new System.Drawing.Size(841, 520);
+            this.Size = new System.Drawing.Size(1065, 520);
             ((System.ComponentModel.ISupportInitialize)(this.searchDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
