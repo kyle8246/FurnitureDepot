@@ -1,5 +1,4 @@
-﻿using System;
-using System.Data.SqlClient;
+﻿using System.Data.SqlClient;
 using System.Data;
 
 namespace FurnitureDepot.DAL
@@ -19,15 +18,20 @@ namespace FurnitureDepot.DAL
         {
             using (SqlConnection connection = FurnitureDepotDBConnection.GetConnection())
             {
-                string query = "SELECT COUNT(1) FROM Login WHERE Username = @Username AND Password = @Password";
-                SqlCommand command = new SqlCommand(query, connection);
+                string query = "SELECT Password FROM Login WHERE Username = @Username";
 
+                SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.Add(new SqlParameter("@Username", SqlDbType.NVarChar, 50) { Value = username });
-                command.Parameters.Add(new SqlParameter("@Password", SqlDbType.NVarChar, 255) { Value = password });
 
                 connection.Open();
-                int result = Convert.ToInt32(command.ExecuteScalar());
-                return result == 1;
+                object result = command.ExecuteScalar();
+
+                if (result != null)
+                {
+                    string storedHash = result.ToString();
+                    return BCrypt.Net.BCrypt.Verify(password, storedHash);
+                }
+                return false;
             }
         }
     }

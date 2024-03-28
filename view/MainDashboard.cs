@@ -18,6 +18,8 @@ namespace FurnitureDepot.View
             RegisterCustomerUserControl registerCustomerControl = new RegisterCustomerUserControl();
             registerCustomerControl.Dock = DockStyle.Fill;
             registrationTabPage.Controls.Add(registerCustomerControl);
+
+            searchCustomerUserControl1.CustomerSelected += SearchCustomerUserControl_CustomerSelected;
         }
 
         /// <summary>
@@ -27,6 +29,13 @@ namespace FurnitureDepot.View
         public void SetUser(string username)
         {
             this.usernameLabel.Text = username;
+        }
+
+        private void SearchCustomerUserControl_CustomerSelected(object sender, int customerId)
+        {
+            this.dashboardTabControl.SelectedTab = editTabPage;
+
+            editCustomerUserControl.PopulateCustomerData(customerId);
         }
 
         private void LogoutLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
