@@ -37,7 +37,7 @@ namespace FurnitureDepot.UserControls
                         this.lastNameTextBox.Text = customer.LastName;
                         this.firstNameTextBox.Text = customer.FirstName;
                         this.sexComboBox.SelectedItem = customer.Sex;
-                        this.dobTextBox.Text = customer.DateOfBirth.ToString();
+                        this.dobPicker.Value = customer.DateOfBirth;
                         this.streetAddressTextBox.Text = customer.StreetAddress;
                         this.cityTextBox.Text = customer.City;
                         this.stateComboBox.SelectedItem = customer.State;
@@ -96,7 +96,6 @@ namespace FurnitureDepot.UserControls
             this.idErrorLabel.Visible = false;
             this.lastNameErrorLabel.Visible = false;
             this.firstNameErrorLabel.Visible = false;
-            this.dobErrorLabel.Visible = false; 
             this.contactPhoneErrorLabel.Visible = false;
             this.streetAddressErrorLabel.Visible = false;
             this.sexErrorLabel.Visible = false;
@@ -110,7 +109,7 @@ namespace FurnitureDepot.UserControls
             this.memberIDTextBox.Text = string.Empty;
             this.lastNameTextBox.Text = string.Empty;
             this.firstNameTextBox.Text = string.Empty;
-            this.dobTextBox.Text = string.Empty;
+            this.dobPicker.Value = DateTime.Now;
             this.contactPhoneTextBox.Text = string.Empty;
             this.streetAddressTextBox.Text = string.Empty;
             this.cityTextBox.Text = string.Empty;
@@ -119,12 +118,13 @@ namespace FurnitureDepot.UserControls
             this.idErrorLabel.Visible = false;
             this.lastNameErrorLabel.Visible = false;
             this.firstNameErrorLabel.Visible = false;
-            this.dobErrorLabel.Visible = false;
             this.contactPhoneErrorLabel.Visible = false;
             this.streetAddressErrorLabel.Visible = false;
             this.sexErrorLabel.Visible = false;
             this.stateComboBox.SelectedIndex = 0;
             this.sexComboBox.SelectedIndex = 0;
+
+            this.originalCustomerData = null;
         }
 
         /// <summary>
@@ -141,7 +141,7 @@ namespace FurnitureDepot.UserControls
                 lastNameTextBox.Text = customer.LastName;
                 firstNameTextBox.Text = customer.FirstName;
                 sexComboBox.SelectedItem = customer.Sex;
-                dobTextBox.Text = customer.DateOfBirth.ToString();
+                dobPicker.Value = customer.DateOfBirth;
                 streetAddressTextBox.Text = customer.StreetAddress;
                 cityTextBox.Text = customer.City;
                 stateComboBox.SelectedItem = customer.State;
@@ -197,12 +197,6 @@ namespace FurnitureDepot.UserControls
                 this.sexErrorLabel.Visible = true;
                 isValid = false;
             }
-            if (!DateTime.TryParse(this.dobTextBox.Text, out DateTime dob))
-            {
-                this.dobErrorLabel.Text = "Invalid DOB.";
-                this.dobErrorLabel.Visible = true;
-                isValid = false;
-            }
             if (string.IsNullOrWhiteSpace(this.streetAddressTextBox.Text))
             {
                 this.streetAddressErrorLabel.Text = "Address required.";
@@ -244,7 +238,7 @@ namespace FurnitureDepot.UserControls
                         LastName = lastNameTextBox.Text,
                         FirstName = firstNameTextBox.Text,
                         Sex = sexComboBox.SelectedItem.ToString(),
-                        DateOfBirth = DateTime.Parse(dobTextBox.Text),
+                        DateOfBirth = dobPicker.Value.Date,
                         StreetAddress = streetAddressTextBox.Text,
                         City = cityTextBox.Text,
                         State = stateComboBox.SelectedItem.ToString(),
@@ -277,12 +271,12 @@ namespace FurnitureDepot.UserControls
         {
             if (originalCustomerData == null) return false;
 
-            DateTime.TryParse(dobTextBox.Text, out var dob);
+            DateTime dob = dobPicker.Value.Date;
 
             return !(originalCustomerData.LastName == lastNameTextBox.Text &&
                      originalCustomerData.FirstName == firstNameTextBox.Text &&
                      originalCustomerData.Sex == sexComboBox.SelectedItem.ToString() &&
-                     originalCustomerData.DateOfBirth == dob.Date &&
+                     originalCustomerData.DateOfBirth == dob &&
                      originalCustomerData.StreetAddress == streetAddressTextBox.Text &&
                      originalCustomerData.City == cityTextBox.Text &&
                      originalCustomerData.State == stateComboBox.SelectedItem.ToString() &&
@@ -298,11 +292,6 @@ namespace FurnitureDepot.UserControls
         private void FirstNameTextBox_TextChanged(object sender, EventArgs e)
         {
             this.firstNameErrorLabel.Visible = false;
-        }
-
-        private void DobTextBox_TextChanged(object sender, EventArgs e)
-        {
-            this.dobErrorLabel.Visible = false;
         }
 
         private void ContactPhoneTextBox_TextChanged(object sender, EventArgs e)

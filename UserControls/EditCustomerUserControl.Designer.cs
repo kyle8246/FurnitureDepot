@@ -40,11 +40,9 @@
             this.getMemberInfoButton = new System.Windows.Forms.Button();
             this.lastNameTextBox = new System.Windows.Forms.TextBox();
             this.firstNameTextBox = new System.Windows.Forms.TextBox();
-            this.dobTextBox = new System.Windows.Forms.TextBox();
             this.idErrorLabel = new System.Windows.Forms.Label();
             this.lastNameErrorLabel = new System.Windows.Forms.Label();
             this.firstNameErrorLabel = new System.Windows.Forms.Label();
-            this.dobErrorLabel = new System.Windows.Forms.Label();
             this.streetAddressTextBox = new System.Windows.Forms.TextBox();
             this.streetAddressLabel = new System.Windows.Forms.Label();
             this.cityLabel = new System.Windows.Forms.Label();
@@ -60,6 +58,7 @@
             this.editMemberButton = new System.Windows.Forms.Button();
             this.clearButton = new System.Windows.Forms.Button();
             this.sexErrorLabel = new System.Windows.Forms.Label();
+            this.dobPicker = new System.Windows.Forms.DateTimePicker();
             this.editCustomerLayoutPanel.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -83,11 +82,9 @@
             this.editCustomerLayoutPanel.Controls.Add(this.flowLayoutPanel1, 2, 1);
             this.editCustomerLayoutPanel.Controls.Add(this.lastNameTextBox, 2, 3);
             this.editCustomerLayoutPanel.Controls.Add(this.firstNameTextBox, 2, 5);
-            this.editCustomerLayoutPanel.Controls.Add(this.dobTextBox, 2, 9);
             this.editCustomerLayoutPanel.Controls.Add(this.idErrorLabel, 3, 1);
             this.editCustomerLayoutPanel.Controls.Add(this.lastNameErrorLabel, 3, 3);
             this.editCustomerLayoutPanel.Controls.Add(this.firstNameErrorLabel, 3, 5);
-            this.editCustomerLayoutPanel.Controls.Add(this.dobErrorLabel, 3, 9);
             this.editCustomerLayoutPanel.Controls.Add(this.streetAddressTextBox, 5, 3);
             this.editCustomerLayoutPanel.Controls.Add(this.streetAddressLabel, 4, 3);
             this.editCustomerLayoutPanel.Controls.Add(this.cityLabel, 4, 5);
@@ -103,6 +100,7 @@
             this.editCustomerLayoutPanel.Controls.Add(this.editMemberButton, 3, 13);
             this.editCustomerLayoutPanel.Controls.Add(this.clearButton, 4, 1);
             this.editCustomerLayoutPanel.Controls.Add(this.sexErrorLabel, 3, 7);
+            this.editCustomerLayoutPanel.Controls.Add(this.dobPicker, 2, 9);
             this.editCustomerLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.editCustomerLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.editCustomerLayoutPanel.Name = "editCustomerLayoutPanel";
@@ -241,15 +239,6 @@
             this.firstNameTextBox.TabIndex = 2;
             this.firstNameTextBox.TextChanged += new System.EventHandler(this.FirstNameTextBox_TextChanged);
             // 
-            // dobTextBox
-            // 
-            this.dobTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dobTextBox.Location = new System.Drawing.Point(89, 161);
-            this.dobTextBox.Name = "dobTextBox";
-            this.dobTextBox.Size = new System.Drawing.Size(149, 20);
-            this.dobTextBox.TabIndex = 4;
-            this.dobTextBox.TextChanged += new System.EventHandler(this.DobTextBox_TextChanged);
-            // 
             // idErrorLabel
             // 
             this.idErrorLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -285,18 +274,6 @@
             this.firstNameErrorLabel.TabIndex = 21;
             this.firstNameErrorLabel.Text = "first name error label";
             this.firstNameErrorLabel.Visible = false;
-            // 
-            // dobErrorLabel
-            // 
-            this.dobErrorLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.dobErrorLabel.AutoSize = true;
-            this.dobErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.dobErrorLabel.Location = new System.Drawing.Point(244, 171);
-            this.dobErrorLabel.Name = "dobErrorLabel";
-            this.dobErrorLabel.Size = new System.Drawing.Size(83, 13);
-            this.dobErrorLabel.TabIndex = 23;
-            this.dobErrorLabel.Text = "d.o.b. error label";
-            this.dobErrorLabel.Visible = false;
             // 
             // streetAddressTextBox
             // 
@@ -447,6 +424,15 @@
             this.sexErrorLabel.Text = "sex error label";
             this.sexErrorLabel.Visible = false;
             // 
+            // dobPicker
+            // 
+            this.dobPicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dobPicker.Location = new System.Drawing.Point(89, 161);
+            this.dobPicker.Name = "dobPicker";
+            this.dobPicker.Size = new System.Drawing.Size(149, 20);
+            this.dobPicker.TabIndex = 29;
+            this.dobPicker.Value = new System.DateTime(2024, 3, 28, 0, 0, 0, 0);
+            // 
             // EditCustomerUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -486,15 +472,14 @@
         private System.Windows.Forms.TextBox zipCodeTextBox;
         private System.Windows.Forms.TextBox contactPhoneTextBox;
         private System.Windows.Forms.TextBox cityTextBox;
-        private System.Windows.Forms.TextBox dobTextBox;
         private System.Windows.Forms.Label idErrorLabel;
         private System.Windows.Forms.Label lastNameErrorLabel;
         private System.Windows.Forms.Label firstNameErrorLabel;
-        private System.Windows.Forms.Label dobErrorLabel;
         private System.Windows.Forms.Label streetAddressErrorLabel;
         private System.Windows.Forms.Label contactPhoneErrorLabel;
         private System.Windows.Forms.Button editMemberButton;
         private System.Windows.Forms.Button clearButton;
         private System.Windows.Forms.Label sexErrorLabel;
+        private System.Windows.Forms.DateTimePicker dobPicker;
     }
 }
