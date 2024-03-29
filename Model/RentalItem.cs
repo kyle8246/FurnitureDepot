@@ -3,13 +3,17 @@
     /// <summary>
     /// RentalItem Class
     /// </summary>
-    internal class RentalItem
+    public class RentalItem
     {
-        public int RentalItemId { get; set; }
-        public int FurnitureId { get; set; }
+        public int RentalItemID { get; set; }
+        public int RentalTransactionID { get; set; }
+        public int FurnitureID { get; set; }
         public string FurnitureName { get; set; }
         public string Description { get; set; }
-        public decimal DailyRentalRate { get; set; }
+        public string CategoryName { get; set; }
+        public string StyleName { get; set; }
+        public decimal DailyRate { get; set; }
         public int Quantity { get; set; }
+        public int QuantityReturned { get; set; }
     }
 }

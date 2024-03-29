@@ -84,14 +84,16 @@
     <Compile Include="Controller\CustomerController.cs" />
     <Compile Include="Controller\EmployeeController.cs" />
     <Compile Include="Controller\LoginController.cs" />
+    <Compile Include="Controller\RentalController.cs" />
     <Compile Include="DAL\FurnitureDAL.cs" />
     <Compile Include="DAL\CustomerDAL.cs" />
     <Compile Include="DAL\EmployeeDAL.cs" />
     <Compile Include="DAL\FurnitureDepotDBConnection.cs" />
     <Compile Include="DAL\LoginDAL.cs" />
+    <Compile Include="DAL\RentalDAL.cs" />
     <Compile Include="Model\Customer.cs" />
     <Compile Include="Model\Furniture.cs" />
-    <Compile Include="Model\Rental.cs" />
+    <Compile Include="Model\RentalTransaction.cs" />
     <Compile Include="Model\RentalItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
