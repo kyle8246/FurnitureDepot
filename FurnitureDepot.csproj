@@ -91,6 +91,8 @@
     <Compile Include="DAL\LoginDAL.cs" />
     <Compile Include="Model\Customer.cs" />
     <Compile Include="Model\Furniture.cs" />
+    <Compile Include="Model\Rental.cs" />
+    <Compile Include="Model\RentalItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserControls\EditCustomerUserControl.cs">
