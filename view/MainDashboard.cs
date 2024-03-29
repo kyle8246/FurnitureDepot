@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using FurnitureDepot.UserControls;
+using System.Windows.Forms;
 
 namespace FurnitureDepot.View
 {
@@ -45,6 +46,16 @@ namespace FurnitureDepot.View
 
         private void DashboardTabControl_Selected(object sender, TabControlEventArgs e)
         {
+            if (e.TabPage == searchFurnitureTabPage)
+            {
+                if (e.TabPage.Controls.Count == 0)
+                {
+                    SearchFurnitureUserControl searchFurnitureControl = new SearchFurnitureUserControl();
+                    searchFurnitureControl.Dock = DockStyle.Fill;
+                    e.TabPage.Controls.Add(searchFurnitureControl);
+                }
+            }
+
             if (e.TabPage == registrationTabPage && e.TabPage.Controls.Count == 0)
             {
                 RegisterCustomerUserControl registerCustomerControl = new RegisterCustomerUserControl();
