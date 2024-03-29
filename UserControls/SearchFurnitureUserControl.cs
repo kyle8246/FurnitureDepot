@@ -55,6 +55,11 @@ namespace FurnitureDepot.UserControls
                 else
                 {
                     furnitureDataGridView.DataSource = furnitureItems;
+
+                    if (furnitureDataGridView.Columns["DailyRentalRate"] != null)
+                    {
+                        furnitureDataGridView.Columns["DailyRentalRate"].DefaultCellStyle.Format = "C2";
+                    }
                 }
             }
             catch (Exception ex)
