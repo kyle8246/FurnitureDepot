@@ -40,11 +40,9 @@
             this.getMemberInfoButton = new System.Windows.Forms.Button();
             this.lastNameTextBox = new System.Windows.Forms.TextBox();
             this.firstNameTextBox = new System.Windows.Forms.TextBox();
-            this.dobTextBox = new System.Windows.Forms.TextBox();
             this.idErrorLabel = new System.Windows.Forms.Label();
             this.lastNameErrorLabel = new System.Windows.Forms.Label();
             this.firstNameErrorLabel = new System.Windows.Forms.Label();
-            this.dobErrorLabel = new System.Windows.Forms.Label();
             this.streetAddressTextBox = new System.Windows.Forms.TextBox();
             this.streetAddressLabel = new System.Windows.Forms.Label();
             this.cityLabel = new System.Windows.Forms.Label();
@@ -60,6 +58,7 @@
             this.editMemberButton = new System.Windows.Forms.Button();
             this.clearButton = new System.Windows.Forms.Button();
             this.sexErrorLabel = new System.Windows.Forms.Label();
+            this.dobPicker = new System.Windows.Forms.DateTimePicker();
             this.editCustomerLayoutPanel.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -83,11 +82,9 @@
             this.editCustomerLayoutPanel.Controls.Add(this.flowLayoutPanel1, 2, 1);
             this.editCustomerLayoutPanel.Controls.Add(this.lastNameTextBox, 2, 3);
             this.editCustomerLayoutPanel.Controls.Add(this.firstNameTextBox, 2, 5);
-            this.editCustomerLayoutPanel.Controls.Add(this.dobTextBox, 2, 9);
             this.editCustomerLayoutPanel.Controls.Add(this.idErrorLabel, 3, 1);
             this.editCustomerLayoutPanel.Controls.Add(this.lastNameErrorLabel, 3, 3);
             this.editCustomerLayoutPanel.Controls.Add(this.firstNameErrorLabel, 3, 5);
-            this.editCustomerLayoutPanel.Controls.Add(this.dobErrorLabel, 3, 9);
             this.editCustomerLayoutPanel.Controls.Add(this.streetAddressTextBox, 5, 3);
             this.editCustomerLayoutPanel.Controls.Add(this.streetAddressLabel, 4, 3);
             this.editCustomerLayoutPanel.Controls.Add(this.cityLabel, 4, 5);
@@ -103,6 +100,7 @@
             this.editCustomerLayoutPanel.Controls.Add(this.editMemberButton, 3, 13);
             this.editCustomerLayoutPanel.Controls.Add(this.clearButton, 4, 1);
             this.editCustomerLayoutPanel.Controls.Add(this.sexErrorLabel, 3, 7);
+            this.editCustomerLayoutPanel.Controls.Add(this.dobPicker, 2, 9);
             this.editCustomerLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.editCustomerLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.editCustomerLayoutPanel.Name = "editCustomerLayoutPanel";
@@ -140,7 +138,7 @@
             this.memberIDLabel.Location = new System.Drawing.Point(21, 33);
             this.memberIDLabel.Name = "memberIDLabel";
             this.memberIDLabel.Size = new System.Drawing.Size(62, 13);
-            this.memberIDLabel.TabIndex = 0;
+            this.memberIDLabel.TabIndex = 12;
             this.memberIDLabel.Text = "Member ID:";
             // 
             // lastNameLabel
@@ -150,7 +148,7 @@
             this.lastNameLabel.Location = new System.Drawing.Point(22, 70);
             this.lastNameLabel.Name = "lastNameLabel";
             this.lastNameLabel.Size = new System.Drawing.Size(61, 13);
-            this.lastNameLabel.TabIndex = 1;
+            this.lastNameLabel.TabIndex = 13;
             this.lastNameLabel.Text = "Last Name:";
             // 
             // firstNameLabel
@@ -160,7 +158,7 @@
             this.firstNameLabel.Location = new System.Drawing.Point(23, 102);
             this.firstNameLabel.Name = "firstNameLabel";
             this.firstNameLabel.Size = new System.Drawing.Size(60, 13);
-            this.firstNameLabel.TabIndex = 2;
+            this.firstNameLabel.TabIndex = 14;
             this.firstNameLabel.Text = "First Name:";
             // 
             // sexLabel
@@ -170,7 +168,7 @@
             this.sexLabel.Location = new System.Drawing.Point(55, 137);
             this.sexLabel.Name = "sexLabel";
             this.sexLabel.Size = new System.Drawing.Size(28, 13);
-            this.sexLabel.TabIndex = 3;
+            this.sexLabel.TabIndex = 15;
             this.sexLabel.Text = "Sex:";
             // 
             // dobLabel
@@ -180,7 +178,7 @@
             this.dobLabel.Location = new System.Drawing.Point(44, 171);
             this.dobLabel.Name = "dobLabel";
             this.dobLabel.Size = new System.Drawing.Size(39, 13);
-            this.dobLabel.TabIndex = 4;
+            this.dobLabel.TabIndex = 16;
             this.dobLabel.Text = "D.O.B.";
             // 
             // sexComboBox
@@ -191,7 +189,7 @@
             this.sexComboBox.Location = new System.Drawing.Point(89, 126);
             this.sexComboBox.Name = "sexComboBox";
             this.sexComboBox.Size = new System.Drawing.Size(149, 21);
-            this.sexComboBox.TabIndex = 11;
+            this.sexComboBox.TabIndex = 3;
             // 
             // flowLayoutPanel1
             // 
@@ -201,7 +199,7 @@
             this.flowLayoutPanel1.Location = new System.Drawing.Point(89, 15);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(149, 28);
-            this.flowLayoutPanel1.TabIndex = 12;
+            this.flowLayoutPanel1.TabIndex = 0;
             // 
             // memberIDTextBox
             // 
@@ -229,7 +227,7 @@
             this.lastNameTextBox.Location = new System.Drawing.Point(89, 62);
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(149, 20);
-            this.lastNameTextBox.TabIndex = 13;
+            this.lastNameTextBox.TabIndex = 1;
             this.lastNameTextBox.TextChanged += new System.EventHandler(this.LastNameTextBox_TextChanged);
             // 
             // firstNameTextBox
@@ -238,17 +236,8 @@
             this.firstNameTextBox.Location = new System.Drawing.Point(89, 94);
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(149, 20);
-            this.firstNameTextBox.TabIndex = 14;
+            this.firstNameTextBox.TabIndex = 2;
             this.firstNameTextBox.TextChanged += new System.EventHandler(this.FirstNameTextBox_TextChanged);
-            // 
-            // dobTextBox
-            // 
-            this.dobTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dobTextBox.Location = new System.Drawing.Point(89, 161);
-            this.dobTextBox.Name = "dobTextBox";
-            this.dobTextBox.Size = new System.Drawing.Size(149, 20);
-            this.dobTextBox.TabIndex = 19;
-            this.dobTextBox.TextChanged += new System.EventHandler(this.DobTextBox_TextChanged);
             // 
             // idErrorLabel
             // 
@@ -258,7 +247,7 @@
             this.idErrorLabel.Location = new System.Drawing.Point(244, 33);
             this.idErrorLabel.Name = "idErrorLabel";
             this.idErrorLabel.Size = new System.Drawing.Size(64, 13);
-            this.idErrorLabel.TabIndex = 20;
+            this.idErrorLabel.TabIndex = 19;
             this.idErrorLabel.Text = "id error label";
             this.idErrorLabel.Visible = false;
             // 
@@ -270,7 +259,7 @@
             this.lastNameErrorLabel.Location = new System.Drawing.Point(244, 70);
             this.lastNameErrorLabel.Name = "lastNameErrorLabel";
             this.lastNameErrorLabel.Size = new System.Drawing.Size(101, 13);
-            this.lastNameErrorLabel.TabIndex = 21;
+            this.lastNameErrorLabel.TabIndex = 20;
             this.lastNameErrorLabel.Text = "last name error label";
             this.lastNameErrorLabel.Visible = false;
             // 
@@ -282,28 +271,16 @@
             this.firstNameErrorLabel.Location = new System.Drawing.Point(244, 102);
             this.firstNameErrorLabel.Name = "firstNameErrorLabel";
             this.firstNameErrorLabel.Size = new System.Drawing.Size(101, 13);
-            this.firstNameErrorLabel.TabIndex = 22;
+            this.firstNameErrorLabel.TabIndex = 21;
             this.firstNameErrorLabel.Text = "first name error label";
             this.firstNameErrorLabel.Visible = false;
-            // 
-            // dobErrorLabel
-            // 
-            this.dobErrorLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.dobErrorLabel.AutoSize = true;
-            this.dobErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.dobErrorLabel.Location = new System.Drawing.Point(244, 171);
-            this.dobErrorLabel.Name = "dobErrorLabel";
-            this.dobErrorLabel.Size = new System.Drawing.Size(83, 13);
-            this.dobErrorLabel.TabIndex = 23;
-            this.dobErrorLabel.Text = "d.o.b. error label";
-            this.dobErrorLabel.Visible = false;
             // 
             // streetAddressTextBox
             // 
             this.streetAddressTextBox.Location = new System.Drawing.Point(445, 62);
             this.streetAddressTextBox.Name = "streetAddressTextBox";
             this.streetAddressTextBox.Size = new System.Drawing.Size(134, 20);
-            this.streetAddressTextBox.TabIndex = 15;
+            this.streetAddressTextBox.TabIndex = 8;
             this.streetAddressTextBox.TextChanged += new System.EventHandler(this.StreetAddressTextBox_TextChanged);
             // 
             // streetAddressLabel
@@ -313,7 +290,7 @@
             this.streetAddressLabel.Location = new System.Drawing.Point(360, 70);
             this.streetAddressLabel.Name = "streetAddressLabel";
             this.streetAddressLabel.Size = new System.Drawing.Size(79, 13);
-            this.streetAddressLabel.TabIndex = 5;
+            this.streetAddressLabel.TabIndex = 24;
             this.streetAddressLabel.Text = "Street Address:";
             // 
             // cityLabel
@@ -323,7 +300,7 @@
             this.cityLabel.Location = new System.Drawing.Point(412, 102);
             this.cityLabel.Name = "cityLabel";
             this.cityLabel.Size = new System.Drawing.Size(27, 13);
-            this.cityLabel.TabIndex = 6;
+            this.cityLabel.TabIndex = 25;
             this.cityLabel.Text = "City:";
             // 
             // stateLabel
@@ -333,7 +310,7 @@
             this.stateLabel.Location = new System.Drawing.Point(404, 137);
             this.stateLabel.Name = "stateLabel";
             this.stateLabel.Size = new System.Drawing.Size(35, 13);
-            this.stateLabel.TabIndex = 7;
+            this.stateLabel.TabIndex = 26;
             this.stateLabel.Text = "State:";
             // 
             // zipCodeLabel
@@ -343,7 +320,7 @@
             this.zipCodeLabel.Location = new System.Drawing.Point(386, 171);
             this.zipCodeLabel.Name = "zipCodeLabel";
             this.zipCodeLabel.Size = new System.Drawing.Size(53, 13);
-            this.zipCodeLabel.TabIndex = 8;
+            this.zipCodeLabel.TabIndex = 27;
             this.zipCodeLabel.Text = "Zip Code:";
             // 
             // contactPhoneLabel
@@ -353,7 +330,7 @@
             this.contactPhoneLabel.Location = new System.Drawing.Point(36, 193);
             this.contactPhoneLabel.Name = "contactPhoneLabel";
             this.contactPhoneLabel.Size = new System.Drawing.Size(47, 26);
-            this.contactPhoneLabel.TabIndex = 9;
+            this.contactPhoneLabel.TabIndex = 17;
             this.contactPhoneLabel.Text = "Contact Phone:";
             // 
             // contactPhoneTextBox
@@ -361,7 +338,7 @@
             this.contactPhoneTextBox.Location = new System.Drawing.Point(89, 195);
             this.contactPhoneTextBox.Name = "contactPhoneTextBox";
             this.contactPhoneTextBox.Size = new System.Drawing.Size(149, 20);
-            this.contactPhoneTextBox.TabIndex = 17;
+            this.contactPhoneTextBox.TabIndex = 5;
             this.contactPhoneTextBox.TextChanged += new System.EventHandler(this.ContactPhoneTextBox_TextChanged);
             // 
             // cityTextBox
@@ -369,7 +346,7 @@
             this.cityTextBox.Location = new System.Drawing.Point(445, 94);
             this.cityTextBox.Name = "cityTextBox";
             this.cityTextBox.Size = new System.Drawing.Size(134, 20);
-            this.cityTextBox.TabIndex = 18;
+            this.cityTextBox.TabIndex = 9;
             this.cityTextBox.TextChanged += new System.EventHandler(this.CityTextBox_TextChanged);
             // 
             // stateComboBox
@@ -386,7 +363,7 @@
             this.zipCodeTextBox.Location = new System.Drawing.Point(445, 161);
             this.zipCodeTextBox.Name = "zipCodeTextBox";
             this.zipCodeTextBox.Size = new System.Drawing.Size(134, 20);
-            this.zipCodeTextBox.TabIndex = 16;
+            this.zipCodeTextBox.TabIndex = 11;
             this.zipCodeTextBox.TextChanged += new System.EventHandler(this.ZipCodeTextBox_TextChanged);
             // 
             // contactPhoneErrorLabel
@@ -397,7 +374,7 @@
             this.contactPhoneErrorLabel.Location = new System.Drawing.Point(89, 240);
             this.contactPhoneErrorLabel.Name = "contactPhoneErrorLabel";
             this.contactPhoneErrorLabel.Size = new System.Drawing.Size(125, 13);
-            this.contactPhoneErrorLabel.TabIndex = 27;
+            this.contactPhoneErrorLabel.TabIndex = 18;
             this.contactPhoneErrorLabel.Text = "contact phone error label";
             this.contactPhoneErrorLabel.Visible = false;
             // 
@@ -409,7 +386,7 @@
             this.streetAddressErrorLabel.Location = new System.Drawing.Point(445, 206);
             this.streetAddressErrorLabel.Name = "streetAddressErrorLabel";
             this.streetAddressErrorLabel.Size = new System.Drawing.Size(93, 13);
-            this.streetAddressErrorLabel.TabIndex = 24;
+            this.streetAddressErrorLabel.TabIndex = 28;
             this.streetAddressErrorLabel.Text = "address error label";
             this.streetAddressErrorLabel.Visible = false;
             // 
@@ -419,7 +396,7 @@
             this.editMemberButton.Location = new System.Drawing.Point(244, 230);
             this.editMemberButton.Name = "editMemberButton";
             this.editMemberButton.Size = new System.Drawing.Size(107, 20);
-            this.editMemberButton.TabIndex = 28;
+            this.editMemberButton.TabIndex = 6;
             this.editMemberButton.Text = "Edit";
             this.editMemberButton.UseVisualStyleBackColor = true;
             this.editMemberButton.Click += new System.EventHandler(this.EditMemberButton_Click);
@@ -430,7 +407,7 @@
             this.clearButton.Location = new System.Drawing.Point(357, 20);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(75, 23);
-            this.clearButton.TabIndex = 29;
+            this.clearButton.TabIndex = 7;
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = true;
             this.clearButton.Click += new System.EventHandler(this.ClearButton_Click);
@@ -443,9 +420,18 @@
             this.sexErrorLabel.Location = new System.Drawing.Point(244, 137);
             this.sexErrorLabel.Name = "sexErrorLabel";
             this.sexErrorLabel.Size = new System.Drawing.Size(72, 13);
-            this.sexErrorLabel.TabIndex = 30;
+            this.sexErrorLabel.TabIndex = 22;
             this.sexErrorLabel.Text = "sex error label";
             this.sexErrorLabel.Visible = false;
+            // 
+            // dobPicker
+            // 
+            this.dobPicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dobPicker.Location = new System.Drawing.Point(89, 161);
+            this.dobPicker.Name = "dobPicker";
+            this.dobPicker.Size = new System.Drawing.Size(149, 20);
+            this.dobPicker.TabIndex = 29;
+            this.dobPicker.Value = new System.DateTime(2024, 3, 28, 0, 0, 0, 0);
             // 
             // EditCustomerUserControl
             // 
@@ -486,15 +472,14 @@
         private System.Windows.Forms.TextBox zipCodeTextBox;
         private System.Windows.Forms.TextBox contactPhoneTextBox;
         private System.Windows.Forms.TextBox cityTextBox;
-        private System.Windows.Forms.TextBox dobTextBox;
         private System.Windows.Forms.Label idErrorLabel;
         private System.Windows.Forms.Label lastNameErrorLabel;
         private System.Windows.Forms.Label firstNameErrorLabel;
-        private System.Windows.Forms.Label dobErrorLabel;
         private System.Windows.Forms.Label streetAddressErrorLabel;
         private System.Windows.Forms.Label contactPhoneErrorLabel;
         private System.Windows.Forms.Button editMemberButton;
         private System.Windows.Forms.Button clearButton;
         private System.Windows.Forms.Label sexErrorLabel;
+        private System.Windows.Forms.DateTimePicker dobPicker;
     }
 }
