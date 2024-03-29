@@ -35,6 +35,7 @@ namespace FurnitureDepot.View
             this.editCustomerUserControl = new FurnitureDepot.UserControls.EditCustomerUserControl();
             this.searchTabPage = new System.Windows.Forms.TabPage();
             this.searchCustomerUserControl1 = new FurnitureDepot.UserControls.SearchCustomerUserControl();
+            this.searchFurnitureTabPage = new System.Windows.Forms.TabPage();
             this.usernameLabel = new System.Windows.Forms.Label();
             this.logoutLinkLabel = new System.Windows.Forms.LinkLabel();
             this.dashboardTabControl.SuspendLayout();
@@ -51,6 +52,7 @@ namespace FurnitureDepot.View
             this.dashboardTabControl.Controls.Add(this.registrationTabPage);
             this.dashboardTabControl.Controls.Add(this.editTabPage);
             this.dashboardTabControl.Controls.Add(this.searchTabPage);
+            this.dashboardTabControl.Controls.Add(this.searchFurnitureTabPage);
             this.dashboardTabControl.Location = new System.Drawing.Point(0, 27);
             this.dashboardTabControl.Margin = new System.Windows.Forms.Padding(2);
             this.dashboardTabControl.Name = "dashboardTabControl";
@@ -116,6 +118,16 @@ namespace FurnitureDepot.View
             this.searchCustomerUserControl1.Size = new System.Drawing.Size(635, 347);
             this.searchCustomerUserControl1.TabIndex = 0;
             // 
+            // searchFurnitureTabPage
+            // 
+            this.searchFurnitureTabPage.Location = new System.Drawing.Point(4, 22);
+            this.searchFurnitureTabPage.Margin = new System.Windows.Forms.Padding(2);
+            this.searchFurnitureTabPage.Name = "searchFurnitureTabPage";
+            this.searchFurnitureTabPage.Size = new System.Drawing.Size(633, 353);
+            this.searchFurnitureTabPage.TabIndex = 3;
+            this.searchFurnitureTabPage.Text = "Search Furniture";
+            this.searchFurnitureTabPage.UseVisualStyleBackColor = true;
+            // 
             // usernameLabel
             // 
             this.usernameLabel.AutoSize = true;
@@ -169,5 +181,6 @@ namespace FurnitureDepot.View
         private UserControls.SearchCustomerUserControl searchCustomerUserControl1;
         private UserControls.EditCustomerUserControl editCustomerUserControl;
         private RegisterCustomerUserControl registerCustomerUserControl1;
+        private System.Windows.Forms.TabPage searchFurnitureTabPage;
     }
 }
