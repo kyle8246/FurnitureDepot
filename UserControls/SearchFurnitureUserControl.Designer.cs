@@ -44,7 +44,7 @@
             // messageLabel
             // 
             this.messageLabel.AutoSize = true;
-            this.messageLabel.Location = new System.Drawing.Point(112, 80);
+            this.messageLabel.Location = new System.Drawing.Point(184, 85);
             this.messageLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.messageLabel.Name = "messageLabel";
             this.messageLabel.Size = new System.Drawing.Size(0, 13);
@@ -52,7 +52,7 @@
             // 
             // categoryTextBox
             // 
-            this.categoryTextBox.Location = new System.Drawing.Point(118, 44);
+            this.categoryTextBox.Location = new System.Drawing.Point(187, 46);
             this.categoryTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.categoryTextBox.Name = "categoryTextBox";
             this.categoryTextBox.Size = new System.Drawing.Size(150, 20);
@@ -61,7 +61,7 @@
             // 
             // idTextBox
             // 
-            this.idTextBox.Location = new System.Drawing.Point(118, 11);
+            this.idTextBox.Location = new System.Drawing.Point(187, 13);
             this.idTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.idTextBox.Name = "idTextBox";
             this.idTextBox.Size = new System.Drawing.Size(150, 20);
@@ -71,7 +71,7 @@
             // categoryLabel
             // 
             this.categoryLabel.AutoSize = true;
-            this.categoryLabel.Location = new System.Drawing.Point(62, 44);
+            this.categoryLabel.Location = new System.Drawing.Point(131, 46);
             this.categoryLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.categoryLabel.Name = "categoryLabel";
             this.categoryLabel.Size = new System.Drawing.Size(52, 13);
@@ -81,7 +81,7 @@
             // furnitureIDLabel
             // 
             this.furnitureIDLabel.AutoSize = true;
-            this.furnitureIDLabel.Location = new System.Drawing.Point(49, 14);
+            this.furnitureIDLabel.Location = new System.Drawing.Point(118, 15);
             this.furnitureIDLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.furnitureIDLabel.Name = "furnitureIDLabel";
             this.furnitureIDLabel.Size = new System.Drawing.Size(65, 13);
@@ -91,7 +91,7 @@
             // styleLabel
             // 
             this.styleLabel.AutoSize = true;
-            this.styleLabel.Location = new System.Drawing.Point(329, 14);
+            this.styleLabel.Location = new System.Drawing.Point(398, 15);
             this.styleLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.styleLabel.Name = "styleLabel";
             this.styleLabel.Size = new System.Drawing.Size(33, 13);
@@ -100,7 +100,7 @@
             // 
             // styleTextBox
             // 
-            this.styleTextBox.Location = new System.Drawing.Point(366, 14);
+            this.styleTextBox.Location = new System.Drawing.Point(435, 15);
             this.styleTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.styleTextBox.Name = "styleTextBox";
             this.styleTextBox.Size = new System.Drawing.Size(150, 20);
@@ -109,7 +109,7 @@
             // 
             // clearButton
             // 
-            this.clearButton.Location = new System.Drawing.Point(458, 74);
+            this.clearButton.Location = new System.Drawing.Point(526, 76);
             this.clearButton.Margin = new System.Windows.Forms.Padding(2);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(56, 22);
@@ -120,7 +120,7 @@
             // 
             // searchButton
             // 
-            this.searchButton.Location = new System.Drawing.Point(366, 74);
+            this.searchButton.Location = new System.Drawing.Point(435, 76);
             this.searchButton.Margin = new System.Windows.Forms.Padding(2);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(56, 22);
@@ -138,7 +138,7 @@
             this.furnitureDataGridView.Name = "furnitureDataGridView";
             this.furnitureDataGridView.RowTemplate.Height = 24;
             this.furnitureDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.furnitureDataGridView.Size = new System.Drawing.Size(628, 306);
+            this.furnitureDataGridView.Size = new System.Drawing.Size(795, 306);
             this.furnitureDataGridView.TabIndex = 25;
             // 
             // SearchFurnitureUserControl
@@ -157,7 +157,7 @@
             this.Controls.Add(this.furnitureIDLabel);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "SearchFurnitureUserControl";
-            this.Size = new System.Drawing.Size(631, 422);
+            this.Size = new System.Drawing.Size(799, 422);
             ((System.ComponentModel.ISupportInitialize)(this.furnitureDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
