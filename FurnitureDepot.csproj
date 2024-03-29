@@ -84,17 +84,11 @@
     <Compile Include="Controller\CustomerController.cs" />
     <Compile Include="Controller\EmployeeController.cs" />
     <Compile Include="Controller\LoginController.cs" />
-    <Compile Include="Controller\RentalController.cs" />
-    <Compile Include="DAL\FurnitureDAL.cs" />
     <Compile Include="DAL\CustomerDAL.cs" />
     <Compile Include="DAL\EmployeeDAL.cs" />
     <Compile Include="DAL\FurnitureDepotDBConnection.cs" />
     <Compile Include="DAL\LoginDAL.cs" />
-    <Compile Include="DAL\RentalDAL.cs" />
     <Compile Include="Model\Customer.cs" />
-    <Compile Include="Model\Furniture.cs" />
-    <Compile Include="Model\RentalTransaction.cs" />
-    <Compile Include="Model\RentalItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserControls\EditCustomerUserControl.cs">
@@ -103,23 +97,17 @@
     <Compile Include="UserControls\EditCustomerUserControl.Designer.cs">
       <DependentUpon>EditCustomerUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\RentalHistoryUserControl.cs">
+    <Compile Include="UserControls\RentalTransactionUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\RentalHistoryUserControl.Designer.cs">
-      <DependentUpon>RentalHistoryUserControl.cs</DependentUpon>
+    <Compile Include="UserControls\RentalTransactionUserControl.Designer.cs">
+      <DependentUpon>RentalTransactionUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\SearchCustomerUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\SearchCustomerUserControl.Designer.cs">
       <DependentUpon>SearchCustomerUserControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\SearchFurnitureUserControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\SearchFurnitureUserControl.Designer.cs">
-      <DependentUpon>SearchFurnitureUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
@@ -152,14 +140,11 @@
     <EmbeddedResource Include="UserControls\EditCustomerUserControl.resx">
       <DependentUpon>EditCustomerUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\RentalHistoryUserControl.resx">
-      <DependentUpon>RentalHistoryUserControl.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\RentalTransactionUserControl.resx">
+      <DependentUpon>RentalTransactionUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\SearchCustomerUserControl.resx">
       <DependentUpon>SearchCustomerUserControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\SearchFurnitureUserControl.resx">
-      <DependentUpon>SearchFurnitureUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
