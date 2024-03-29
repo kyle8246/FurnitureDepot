@@ -62,7 +62,7 @@ namespace FurnitureDepot.UserControls
                 var dataGridView = sender as DataGridView;
                 var selectedRow = dataGridView.Rows[e.RowIndex];
                 int rentalTransactionID = Convert.ToInt32(selectedRow.Cells["RentalTransactionID"].Value);
-                
+
                 var rentalItems = rentalController.GetRentalItemsByTransactionId(rentalTransactionID);
                 rentalItemsDataGridView.DataSource = rentalItems;
             }

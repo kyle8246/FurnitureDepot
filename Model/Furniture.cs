@@ -73,3 +73,4 @@ namespace FurnitureDepot.Model
         public int? InStockNumber { get; set; }
     }
 }
+

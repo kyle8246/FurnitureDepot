@@ -14,7 +14,7 @@ namespace FurnitureDepot.Controller
         /// <summary>
         /// Initializes a new instance of the <see cref="RentalController"/> class.
         /// </summary>
-        public RentalController ()
+        public RentalController()
         {
             _rentalDAL = new RentalDAL();
         }
