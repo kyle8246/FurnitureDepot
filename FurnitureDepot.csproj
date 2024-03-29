@@ -99,6 +99,12 @@
     <Compile Include="UserControls\EditCustomerUserControl.Designer.cs">
       <DependentUpon>EditCustomerUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\RentalHistoryUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\RentalHistoryUserControl.Designer.cs">
+      <DependentUpon>RentalHistoryUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\SearchCustomerUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -141,6 +147,9 @@
     </Compile>
     <EmbeddedResource Include="UserControls\EditCustomerUserControl.resx">
       <DependentUpon>EditCustomerUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\RentalHistoryUserControl.resx">
+      <DependentUpon>RentalHistoryUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\SearchCustomerUserControl.resx">
       <DependentUpon>SearchCustomerUserControl.cs</DependentUpon>
