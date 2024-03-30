@@ -38,5 +38,7 @@ namespace FurnitureDepot.Controller
         {
             return _rentalDAL.GetRentalItemsByTransactionId(rentalTransactionID);
         }
+
+
     }
 }
