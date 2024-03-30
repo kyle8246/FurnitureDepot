@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FurnitureDepot.UserControls
 {
+    /// <summary>
+    /// User control to handle rental transactions
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.UserControl" />
     public partial class RentalTransactionUserControl : UserControl
     {
         public RentalTransactionUserControl()
@@ -17,12 +14,27 @@ namespace FurnitureDepot.UserControls
             InitializeComponent();
         }
 
-        private void emptyCartButton_Click(object sender, EventArgs e)
+        private void searchButton_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void checkoutButton_Click(object sender, EventArgs e)
+        private void addItemButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void removeItemButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void submitButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
         {
 
         }
