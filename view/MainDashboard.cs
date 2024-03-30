@@ -65,8 +65,8 @@ namespace FurnitureDepot.View
             }
 
             this.editCustomerUserControl?.Clear();
-            this.rentalTransactionUserControl?.Clear();
-            this.rentalTransactionUserControl?.ClearMemberID();
+            this.rentalTransactionUserControl1?.Clear();
+            this.rentalTransactionUserControl1?.ClearMemberID();
         }
 
 
