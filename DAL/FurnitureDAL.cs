@@ -61,5 +61,45 @@ namespace FurnitureDepot.DAL
             }
             return furnitureItems;
         }
+
+        /// <summary>
+        /// Gets all furniture items.
+        /// </summary>
+        /// <returns></returns>
+        public List<Furniture> GetAllFurnitureItems()
+        {
+            List<Furniture> furnitureItems = new List<Furniture>();
+
+            using (SqlConnection connection = FurnitureDepotDBConnection.GetConnection())
+            {
+                string query = "SELECT FurnitureID, Name, Description, CategoryName, StyleName, DailyRentalRate, Quantity, InStockNumber" +
+                    "           FROM Furniture";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Furniture item = new Furniture
+                            {
+                                FurnitureID = reader.GetInt32(reader.GetOrdinal("FurnitureID")),
+                                Name = reader.GetString(reader.GetOrdinal("Name")),
+                                Description = reader.IsDBNull(reader.GetOrdinal("Description")) ? null : reader.GetString(reader.GetOrdinal("Description")),
+                                CategoryName = reader.GetString(reader.GetOrdinal("CategoryName")),
+                                StyleName = reader.GetString(reader.GetOrdinal("StyleName")),
+                                DailyRentalRate = reader.IsDBNull(reader.GetOrdinal("DailyRentalRate")) ? (decimal?)null : reader.GetDecimal(reader.GetOrdinal("DailyRentalRate")),
+                                Quantity = reader.IsDBNull(reader.GetOrdinal("Quantity")) ? (int?)null : reader.GetInt32(reader.GetOrdinal("Quantity")),
+                                InStockNumber = reader.IsDBNull(reader.GetOrdinal("InStockNumber")) ? (int?)null : reader.GetInt32(reader.GetOrdinal("InStockNumber"))
+                            };
+                            furnitureItems.Add(item);
+                        }
+                    }
+                }
+            }
+            return furnitureItems;
+        }
     }
 }
