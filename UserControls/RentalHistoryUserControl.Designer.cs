@@ -34,6 +34,7 @@
             this.searchButton = new System.Windows.Forms.Button();
             this.rentalHistoryDataGridView = new System.Windows.Forms.DataGridView();
             this.rentalItemsDataGridView = new System.Windows.Forms.DataGridView();
+            this.clearButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.rentalHistoryDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rentalItemsDataGridView)).BeginInit();
             this.SuspendLayout();
@@ -91,10 +92,21 @@
             this.rentalItemsDataGridView.Size = new System.Drawing.Size(1059, 218);
             this.rentalItemsDataGridView.TabIndex = 5;
             // 
+            // clearButton
+            // 
+            this.clearButton.Location = new System.Drawing.Point(733, 22);
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(75, 31);
+            this.clearButton.TabIndex = 6;
+            this.clearButton.Text = "Clear";
+            this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.ClearButton_Click);
+            // 
             // RentalHistoryUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.clearButton);
             this.Controls.Add(this.rentalItemsDataGridView);
             this.Controls.Add(this.rentalHistoryDataGridView);
             this.Controls.Add(this.searchButton);
@@ -118,5 +130,6 @@
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.DataGridView rentalHistoryDataGridView;
         private System.Windows.Forms.DataGridView rentalItemsDataGridView;
+        private System.Windows.Forms.Button clearButton;
     }
 }
