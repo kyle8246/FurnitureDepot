@@ -68,5 +68,12 @@ namespace FurnitureDepot.UserControls
             }
         }
 
+        private void ClearButton_Click(object sender, EventArgs e)
+        {
+            rentalHistoryDataGridView.DataSource = null;
+            rentalItemsDataGridView.DataSource = null;
+            customerIDTextBox.Text = "";
+            messageLabel.Text = "";
+        }
     }
 }
