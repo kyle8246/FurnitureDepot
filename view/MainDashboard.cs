@@ -46,6 +46,7 @@ namespace FurnitureDepot.View
 
         private void DashboardTabControl_Selected(object sender, TabControlEventArgs e)
         {
+
             if (e.TabPage == searchFurnitureTabPage)
             {
                 if (e.TabPage.Controls.Count == 0)
@@ -64,6 +65,8 @@ namespace FurnitureDepot.View
             }
 
             this.editCustomerUserControl?.Clear();
+            this.rentalTransactionUserControl?.Clear();
+            this.rentalTransactionUserControl?.ClearMemberID();
         }
 
 

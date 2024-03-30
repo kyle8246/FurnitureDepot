@@ -205,6 +205,7 @@
             // 
             // cartDataGridView
             // 
+            this.cartDataGridView.AllowUserToAddRows = false;
             this.cartDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.cartDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cartDataGridView.Location = new System.Drawing.Point(3, 114);
@@ -275,6 +276,7 @@
             this.customerIDTextBox.Name = "customerIDTextBox";
             this.customerIDTextBox.Size = new System.Drawing.Size(126, 20);
             this.customerIDTextBox.TabIndex = 0;
+            this.customerIDTextBox.TextChanged += new System.EventHandler(this.customerIDTextBox_TextChanged);
             // 
             // searchButton
             // 
@@ -309,9 +311,19 @@
             // quantityPicker
             // 
             this.quantityPicker.Location = new System.Drawing.Point(232, 3);
+            this.quantityPicker.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.quantityPicker.Name = "quantityPicker";
             this.quantityPicker.Size = new System.Drawing.Size(56, 20);
             this.quantityPicker.TabIndex = 1;
+            this.quantityPicker.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // furnitureLabel
             // 
