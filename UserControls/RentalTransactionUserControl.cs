@@ -16,5 +16,15 @@ namespace FurnitureDepot.UserControls
         {
             InitializeComponent();
         }
+
+        private void emptyCartButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkoutButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
