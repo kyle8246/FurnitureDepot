@@ -45,6 +45,7 @@
             this.customerFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.customerIDTextBox = new System.Windows.Forms.TextBox();
             this.searchButton = new System.Windows.Forms.Button();
+            this.clearButton = new System.Windows.Forms.Button();
             this.furnitureFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.furnitureComboBox = new System.Windows.Forms.ComboBox();
             this.quantityPicker = new System.Windows.Forms.NumericUpDown();
@@ -54,7 +55,6 @@
             this.addRemoveButtonLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.addItemButton = new System.Windows.Forms.Button();
             this.removeItemButton = new System.Windows.Forms.Button();
-            this.clearButton = new System.Windows.Forms.Button();
             this.rentalTransactionTableLayout.SuspendLayout();
             this.lowerTableLayoutPanel.SuspendLayout();
             this.lowerLeftLayoutPanel.SuspendLayout();
@@ -107,7 +107,7 @@
             this.lowerLeftLayoutPanel.ColumnCount = 3;
             this.lowerLeftLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.94444F));
             this.lowerLeftLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 73.05556F));
-            this.lowerLeftLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 141F));
+            this.lowerLeftLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 142F));
             this.lowerLeftLayoutPanel.Controls.Add(this.dueDateLabel, 0, 0);
             this.lowerLeftLayoutPanel.Controls.Add(this.dueDateDatePicker, 1, 0);
             this.lowerLeftLayoutPanel.Controls.Add(this.totalCostLabel, 1, 1);
@@ -136,7 +136,7 @@
             this.dueDateDatePicker.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dueDateDatePicker.Location = new System.Drawing.Point(83, 3);
             this.dueDateDatePicker.Name = "dueDateDatePicker";
-            this.dueDateDatePicker.Size = new System.Drawing.Size(213, 20);
+            this.dueDateDatePicker.Size = new System.Drawing.Size(212, 20);
             this.dueDateDatePicker.TabIndex = 1;
             // 
             // totalCostLabel
@@ -288,6 +288,16 @@
             this.searchButton.UseVisualStyleBackColor = true;
             this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
+            // clearButton
+            // 
+            this.clearButton.Location = new System.Drawing.Point(220, 3);
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(62, 23);
+            this.clearButton.TabIndex = 2;
+            this.clearButton.Text = "Clear";
+            this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
+            // 
             // furnitureFlowLayoutPanel
             // 
             this.furnitureFlowLayoutPanel.Controls.Add(this.furnitureComboBox);
@@ -392,16 +402,6 @@
             this.removeItemButton.Text = "Remove Item";
             this.removeItemButton.UseVisualStyleBackColor = true;
             this.removeItemButton.Click += new System.EventHandler(this.removeItemButton_Click);
-            // 
-            // clearButton
-            // 
-            this.clearButton.Location = new System.Drawing.Point(220, 3);
-            this.clearButton.Name = "clearButton";
-            this.clearButton.Size = new System.Drawing.Size(62, 23);
-            this.clearButton.TabIndex = 2;
-            this.clearButton.Text = "Clear";
-            this.clearButton.UseVisualStyleBackColor = true;
-            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
             // 
             // RentalTransactionUserControl
             // 

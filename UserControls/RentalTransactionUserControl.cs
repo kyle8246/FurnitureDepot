@@ -83,11 +83,26 @@ namespace FurnitureDepot.UserControls
                         int quantity = (int)quantityPicker.Value;
                         if (quantity > 0)
                         {
-                            int rowIndex = this.cartDataGridView.Rows.Add();
-                            DataGridViewRow newRow = cartDataGridView.Rows[rowIndex];
-                            newRow.Cells["nameColumn"].Value = selectedFurniture.Name;
-                            newRow.Cells["unitPriceColumn"].Value = selectedFurniture.DailyRentalRate;
-                            newRow.Cells["quantityColumn"].Value = quantity;
+                            bool itemFound = false;
+                            foreach (DataGridViewRow row in cartDataGridView.Rows)
+                            {
+                                if (row.Cells["nameColumn"].Value.ToString() == selectedFurniture.Name)
+                                {
+                                    int currentQuantity = Convert.ToInt32(row.Cells["quantityColumn"].Value);
+                                    row.Cells["quantityColumn"].Value = currentQuantity + quantity;
+                                    itemFound = true;
+                                    break; 
+                                }
+                            }
+
+                            if (!itemFound)
+                            {
+                                int rowIndex = this.cartDataGridView.Rows.Add();
+                                DataGridViewRow newRow = cartDataGridView.Rows[rowIndex];
+                                newRow.Cells["nameColumn"].Value = selectedFurniture.Name;
+                                newRow.Cells["unitPriceColumn"].Value = selectedFurniture.DailyRentalRate;
+                                newRow.Cells["quantityColumn"].Value = quantity;
+                            }
 
                             this.quantityPicker.Value = 1;
                             this.furnitureComboBox.SelectedIndex = 0;
@@ -107,7 +122,39 @@ namespace FurnitureDepot.UserControls
 
         private void removeItemButton_Click(object sender, EventArgs e)
         {
-
+            if (currentOrderCustomer == null)
+            {
+                this.customerNameLabel.Text = "Please search a customer.";
+                this.customerNameLabel.ForeColor = Color.Red;
+                return;
+            }
+            else
+            {
+                var selectedFurniture = furnitureComboBox.SelectedItem as Furniture;
+                if (selectedFurniture != null)
+                {
+                    foreach (DataGridViewRow row in this.cartDataGridView.Rows)
+                    {
+                        if (row.Cells["nameColumn"].Value.ToString() == selectedFurniture.Name)
+                        {
+                            int quantity = Convert.ToInt32(row.Cells["QuantityColumn"].Value);
+                            if (quantity > 1)
+                            {
+                                row.Cells["quantityColumn"].Value = quantity - 1;
+                            }
+                            else
+                            {
+                                this.cartDataGridView.Rows.Remove(row);
+                            }
+                            break; 
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please select a furniture item to remove.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
         }
 
         private void submitButton_Click(object sender, EventArgs e)
