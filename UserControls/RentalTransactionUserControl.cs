@@ -128,31 +128,52 @@ namespace FurnitureDepot.UserControls
                 this.customerNameLabel.ForeColor = Color.Red;
                 return;
             }
-            else
+            else if (this.cartDataGridView.Rows.Count == 0)
             {
-                var selectedFurniture = furnitureComboBox.SelectedItem as Furniture;
-                if (selectedFurniture != null)
+                MessageBox.Show("No items in cart to remove.", "Cart Empty", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else if (this.furnitureComboBox.SelectedIndex <= 0)
+            {
+                MessageBox.Show("Please select a furniture item.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var selectedFurniture = furnitureComboBox.SelectedItem as Furniture;
+            if (selectedFurniture != null)
+            {
+                bool itemFound = false;
+                foreach (DataGridViewRow row in this.cartDataGridView.Rows)
                 {
-                    foreach (DataGridViewRow row in this.cartDataGridView.Rows)
+                    if (row.Cells["nameColumn"].Value.ToString() == selectedFurniture.Name)
                     {
-                        if (row.Cells["nameColumn"].Value.ToString() == selectedFurniture.Name)
+                        itemFound = true;
+                        int currentQuantity = Convert.ToInt32(row.Cells["quantityColumn"].Value);
+                        int decrementValue = (int)this.quantityPicker.Value;
+
+                        if (decrementValue > currentQuantity)
                         {
-                            int quantity = Convert.ToInt32(row.Cells["QuantityColumn"].Value);
-                            if (quantity > 1)
-                            {
-                                row.Cells["quantityColumn"].Value = quantity - 1;
-                            }
-                            else
-                            {
-                                this.cartDataGridView.Rows.Remove(row);
-                            }
-                            break; 
+                            MessageBox.Show("Cannot remove more items than are in the cart.", "Invalid Quantity", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
+                        else if (decrementValue == currentQuantity)
+                        {
+                            this.cartDataGridView.Rows.Remove(row);
+                            this.quantityPicker.Value = 1;
+                            this.furnitureComboBox.SelectedIndex = 0;
+                        }
+                        else
+                        {
+                            row.Cells["quantityColumn"].Value = currentQuantity - decrementValue;
+                            this.quantityPicker.Value = 1;
+                            this.furnitureComboBox.SelectedIndex = 0;
+                        }
+                        break;
                     }
                 }
-                else
+
+                if (!itemFound)
                 {
-                    MessageBox.Show("Please select a furniture item to remove.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("The selected item is not in the cart.", "Item Not Found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
         }
