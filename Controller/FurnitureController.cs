@@ -25,5 +25,16 @@ namespace FurnitureDepot.Controller
             return _furnitureDAL.GetAllFurnitureItems();
         }
 
+        /// <summary>
+        /// Searches the furniture.
+        /// </summary>
+        /// <param name="furnitureID">The furniture identifier.</param>
+        /// <param name="category">The category.</param>
+        /// <param name="style">The style.</param>
+        /// <returns></returns>
+        public List<Furniture> SearchFurniture(string furnitureID, string category, string style)
+        {
+            return _furnitureDAL.SearchFurniture(furnitureID, category, style);
+        }
     }
 }

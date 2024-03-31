@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using FurnitureDepot.Controller;
 using FurnitureDepot.DAL;
 
 namespace FurnitureDepot.UserControls
@@ -45,8 +46,10 @@ namespace FurnitureDepot.UserControls
 
             try
             {
-                var furnitureDAL = new FurnitureDAL();
-                var furnitureItems = furnitureDAL.SearchFurniture(furnitureID, category, style);
+                FurnitureController furnitureController = new FurnitureController();
+
+                var furnitureItems = furnitureController.SearchFurniture(furnitureID, category, style);
+
                 if (furnitureItems.Count == 0)
                 {
                     messageLabel.Text = "No results found.";
