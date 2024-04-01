@@ -26,6 +26,7 @@ namespace FurnitureDepot.UserControls
             this.furnitureController = new FurnitureController();
             this.customerController = new CustomerController();
             this.currentOrderCustomer = new Customer();
+            this.dueDateDatePicker.ValueChanged += new System.EventHandler(this.DueDateDatePicker_ValueChanged);
         }
 
         private void PopulateFurnitureComboBox()
@@ -106,6 +107,7 @@ namespace FurnitureDepot.UserControls
 
                             this.quantityPicker.Value = 1;
                             this.furnitureComboBox.SelectedIndex = 0;
+                            UpdateTotalCost();
                         }
                         else
                         {
@@ -160,12 +162,14 @@ namespace FurnitureDepot.UserControls
                             this.cartDataGridView.Rows.Remove(row);
                             this.quantityPicker.Value = 1;
                             this.furnitureComboBox.SelectedIndex = 0;
+                            UpdateTotalCost();
                         }
                         else
                         {
                             row.Cells["quantityColumn"].Value = currentQuantity - decrementValue;
                             this.quantityPicker.Value = 1;
                             this.furnitureComboBox.SelectedIndex = 0;
+                            UpdateTotalCost();
                         }
                         break;
                     }
@@ -185,7 +189,8 @@ namespace FurnitureDepot.UserControls
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
-
+            Clear();
+            this.customerIDTextBox.Text = string.Empty;
         }
 
         private void RentalTransactionUserControl_Load(object sender, EventArgs e)
@@ -228,6 +233,8 @@ namespace FurnitureDepot.UserControls
 
             this.customerNameLabel.ForeColor = Color.Black;
             this.customerNameLabel.Text = "Please search a customer.";
+            this.totalCostLabel.Text = "Total Cost: ";
+            this.dueDateDatePicker.Value = DateTime.Now;
         }
 
         /// <summary>
@@ -237,5 +244,30 @@ namespace FurnitureDepot.UserControls
         {
             this.customerIDTextBox.Text = string.Empty;
         }
+
+        private void DueDateDatePicker_ValueChanged(object sender, EventArgs e)
+        {
+            UpdateTotalCost();
+        }
+
+        private void UpdateTotalCost()
+        {
+            decimal totalCost = 0;
+            TimeSpan rentalDuration = dueDateDatePicker.Value.Date - DateTime.Now.Date;
+            int rentalDays = Math.Max(1, rentalDuration.Days);
+
+            foreach (DataGridViewRow row in cartDataGridView.Rows)
+            {
+                if (row.Cells["unitPriceColumn"].Value != null && row.Cells["quantityColumn"].Value != null)
+                {
+                    decimal dailyRate = Convert.ToDecimal(row.Cells["unitPriceColumn"].Value);
+                    int quantity = Convert.ToInt32(row.Cells["quantityColumn"].Value);
+                    totalCost += dailyRate * quantity * rentalDays;
+                }
+            }
+
+            totalCostLabel.Text = $"Total Cost: {totalCost:C}";
+        }
+
     }
 }
