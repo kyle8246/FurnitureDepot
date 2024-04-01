@@ -45,6 +45,7 @@
             this.customerFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.customerIDTextBox = new System.Windows.Forms.TextBox();
             this.searchButton = new System.Windows.Forms.Button();
+            this.clearButton = new System.Windows.Forms.Button();
             this.furnitureFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.furnitureComboBox = new System.Windows.Forms.ComboBox();
             this.quantityPicker = new System.Windows.Forms.NumericUpDown();
@@ -106,7 +107,7 @@
             this.lowerLeftLayoutPanel.ColumnCount = 3;
             this.lowerLeftLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.94444F));
             this.lowerLeftLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 73.05556F));
-            this.lowerLeftLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+            this.lowerLeftLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 142F));
             this.lowerLeftLayoutPanel.Controls.Add(this.dueDateLabel, 0, 0);
             this.lowerLeftLayoutPanel.Controls.Add(this.dueDateDatePicker, 1, 0);
             this.lowerLeftLayoutPanel.Controls.Add(this.totalCostLabel, 1, 1);
@@ -124,7 +125,7 @@
             this.dueDateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.dueDateLabel.AutoSize = true;
             this.dueDateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dueDateLabel.Location = new System.Drawing.Point(11, 9);
+            this.dueDateLabel.Location = new System.Drawing.Point(10, 9);
             this.dueDateLabel.Name = "dueDateLabel";
             this.dueDateLabel.Size = new System.Drawing.Size(67, 16);
             this.dueDateLabel.TabIndex = 0;
@@ -133,9 +134,9 @@
             // dueDateDatePicker
             // 
             this.dueDateDatePicker.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dueDateDatePicker.Location = new System.Drawing.Point(84, 3);
+            this.dueDateDatePicker.Location = new System.Drawing.Point(83, 3);
             this.dueDateDatePicker.Name = "dueDateDatePicker";
-            this.dueDateDatePicker.Size = new System.Drawing.Size(213, 20);
+            this.dueDateDatePicker.Size = new System.Drawing.Size(212, 20);
             this.dueDateDatePicker.TabIndex = 1;
             // 
             // totalCostLabel
@@ -143,7 +144,7 @@
             this.totalCostLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.totalCostLabel.AutoSize = true;
             this.totalCostLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalCostLabel.Location = new System.Drawing.Point(84, 32);
+            this.totalCostLabel.Location = new System.Drawing.Point(83, 32);
             this.totalCostLabel.Name = "totalCostLabel";
             this.totalCostLabel.Size = new System.Drawing.Size(85, 20);
             this.totalCostLabel.TabIndex = 2;
@@ -204,6 +205,7 @@
             // 
             // cartDataGridView
             // 
+            this.cartDataGridView.AllowUserToAddRows = false;
             this.cartDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.cartDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cartDataGridView.Location = new System.Drawing.Point(3, 114);
@@ -260,6 +262,7 @@
             // 
             this.customerFlowLayoutPanel.Controls.Add(this.customerIDTextBox);
             this.customerFlowLayoutPanel.Controls.Add(this.searchButton);
+            this.customerFlowLayoutPanel.Controls.Add(this.clearButton);
             this.customerFlowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.customerFlowLayoutPanel.Location = new System.Drawing.Point(116, 3);
             this.customerFlowLayoutPanel.Name = "customerFlowLayoutPanel";
@@ -273,16 +276,27 @@
             this.customerIDTextBox.Name = "customerIDTextBox";
             this.customerIDTextBox.Size = new System.Drawing.Size(126, 20);
             this.customerIDTextBox.TabIndex = 0;
+            this.customerIDTextBox.TextChanged += new System.EventHandler(this.customerIDTextBox_TextChanged);
             // 
             // searchButton
             // 
             this.searchButton.Location = new System.Drawing.Point(135, 3);
             this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(128, 23);
+            this.searchButton.Size = new System.Drawing.Size(79, 23);
             this.searchButton.TabIndex = 1;
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = true;
             this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
+            // 
+            // clearButton
+            // 
+            this.clearButton.Location = new System.Drawing.Point(220, 3);
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(62, 23);
+            this.clearButton.TabIndex = 2;
+            this.clearButton.Text = "Clear";
+            this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
             // 
             // furnitureFlowLayoutPanel
             // 
@@ -307,9 +321,19 @@
             // quantityPicker
             // 
             this.quantityPicker.Location = new System.Drawing.Point(232, 3);
+            this.quantityPicker.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.quantityPicker.Name = "quantityPicker";
             this.quantityPicker.Size = new System.Drawing.Size(56, 20);
             this.quantityPicker.TabIndex = 1;
+            this.quantityPicker.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // furnitureLabel
             // 
@@ -436,5 +460,6 @@
         private System.Windows.Forms.TableLayoutPanel lowerRightLayoutPanel;
         private System.Windows.Forms.Button submitButton;
         private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.Button clearButton;
     }
 }

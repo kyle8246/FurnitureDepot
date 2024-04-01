@@ -150,13 +150,13 @@ namespace FurnitureDepot.View
             this.rentalTransactionTabPage.TabIndex = 4;
             this.rentalTransactionTabPage.Text = "Rental Transaction";
             this.rentalTransactionTabPage.UseVisualStyleBackColor = true;
-            // 
-            // rentalTransactionUserControl1
-            // 
+
+
             this.rentalTransactionUserControl1.Location = new System.Drawing.Point(-4, 0);
             this.rentalTransactionUserControl1.Name = "rentalTransactionUserControl1";
             this.rentalTransactionUserControl1.Size = new System.Drawing.Size(791, 388);
             this.rentalTransactionUserControl1.TabIndex = 0;
+
             // 
             // rentalHistoryTabPage
             // 
@@ -247,5 +247,6 @@ namespace FurnitureDepot.View
         private UserControls.RentalHistoryUserControl rentalHistoryUserControl1;
         private UserControls.RentalTransactionUserControl rentalTransactionUserControl1;
         private UserControls.SearchFurnitureUserControl searchFurnitureUserControl1;
+
     }
 }
