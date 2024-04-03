@@ -317,8 +317,6 @@ namespace FurnitureDepot.UserControls
             MessageBox.Show(receiptText.ToString(), "Receipt", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-
-
         private void ClearTransaction()
         {
             cartDataGridView.Rows.Clear();

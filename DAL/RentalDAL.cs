@@ -100,6 +100,11 @@ namespace FurnitureDepot.DAL
             return rentalItems;
         }
 
+        /// <summary>
+        /// Inserts the rental transaction.
+        /// </summary>
+        /// <param name="transaction">The transaction.</param>
+        /// <returns></returns>
         public int InsertRentalTransaction(RentalTransaction transaction)
         {
             using (SqlConnection connection = FurnitureDepotDBConnection.GetConnection())
@@ -124,6 +129,11 @@ namespace FurnitureDepot.DAL
             }
         }
 
+        /// <summary>
+        /// Gets the rental transaction by identifier.
+        /// </summary>
+        /// <param name="transactionId">The transaction identifier.</param>
+        /// <returns></returns>
         public RentalTransaction GetRentalTransactionById(int transactionId)
         {
             using (SqlConnection connection = FurnitureDepotDBConnection.GetConnection())
@@ -156,8 +166,10 @@ namespace FurnitureDepot.DAL
             return null;
         }
 
-
-
+        /// <summary>
+        /// Inserts the rental items.
+        /// </summary>
+        /// <param name="items">The items.</param>
         public void InsertRentalItems(List<RentalItem> items)
         {
             using (SqlConnection connection = FurnitureDepotDBConnection.GetConnection())

@@ -39,20 +39,33 @@ namespace FurnitureDepot.Controller
             return _rentalDAL.GetRentalItemsByTransactionId(rentalTransactionID);
         }
 
+        /// <summary>
+        /// Inserts the rental transaction.
+        /// </summary>
+        /// <param name="transaction">The transaction.</param>
+        /// <returns></returns>
         public int InsertRentalTransaction(RentalTransaction transaction)
         {
             return _rentalDAL.InsertRentalTransaction(transaction);
         }
 
+        /// <summary>
+        /// Inserts the rental items.
+        /// </summary>
+        /// <param name="items">The items.</param>
         public void InsertRentalItems(List<RentalItem> items)
         {
             _rentalDAL.InsertRentalItems(items);
         }
 
+        /// <summary>
+        /// Gets the rental transaction by identifier.
+        /// </summary>
+        /// <param name="transactionId">The transaction identifier.</param>
+        /// <returns></returns>
         public RentalTransaction GetRentalTransactionById(int transactionId)
         {
             return _rentalDAL.GetRentalTransactionById(transactionId);
         }
-
     }
 }

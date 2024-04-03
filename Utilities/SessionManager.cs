@@ -1,13 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FurnitureDepot.Utilities
+﻿namespace FurnitureDepot.Utilities
 {
+    /// <summary>
+    /// Session Manager class
+    /// </summary>
     public static class SessionManager
     {
+        /// <summary>
+        /// Gets or sets the current employee identifier.
+        /// </summary>
+        /// <value>
+        /// The current employee identifier.
+        /// </value>
         public static int CurrentEmployeeID { get; set; }
     }
 

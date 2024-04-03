@@ -44,6 +44,11 @@ namespace FurnitureDepot.DAL
             }
         }
 
+        /// <summary>
+        /// Gets the employee identifier by username.
+        /// </summary>
+        /// <param name="username">The username.</param>
+        /// <returns></returns>
         public int GetEmployeeIdByUsername(string username)
         {
             using (SqlConnection connection = FurnitureDepotDBConnection.GetConnection())

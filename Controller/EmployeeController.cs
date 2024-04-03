@@ -1,5 +1,4 @@
 ﻿using FurnitureDepot.DAL;
-using FurnitureDepot.Model;
 
 namespace FurnitureDepot.Controller
 {
@@ -28,6 +27,11 @@ namespace FurnitureDepot.Controller
             return _employeeDAL.GetUserFullName(username);
         }
 
+        /// <summary>
+        /// Gets the employee identifier by username.
+        /// </summary>
+        /// <param name="username">The username.</param>
+        /// <returns></returns>
         public int GetEmployeeIdByUsername(string username)
         {
             return _employeeDAL.GetEmployeeIdByUsername(username);
