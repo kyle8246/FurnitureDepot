@@ -100,5 +100,88 @@ namespace FurnitureDepot.DAL
             return rentalItems;
         }
 
+        public int InsertRentalTransaction(RentalTransaction transaction)
+        {
+            using (SqlConnection connection = FurnitureDepotDBConnection.GetConnection())
+            {
+                string insertQuery = @"
+            INSERT INTO RentalTransaction (MemberID, EmployeeID, RentalDate, DueDate, TotalCost)
+            OUTPUT INSERTED.RentalTransactionID
+            VALUES (@MemberID, @EmployeeID, @RentalDate, @DueDate, @TotalCost);";
+
+                using (SqlCommand command = new SqlCommand(insertQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@MemberID", transaction.MemberID);
+                    command.Parameters.AddWithValue("@EmployeeID", transaction.EmployeeID);
+                    command.Parameters.AddWithValue("@RentalDate", transaction.RentalDate);
+                    command.Parameters.AddWithValue("@DueDate", transaction.DueDate);
+                    command.Parameters.AddWithValue("@TotalCost", transaction.TotalCost);
+
+                    connection.Open();
+                    int insertedId = (int)command.ExecuteScalar();
+                    return insertedId;
+                }
+            }
+        }
+
+        public RentalTransaction GetRentalTransactionById(int transactionId)
+        {
+            using (SqlConnection connection = FurnitureDepotDBConnection.GetConnection())
+            {
+                string query = @"SELECT RentalTransactionID, MemberID, EmployeeID, RentalDate, DueDate, TotalCost
+                         FROM RentalTransaction
+                         WHERE RentalTransactionID = @TransactionID";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@TransactionID", transactionId);
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return new RentalTransaction
+                            {
+                                RentalTransactionID = reader.GetInt32(reader.GetOrdinal("RentalTransactionID")),
+                                MemberID = reader.GetInt32(reader.GetOrdinal("MemberID")),
+                                EmployeeID = reader.GetInt32(reader.GetOrdinal("EmployeeID")),
+                                RentalDate = reader.GetDateTime(reader.GetOrdinal("RentalDate")),
+                                DueDate = reader.GetDateTime(reader.GetOrdinal("DueDate")),
+                                TotalCost = reader.GetDecimal(reader.GetOrdinal("TotalCost")),
+                            };
+                        }
+                    }
+                }
+            }
+            return null;
+        }
+
+
+
+        public void InsertRentalItems(List<RentalItem> items)
+        {
+            using (SqlConnection connection = FurnitureDepotDBConnection.GetConnection())
+            {
+                connection.Open();
+
+                foreach (var item in items)
+                {
+                    string insertItemQuery = @"
+                INSERT INTO RentalItem (RentalTransactionID, FurnitureID, Quantity, DailyRate)
+                VALUES (@RentalTransactionID, @FurnitureID, @Quantity, @DailyRate);";
+
+                    using (SqlCommand command = new SqlCommand(insertItemQuery, connection))
+                    {
+                        command.Parameters.AddWithValue("@RentalTransactionID", item.RentalTransactionID);
+                        command.Parameters.AddWithValue("@FurnitureID", item.FurnitureID);
+                        command.Parameters.AddWithValue("@Quantity", item.Quantity);
+                        command.Parameters.AddWithValue("@DailyRate", item.DailyRate);
+
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+        }
+
     }
 }

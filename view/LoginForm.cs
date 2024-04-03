@@ -2,6 +2,7 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using FurnitureDepot.Utilities;
 
 namespace FurnitureDepot.View
 {
@@ -31,26 +32,36 @@ namespace FurnitureDepot.View
             if (loginController.Authenticate(username, password))
             {
                 string fullName = employeeController.GetUserFullName(username);
-                string fullNameWithUsername = fullName + " (" + username + ")";
 
-                using (MainDashboard mainForm = new MainDashboard())
+                int employeeId = employeeController.GetEmployeeIdByUsername(username);
+                if (employeeId > 0)
                 {
-                    this.Hide();
+                    SessionManager.CurrentEmployeeID = employeeId;
 
-                    mainForm.SetUser(fullNameWithUsername);
+                    string fullNameWithUsername = fullName + " (" + username + ")";
 
-                    DialogResult result = mainForm.ShowDialog();
-
-                    if (result == DialogResult.OK)
+                    using (MainDashboard mainForm = new MainDashboard())
                     {
-                        this.ClearFields();
-                        this.Show();
-                        this.usernameTextBox.Focus();
+                        this.Hide();
+                        mainForm.SetUser(fullNameWithUsername);
+                        DialogResult result = mainForm.ShowDialog();
+
+                        if (result == DialogResult.OK)
+                        {
+                            this.ClearFields();
+                            this.Show();
+                            this.usernameTextBox.Focus();
+                        }
+                        else if (result == DialogResult.Cancel)
+                        {
+                            this.Close();
+                        }
                     }
-                    else if (result == DialogResult.Cancel)
-                    {
-                        this.Close();
-                    }
+                }
+                else
+                {
+                    MessageBox.Show("Failed to retrieve employee details. Please try again.", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
             }
             else
@@ -60,6 +71,7 @@ namespace FurnitureDepot.View
                 messageLabel.Visible = true;
             }
         }
+
 
         private void ClearFields()
         {

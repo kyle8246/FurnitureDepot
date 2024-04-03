@@ -43,5 +43,31 @@ namespace FurnitureDepot.DAL
                 }
             }
         }
+
+        public int GetEmployeeIdByUsername(string username)
+        {
+            using (SqlConnection connection = FurnitureDepotDBConnection.GetConnection())
+            {
+                string query = @"SELECT e.EmployeeID 
+                        FROM Employee e
+                        INNER JOIN Login l ON e.EmployeeID = l.EmployeeID
+                        WHERE l.Username = @Username";
+
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.Add(new SqlParameter("@Username", SqlDbType.NVarChar) { Value = username });
+
+                connection.Open();
+
+                object result = command.ExecuteScalar();
+                if (result != null)
+                {
+                    return (int)result;
+                }
+                else
+                {
+                    return -1;
+                }
+            }
+        }
     }
 }

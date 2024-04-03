@@ -28,5 +28,10 @@ namespace FurnitureDepot.Controller
             return _employeeDAL.GetUserFullName(username);
         }
 
+        public int GetEmployeeIdByUsername(string username)
+        {
+            return _employeeDAL.GetEmployeeIdByUsername(username);
+        }
+
     }
 }

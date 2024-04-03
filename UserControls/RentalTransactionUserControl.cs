@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using FurnitureDepot.Utilities;
+using System.Text;
 
 namespace FurnitureDepot.UserControls
 {
@@ -16,6 +18,7 @@ namespace FurnitureDepot.UserControls
         private FurnitureController furnitureController;
         private CustomerController customerController;
         private Customer currentOrderCustomer;
+        private RentalController rentalController;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RentalTransactionUserControl"/> class.
@@ -25,6 +28,7 @@ namespace FurnitureDepot.UserControls
             InitializeComponent();
             this.furnitureController = new FurnitureController();
             this.customerController = new CustomerController();
+            this.rentalController = new RentalController();
             this.currentOrderCustomer = new Customer();
             this.dueDateDatePicker.ValueChanged += new System.EventHandler(this.DueDateDatePicker_ValueChanged);
         }
@@ -87,12 +91,12 @@ namespace FurnitureDepot.UserControls
                             bool itemFound = false;
                             foreach (DataGridViewRow row in cartDataGridView.Rows)
                             {
-                                if (row.Cells["nameColumn"].Value.ToString() == selectedFurniture.Name)
+                                if ((int)row.Cells["furnitureIdColumn"].Value == selectedFurniture.FurnitureID)
                                 {
                                     int currentQuantity = Convert.ToInt32(row.Cells["quantityColumn"].Value);
                                     row.Cells["quantityColumn"].Value = currentQuantity + quantity;
                                     itemFound = true;
-                                    break; 
+                                    break;
                                 }
                             }
 
@@ -103,6 +107,7 @@ namespace FurnitureDepot.UserControls
                                 newRow.Cells["nameColumn"].Value = selectedFurniture.Name;
                                 newRow.Cells["unitPriceColumn"].Value = selectedFurniture.DailyRentalRate;
                                 newRow.Cells["quantityColumn"].Value = quantity;
+                                newRow.Cells["furnitureIdColumn"].Value = selectedFurniture.FurnitureID;
                             }
 
                             this.quantityPicker.Value = 1;
@@ -121,6 +126,7 @@ namespace FurnitureDepot.UserControls
                 }
             }
         }
+
 
         private void removeItemButton_Click(object sender, EventArgs e)
         {
@@ -184,7 +190,140 @@ namespace FurnitureDepot.UserControls
 
         private void submitButton_Click(object sender, EventArgs e)
         {
+            if (ValidateRentalTransaction())
+            {
+                if (ConfirmSubmission())
+                {
+                    int transactionId = SaveRentalTransaction();
+                    DisplayReceipt(transactionId);
+                }
+            }
+        }
 
+
+        private bool ValidateRentalTransaction()
+        {
+            if (currentOrderCustomer == null || currentOrderCustomer.MemberID <= 0)
+            {
+                MessageBox.Show("Please select a customer before submitting the transaction.", "Customer Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            if (cartDataGridView.Rows.Count == 0)
+            {
+                MessageBox.Show("There are no items in the cart. Please add items before submitting the transaction.", "Cart Empty", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            if (dueDateDatePicker.Value.Date <= DateTime.Now.Date)
+            {
+                MessageBox.Show("The due date must be in the future. Please select a valid due date.", "Invalid Due Date", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            return true;
+        }
+
+        private bool ConfirmSubmission()
+        {
+            decimal totalCost = CalculateTotalCost();
+            string message = $"The total cost of this transaction is {totalCost:C}. Would you like to proceed?";
+
+            var result = MessageBox.Show(message, "Confirm Transaction", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            return result == DialogResult.Yes;
+        }
+
+
+        private decimal CalculateTotalCost()
+        {
+            decimal totalCost = 0;
+            TimeSpan rentalDuration = dueDateDatePicker.Value.Date - DateTime.Now.Date;
+            int rentalDays = Math.Max(1, rentalDuration.Days);
+
+            foreach (DataGridViewRow row in cartDataGridView.Rows)
+            {
+                if (row.Cells["unitPriceColumn"].Value != null && row.Cells["quantityColumn"].Value != null)
+                {
+                    decimal dailyRate = Convert.ToDecimal(row.Cells["unitPriceColumn"].Value);
+                    int quantity = Convert.ToInt32(row.Cells["quantityColumn"].Value);
+                    totalCost += dailyRate * quantity * rentalDays;
+                }
+            }
+
+            return totalCost;
+        }
+
+        private int SaveRentalTransaction()
+        {
+            RentalTransaction transaction = new RentalTransaction()
+            {
+                MemberID = currentOrderCustomer.MemberID,
+                EmployeeID = SessionManager.CurrentEmployeeID,
+                RentalDate = DateTime.Now,
+                DueDate = dueDateDatePicker.Value.Date,
+                TotalCost = CalculateTotalCost()
+            };
+
+            int transactionId = rentalController.InsertRentalTransaction(transaction);
+
+            List<RentalItem> items = new List<RentalItem>();
+            foreach (DataGridViewRow row in cartDataGridView.Rows)
+            {
+                int furnitureId = Convert.ToInt32(row.Cells["furnitureIdColumn"].Value);
+
+                items.Add(new RentalItem()
+                {
+                    RentalTransactionID = transactionId,
+                    FurnitureID = furnitureId,
+                    Quantity = Convert.ToInt32(row.Cells["quantityColumn"].Value),
+                    DailyRate = Convert.ToDecimal(row.Cells["unitPriceColumn"].Value)
+                });
+            }
+
+            rentalController.InsertRentalItems(items);
+
+            ClearTransaction();
+            return transactionId;
+        }
+
+        private void DisplayReceipt(int transactionId)
+        {
+            RentalTransaction transaction = rentalController.GetRentalTransactionById(transactionId);
+            List<RentalItem> items = rentalController.GetRentalItemsByTransactionId(transactionId);
+
+            if (transaction == null || items == null)
+            {
+                MessageBox.Show("Error retrieving transaction data.", "Receipt Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            StringBuilder receiptText = new StringBuilder();
+            receiptText.AppendLine("Rental Transaction Receipt");
+            receiptText.AppendLine("--------------------------");
+            receiptText.AppendLine($"Transaction ID: {transaction.RentalTransactionID}");
+            receiptText.AppendLine($"Customer ID: {transaction.MemberID}");
+            receiptText.AppendLine($"Employee ID: {transaction.EmployeeID}");
+            receiptText.AppendLine($"Rental Date: {transaction.RentalDate:g}");
+            receiptText.AppendLine($"Due Date: {transaction.DueDate:d}");
+            receiptText.AppendLine($"Total Cost: {transaction.TotalCost:C}");
+            receiptText.AppendLine("\nItems Rented:");
+
+            foreach (var item in items)
+            {
+                receiptText.AppendLine($"{item.FurnitureName} x{item.Quantity} - {item.DailyRate:C} per day");
+            }
+
+            MessageBox.Show(receiptText.ToString(), "Receipt", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+
+
+        private void ClearTransaction()
+        {
+            cartDataGridView.Rows.Clear();
+            furnitureComboBox.SelectedIndex = -1;
+            totalCostLabel.Text = "Total Cost: $0.00";
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
@@ -214,6 +353,11 @@ namespace FurnitureDepot.UserControls
             this.cartDataGridView.Columns.Add("nameColumn", "Item Name");
             this.cartDataGridView.Columns.Add("quantityColumn", "Quantity");
             this.cartDataGridView.Columns.Add("unitPriceColumn", "Unit Price");
+
+            var furnitureIdColumn = new DataGridViewTextBoxColumn();
+            furnitureIdColumn.Name = "furnitureIdColumn";
+            furnitureIdColumn.Visible = false;
+            this.cartDataGridView.Columns.Add(furnitureIdColumn);
 
             this.cartDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
