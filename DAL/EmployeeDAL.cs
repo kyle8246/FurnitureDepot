@@ -74,5 +74,37 @@ namespace FurnitureDepot.DAL
                 }
             }
         }
+
+        /// <summary>
+        /// Gets the employee full name by identifier.
+        /// </summary>
+        /// <param name="employeeId">The employee identifier.</param>
+        /// <returns></returns>
+        public string GetEmployeeFullNameById(int employeeId)
+        {
+            using (SqlConnection connection = FurnitureDepotDBConnection.GetConnection())
+            {
+                string query = @"
+            SELECT FirstName, LastName 
+            FROM Employee 
+            WHERE EmployeeID = @EmployeeId";
+
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@EmployeeId", employeeId);
+
+                connection.Open();
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        string firstName = reader.GetString(reader.GetOrdinal("FirstName"));
+                        string lastName = reader.GetString(reader.GetOrdinal("LastName"));
+                        return $"{firstName} {lastName}";
+                    }
+                }
+            }
+            return null;
+        }
     }
 }

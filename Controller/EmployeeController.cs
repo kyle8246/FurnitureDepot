@@ -37,5 +37,14 @@ namespace FurnitureDepot.Controller
             return _employeeDAL.GetEmployeeIdByUsername(username);
         }
 
+        /// <summary>
+        /// Gets the employee full name by identifier.
+        /// </summary>
+        /// <param name="employeeId">The employee identifier.</param>
+        /// <returns></returns>
+        public string GetEmployeeFullNameById(int employeeId)
+        {
+            return _employeeDAL.GetEmployeeFullNameById(employeeId);
+        }
     }
 }

@@ -61,5 +61,15 @@ namespace FurnitureDepot.Controller
         {
             return customerDAL.UpdateCustomer(customer);
         }
+
+        /// <summary>
+        /// Gets the customer full name by identifier.
+        /// </summary>
+        /// <param name="customerId">The customer identifier.</param>
+        /// <returns></returns>
+        public string GetCustomerFullNameById(int customerId)
+        {
+            return customerDAL.GetCustomerFullNameById(customerId);
+        }
     }
 }

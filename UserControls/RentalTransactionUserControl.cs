@@ -19,6 +19,7 @@ namespace FurnitureDepot.UserControls
         private CustomerController customerController;
         private Customer currentOrderCustomer;
         private RentalController rentalController;
+        private EmployeeController employeeController;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RentalTransactionUserControl"/> class.
@@ -30,6 +31,7 @@ namespace FurnitureDepot.UserControls
             this.customerController = new CustomerController();
             this.rentalController = new RentalController();
             this.currentOrderCustomer = new Customer();
+            this.employeeController = new EmployeeController();
             this.dueDateDatePicker.ValueChanged += new System.EventHandler(this.DueDateDatePicker_ValueChanged);
         }
 
@@ -292,7 +294,10 @@ namespace FurnitureDepot.UserControls
             RentalTransaction transaction = rentalController.GetRentalTransactionById(transactionId);
             List<RentalItem> items = rentalController.GetRentalItemsByTransactionId(transactionId);
 
-            if (transaction == null || items == null)
+            string customerName = customerController.GetCustomerFullNameById(transaction.MemberID);
+            string employeeName = employeeController.GetEmployeeFullNameById(transaction.EmployeeID);
+
+            if (transaction == null || items == null || customerName == null || employeeName == null)
             {
                 MessageBox.Show("Error retrieving transaction data.", "Receipt Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -302,9 +307,9 @@ namespace FurnitureDepot.UserControls
             receiptText.AppendLine("Rental Transaction Receipt");
             receiptText.AppendLine("--------------------------");
             receiptText.AppendLine($"Transaction ID: {transaction.RentalTransactionID}");
-            receiptText.AppendLine($"Customer ID: {transaction.MemberID}");
-            receiptText.AppendLine($"Employee ID: {transaction.EmployeeID}");
-            receiptText.AppendLine($"Rental Date: {transaction.RentalDate:g}");
+            receiptText.AppendLine($"Customer Name: {customerName}");
+            receiptText.AppendLine($"Employee Name: {employeeName}");
+            receiptText.AppendLine($"Rental Date: {transaction.RentalDate.ToShortDateString()}");
             receiptText.AppendLine($"Due Date: {transaction.DueDate:d}");
             receiptText.AppendLine($"Total Cost: {transaction.TotalCost:C}");
             receiptText.AppendLine("\nItems Rented:");
@@ -315,7 +320,9 @@ namespace FurnitureDepot.UserControls
             }
 
             MessageBox.Show(receiptText.ToString(), "Receipt", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.customerIDTextBox.Text = string.Empty;
         }
+
 
         private void ClearTransaction()
         {

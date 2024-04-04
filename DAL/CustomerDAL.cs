@@ -185,5 +185,37 @@ namespace FurnitureDepot.DAL
                 }
             }
         }
+
+        /// <summary>
+        /// Gets the customer full name by identifier.
+        /// </summary>
+        /// <param name="customerId">The customer identifier.</param>
+        /// <returns></returns>
+        public string GetCustomerFullNameById(int memberId)
+        {
+            using (SqlConnection connection = FurnitureDepotDBConnection.GetConnection())
+            {
+                string query = @"
+            SELECT FirstName, LastName 
+            FROM Member 
+            WHERE MemberID = @MemberId";
+
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@MemberId", memberId);
+
+                connection.Open();
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        string firstName = reader.GetString(reader.GetOrdinal("FirstName"));
+                        string lastName = reader.GetString(reader.GetOrdinal("LastName"));
+                        return $"{firstName} {lastName}";
+                    }
+                }
+            }
+            return null;
+        }
     }
 }
