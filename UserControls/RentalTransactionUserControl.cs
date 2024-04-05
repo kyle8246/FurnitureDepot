@@ -90,6 +90,11 @@ namespace FurnitureDepot.UserControls
                         int quantity = (int)quantityPicker.Value;
                         if (quantity > 0)
                         {
+                            if (!furnitureController.CheckInStock(selectedFurniture.FurnitureID, quantity))
+                            {
+                                MessageBox.Show("The required quantity is not available in stock.", "Insufficient Stock", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                return;
+                            }
                             bool itemFound = false;
                             foreach (DataGridViewRow row in cartDataGridView.Rows)
                             {
@@ -128,7 +133,6 @@ namespace FurnitureDepot.UserControls
                 }
             }
         }
-
 
         private void removeItemButton_Click(object sender, EventArgs e)
         {
@@ -357,7 +361,7 @@ namespace FurnitureDepot.UserControls
 
             this.cartDataGridView.Columns.Add("nameColumn", "Item Name");
             this.cartDataGridView.Columns.Add("quantityColumn", "Quantity");
-            this.cartDataGridView.Columns.Add("unitPriceColumn", "Unit Price");
+            this.cartDataGridView.Columns.Add("unitPriceColumn", "Daily Rate");
 
             var furnitureIdColumn = new DataGridViewTextBoxColumn();
             furnitureIdColumn.Name = "furnitureIdColumn";

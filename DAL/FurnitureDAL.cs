@@ -101,5 +101,39 @@ namespace FurnitureDepot.DAL
             }
             return furnitureItems;
         }
+
+        /// <summary>
+        /// Checks the in stock quantity of the furniture item.
+        /// </summary>
+        /// <param name="furnitureID">The furniture item identifier.</param>
+        /// <param name="requiredQuantity">The required quantity requested.</param>
+        /// <returns></returns>
+        public bool CheckInStock(int furnitureID, int requiredQuantity)
+        {
+            using (SqlConnection connection = FurnitureDepotDBConnection.GetConnection())
+            {
+                connection.Open();
+                string query = "SELECT InStockNumber FROM Furniture WHERE FurnitureID = @FurnitureID";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@FurnitureID", furnitureID);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            int inStock = reader.GetInt32(reader.GetOrdinal("InStockNumber"));
+                            if (inStock >= requiredQuantity)
+                            {
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
+            return false;
+        }
+
     }
 }
