@@ -36,5 +36,16 @@ namespace FurnitureDepot.Controller
         {
             return _furnitureDAL.SearchFurniture(furnitureID, category, style);
         }
+
+        /// <summary>
+        /// Checks the in stock quantity of the furniture item.
+        /// </summary>
+        /// <param name="furnitureID">The furniture identifier.</param>
+        /// <param name="requiredQuantity">The required quantity.</param>
+        /// <returns></returns>
+        public bool CheckInStock(int furnitureID, int requiredQuantity)
+        {
+            return _furnitureDAL.CheckInStock(furnitureID, requiredQuantity);
+        }
     }
 }
