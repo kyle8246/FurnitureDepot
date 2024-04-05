@@ -134,7 +134,6 @@ namespace FurnitureDepot.UserControls
             }
         }
 
-
         private void removeItemButton_Click(object sender, EventArgs e)
         {
             if (currentOrderCustomer == null)
@@ -362,7 +361,7 @@ namespace FurnitureDepot.UserControls
 
             this.cartDataGridView.Columns.Add("nameColumn", "Item Name");
             this.cartDataGridView.Columns.Add("quantityColumn", "Quantity");
-            this.cartDataGridView.Columns.Add("unitPriceColumn", "Unit Price");
+            this.cartDataGridView.Columns.Add("unitPriceColumn", "Daily Rate");
 
             var furnitureIdColumn = new DataGridViewTextBoxColumn();
             furnitureIdColumn.Name = "furnitureIdColumn";
