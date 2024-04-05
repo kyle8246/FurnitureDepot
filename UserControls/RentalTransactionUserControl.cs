@@ -273,23 +273,41 @@ namespace FurnitureDepot.UserControls
 
             int transactionId = rentalController.InsertRentalTransaction(transaction);
 
-            List<RentalItem> items = new List<RentalItem>();
-            foreach (DataGridViewRow row in cartDataGridView.Rows)
+            if (transactionId > 0)
             {
-                int furnitureId = Convert.ToInt32(row.Cells["furnitureIdColumn"].Value);
-
-                items.Add(new RentalItem()
+                List<RentalItem> items = new List<RentalItem>();
+                foreach (DataGridViewRow row in cartDataGridView.Rows)
                 {
-                    RentalTransactionID = transactionId,
-                    FurnitureID = furnitureId,
-                    Quantity = Convert.ToInt32(row.Cells["quantityColumn"].Value),
-                    DailyRate = Convert.ToDecimal(row.Cells["unitPriceColumn"].Value)
-                });
+                    int furnitureId = Convert.ToInt32(row.Cells["furnitureIdColumn"].Value);
+                    int quantity = Convert.ToInt32(row.Cells["quantityColumn"].Value);
+
+                    items.Add(new RentalItem()
+                    {
+                        RentalTransactionID = transactionId,
+                        FurnitureID = furnitureId,
+                        Quantity = quantity,
+                        DailyRate = Convert.ToDecimal(row.Cells["unitPriceColumn"].Value)
+                    });
+
+                    bool updateSuccess = furnitureController.UpdateInStockNumber(furnitureId, quantity);
+                    if (!updateSuccess)
+                    {
+                        MessageBox.Show($"Failed to update inventory for furniture ID {furnitureId}.", "Inventory Update Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                        return -1;
+                    }
+                }
+
+                rentalController.InsertRentalItems(items);
+
+                ClearTransaction();
+            }
+            else
+            {
+                MessageBox.Show("Failed to save the rental transaction.", "Transaction Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return -1;
             }
 
-            rentalController.InsertRentalItems(items);
-
-            ClearTransaction();
             return transactionId;
         }
 
@@ -311,8 +329,8 @@ namespace FurnitureDepot.UserControls
             receiptText.AppendLine("Rental Transaction Receipt");
             receiptText.AppendLine("--------------------------");
             receiptText.AppendLine($"Transaction ID: {transaction.RentalTransactionID}");
-            receiptText.AppendLine($"Customer Name: {customerName}");
-            receiptText.AppendLine($"Employee Name: {employeeName}");
+            receiptText.AppendLine($"Customer ID: {transaction.MemberID} - {customerName}");
+            receiptText.AppendLine($"Employee ID: {transaction.EmployeeID} - {employeeName}");
             receiptText.AppendLine($"Rental Date: {transaction.RentalDate.ToShortDateString()}");
             receiptText.AppendLine($"Due Date: {transaction.DueDate:d}");
             receiptText.AppendLine($"Total Cost: {transaction.TotalCost:C}");

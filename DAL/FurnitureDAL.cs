@@ -135,5 +135,31 @@ namespace FurnitureDepot.DAL
             return false;
         }
 
+        /// <summary>
+        /// Updates the in stock number.
+        /// </summary>
+        /// <param name="furnitureId">The furniture identifier.</param>
+        /// <param name="quantityToSubtract">The quantity to subtract.</param>
+        /// <returns></returns>
+        public bool UpdateInStockNumber(int furnitureId, int quantityToSubtract)
+        {
+            using (SqlConnection connection = FurnitureDepotDBConnection.GetConnection())
+            {
+                string query = @"
+            UPDATE Furniture
+            SET InStockNumber = InStockNumber - @QuantityToSubtract
+            WHERE FurnitureID = @FurnitureID AND InStockNumber >= @QuantityToSubtract";
+
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@FurnitureID", furnitureId);
+                command.Parameters.AddWithValue("@QuantityToSubtract", quantityToSubtract);
+
+                connection.Open();
+                int rowsAffected = command.ExecuteNonQuery();
+                return rowsAffected > 0; // Return true if the update was successful
+            }
+        }
+
+
     }
 }
