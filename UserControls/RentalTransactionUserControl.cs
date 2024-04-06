@@ -87,10 +87,12 @@ namespace FurnitureDepot.UserControls
                     var selectedFurniture = furnitureComboBox.SelectedItem as Furniture;
                     if (selectedFurniture != null)
                     {
-                        int quantity = (int)quantityPicker.Value;
-                        if (quantity > 0)
+                        int quantityToAdd = (int)quantityPicker.Value;
+                        if (quantityToAdd > 0)
                         {
-                            if (!furnitureController.CheckInStock(selectedFurniture.FurnitureID, quantity))
+                            int currentQuantityInCart = GetQuantityFromCart(selectedFurniture.Name);
+
+                            if (!furnitureController.CheckInStock(selectedFurniture.FurnitureID, currentQuantityInCart + quantityToAdd))
                             {
                                 MessageBox.Show("The required quantity is not available in stock.", "Insufficient Stock", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 return;
@@ -101,7 +103,7 @@ namespace FurnitureDepot.UserControls
                                 if ((int)row.Cells["furnitureIdColumn"].Value == selectedFurniture.FurnitureID)
                                 {
                                     int currentQuantity = Convert.ToInt32(row.Cells["quantityColumn"].Value);
-                                    row.Cells["quantityColumn"].Value = currentQuantity + quantity;
+                                    row.Cells["quantityColumn"].Value = currentQuantity + quantityToAdd;
                                     itemFound = true;
                                     break;
                                 }
@@ -113,7 +115,7 @@ namespace FurnitureDepot.UserControls
                                 DataGridViewRow newRow = cartDataGridView.Rows[rowIndex];
                                 newRow.Cells["nameColumn"].Value = selectedFurniture.Name;
                                 newRow.Cells["unitPriceColumn"].Value = selectedFurniture.DailyRentalRate;
-                                newRow.Cells["quantityColumn"].Value = quantity;
+                                newRow.Cells["quantityColumn"].Value = quantityToAdd;
                                 newRow.Cells["furnitureIdColumn"].Value = selectedFurniture.FurnitureID;
                             }
 
@@ -132,6 +134,19 @@ namespace FurnitureDepot.UserControls
                     MessageBox.Show("Please select a furniture item.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
+        }
+
+        private int GetQuantityFromCart(string furnitureName)
+        {
+            int totalQuantity = 0;
+            foreach (DataGridViewRow row in this.cartDataGridView.Rows)
+            {
+                if (row.Cells["nameColumn"].Value.ToString() == furnitureName)
+                {
+                    totalQuantity += Convert.ToInt32(row.Cells["quantityColumn"].Value);
+                }
+            }
+            return totalQuantity;
         }
 
         private void removeItemButton_Click(object sender, EventArgs e)
