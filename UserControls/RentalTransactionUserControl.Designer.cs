@@ -175,7 +175,7 @@
             this.submitButton.TabIndex = 0;
             this.submitButton.Text = "Submit Transaction";
             this.submitButton.UseVisualStyleBackColor = true;
-            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
+            this.submitButton.Click += new System.EventHandler(this.SubmitButton_Click);
             // 
             // cancelButton
             // 
@@ -186,7 +186,7 @@
             this.cancelButton.TabIndex = 1;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
-            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
+            this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // mainTableLayoutPanel
             // 
@@ -276,7 +276,7 @@
             this.customerIDTextBox.Name = "customerIDTextBox";
             this.customerIDTextBox.Size = new System.Drawing.Size(126, 20);
             this.customerIDTextBox.TabIndex = 0;
-            this.customerIDTextBox.TextChanged += new System.EventHandler(this.customerIDTextBox_TextChanged);
+            this.customerIDTextBox.TextChanged += new System.EventHandler(this.CustomerIDTextBox_TextChanged);
             // 
             // searchButton
             // 
@@ -286,7 +286,7 @@
             this.searchButton.TabIndex = 1;
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = true;
-            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
+            this.searchButton.Click += new System.EventHandler(this.SearchButton_Click);
             // 
             // clearButton
             // 
@@ -296,7 +296,7 @@
             this.clearButton.TabIndex = 2;
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = true;
-            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
+            this.clearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
             // furnitureFlowLayoutPanel
             // 
@@ -390,7 +390,7 @@
             this.addItemButton.TabIndex = 0;
             this.addItemButton.Text = "Add Item";
             this.addItemButton.UseVisualStyleBackColor = true;
-            this.addItemButton.Click += new System.EventHandler(this.addItemButton_Click);
+            this.addItemButton.Click += new System.EventHandler(this.AddItemButton_Click);
             // 
             // removeItemButton
             // 
@@ -401,7 +401,7 @@
             this.removeItemButton.TabIndex = 1;
             this.removeItemButton.Text = "Remove Item";
             this.removeItemButton.UseVisualStyleBackColor = true;
-            this.removeItemButton.Click += new System.EventHandler(this.removeItemButton_Click);
+            this.removeItemButton.Click += new System.EventHandler(this.RemoveItemButton_Click);
             // 
             // RentalTransactionUserControl
             // 

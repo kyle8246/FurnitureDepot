@@ -47,7 +47,7 @@ namespace FurnitureDepot.UserControls
             this.furnitureComboBox.SelectedIndex = 0;
         }
 
-        private void searchButton_Click(object sender, EventArgs e)
+        private void SearchButton_Click(object sender, EventArgs e)
         {
             int customerID;
             if (int.TryParse(customerIDTextBox.Text, out customerID))
@@ -72,7 +72,7 @@ namespace FurnitureDepot.UserControls
             }
         }
 
-        private void addItemButton_Click(object sender, EventArgs e)
+        private void AddItemButton_Click(object sender, EventArgs e)
         {
             if (currentOrderCustomer == null)
             {
@@ -149,7 +149,7 @@ namespace FurnitureDepot.UserControls
             return totalQuantity;
         }
 
-        private void removeItemButton_Click(object sender, EventArgs e)
+        private void RemoveItemButton_Click(object sender, EventArgs e)
         {
             if (currentOrderCustomer == null)
             {
@@ -209,7 +209,7 @@ namespace FurnitureDepot.UserControls
             }
         }
 
-        private void submitButton_Click(object sender, EventArgs e)
+        private void SubmitButton_Click(object sender, EventArgs e)
         {
             if (ValidateRentalTransaction())
             {
@@ -368,7 +368,7 @@ namespace FurnitureDepot.UserControls
             totalCostLabel.Text = "Total Cost: $0.00";
         }
 
-        private void cancelButton_Click(object sender, EventArgs e)
+        private void CancelButton_Click(object sender, EventArgs e)
         {
             Clear();
             this.customerIDTextBox.Text = string.Empty;
@@ -382,7 +382,7 @@ namespace FurnitureDepot.UserControls
             this.customerNameLabel.Text = "Please search a customer.";
         }
 
-        private void clearButton_Click(object sender, EventArgs e)
+        private void ClearButton_Click(object sender, EventArgs e)
         {
             Clear();
             this.customerIDTextBox.Text = string.Empty;
@@ -404,7 +404,7 @@ namespace FurnitureDepot.UserControls
             this.cartDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
-        private void customerIDTextBox_TextChanged(object sender, EventArgs e)
+        private void CustomerIDTextBox_TextChanged(object sender, EventArgs e)
         {
             Clear();
         }
