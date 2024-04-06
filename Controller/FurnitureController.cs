@@ -47,5 +47,16 @@ namespace FurnitureDepot.Controller
         {
             return _furnitureDAL.CheckInStock(furnitureID, requiredQuantity);
         }
+
+        /// <summary>
+        /// Updates the in stock number.
+        /// </summary>
+        /// <param name="furnitureId">The furniture identifier.</param>
+        /// <param name="quantityToSubtract">The quantity to subtract.</param>
+        /// <returns></returns>
+        public bool UpdateInStockNumber(int furnitureId, int quantityToSubtract)
+        {
+            return _furnitureDAL.UpdateInStockNumber(furnitureId, quantityToSubtract);
+        }
     }
 }
