@@ -76,6 +76,7 @@
             // 
             // rentalHistoryDataGridView
             // 
+            this.rentalHistoryDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.rentalHistoryDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.rentalHistoryDataGridView.Location = new System.Drawing.Point(3, 87);
             this.rentalHistoryDataGridView.Name = "rentalHistoryDataGridView";
