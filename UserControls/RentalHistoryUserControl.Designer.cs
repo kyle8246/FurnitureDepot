@@ -80,16 +80,16 @@
             this.rentalHistoryDataGridView.Location = new System.Drawing.Point(3, 87);
             this.rentalHistoryDataGridView.Name = "rentalHistoryDataGridView";
             this.rentalHistoryDataGridView.RowTemplate.Height = 24;
-            this.rentalHistoryDataGridView.Size = new System.Drawing.Size(1059, 200);
+            this.rentalHistoryDataGridView.Size = new System.Drawing.Size(1059, 187);
             this.rentalHistoryDataGridView.TabIndex = 4;
             // 
             // rentalItemsDataGridView
             // 
             this.rentalItemsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.rentalItemsDataGridView.Location = new System.Drawing.Point(3, 299);
+            this.rentalItemsDataGridView.Location = new System.Drawing.Point(3, 280);
             this.rentalItemsDataGridView.Name = "rentalItemsDataGridView";
             this.rentalItemsDataGridView.RowTemplate.Height = 24;
-            this.rentalItemsDataGridView.Size = new System.Drawing.Size(1059, 218);
+            this.rentalItemsDataGridView.Size = new System.Drawing.Size(1059, 202);
             this.rentalItemsDataGridView.TabIndex = 5;
             // 
             // clearButton
