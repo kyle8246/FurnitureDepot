@@ -307,7 +307,14 @@ namespace FurnitureDepot.UserControls
                                 int furnitureId = Convert.ToInt32(row.Cells["furnitureIdColumn"].Value);
                                 int quantity = Convert.ToInt32(row.Cells["quantityColumn"].Value);
 
-                                furnitureController.UpdateInStockNumber(furnitureId, -quantity, transaction);
+                                bool updateSuccess = furnitureController.UpdateInStockNumber(furnitureId, quantity, transaction);
+
+                                if (!updateSuccess)
+                                {
+                                    MessageBox.Show($"Failed to update inventory for furniture ID {furnitureId}.", "Inventory Update Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    transaction.Rollback();
+                                    return -1;
+                                }
 
                                 items.Add(new RentalItem()
                                 {

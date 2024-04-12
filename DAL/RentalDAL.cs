@@ -137,6 +137,12 @@ namespace FurnitureDepot.DAL
             return null;
         }
 
+        /// <summary>
+        /// Inserts the rental transaction.
+        /// </summary>
+        /// <param name="rentalTransaction">The rental transaction.</param>
+        /// <param name="sqlTransaction">The SQL transaction.</param>
+        /// <returns></returns>
         public int InsertRentalTransaction(RentalTransaction rentalTransaction, SqlTransaction sqlTransaction)
         {
             string insertQuery = @"
@@ -157,7 +163,11 @@ namespace FurnitureDepot.DAL
             }
         }
 
-
+        /// <summary>
+        /// Inserts the rental items.
+        /// </summary>
+        /// <param name="items">The items.</param>
+        /// <param name="transaction">The transaction.</param>
         public void InsertRentalItems(List<RentalItem> items, SqlTransaction transaction)
         {
             foreach (var item in items)
