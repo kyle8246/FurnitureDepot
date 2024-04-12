@@ -1,6 +1,7 @@
 ﻿using FurnitureDepot.DAL;
 using FurnitureDepot.Model;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 
 namespace FurnitureDepot.Controller
 {
@@ -48,15 +49,18 @@ namespace FurnitureDepot.Controller
             return _furnitureDAL.CheckInStock(furnitureID, requiredQuantity);
         }
 
+
         /// <summary>
         /// Updates the in stock number.
         /// </summary>
         /// <param name="furnitureId">The furniture identifier.</param>
         /// <param name="quantityToSubtract">The quantity to subtract.</param>
+        /// <param name="transaction">The transaction.</param>
         /// <returns></returns>
-        public bool UpdateInStockNumber(int furnitureId, int quantityToSubtract)
+        public bool UpdateInStockNumber(int furnitureId, int quantityToSubtract, SqlTransaction transaction)
         {
-            return _furnitureDAL.UpdateInStockNumber(furnitureId, quantityToSubtract);
+            return _furnitureDAL.UpdateInStockNumber(furnitureId, quantityToSubtract, transaction);
         }
+
     }
 }
