@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Windows.Forms;
 using FurnitureDepot.Utilities;
 using System.Text;
+using FurnitureDepot.DAL;
+using System.Data.SqlClient;
 
 namespace FurnitureDepot.UserControls
 {
@@ -277,54 +279,69 @@ namespace FurnitureDepot.UserControls
 
         private int SaveRentalTransaction()
         {
-            RentalTransaction transaction = new RentalTransaction()
-            {
-                MemberID = currentOrderCustomer.MemberID,
-                EmployeeID = SessionManager.CurrentEmployeeID,
-                RentalDate = DateTime.Now,
-                DueDate = dueDateDatePicker.Value.Date,
-                TotalCost = CalculateTotalCost()
-            };
+            int transactionId = -1;
 
-            int transactionId = rentalController.InsertRentalTransaction(transaction);
-
-            if (transactionId > 0)
+            using (SqlConnection connection = FurnitureDepotDBConnection.GetConnection())
             {
-                List<RentalItem> items = new List<RentalItem>();
-                foreach (DataGridViewRow row in cartDataGridView.Rows)
+                connection.Open();
+                using (SqlTransaction transaction = connection.BeginTransaction())
                 {
-                    int furnitureId = Convert.ToInt32(row.Cells["furnitureIdColumn"].Value);
-                    int quantity = Convert.ToInt32(row.Cells["quantityColumn"].Value);
-
-                    items.Add(new RentalItem()
+                    try
                     {
-                        RentalTransactionID = transactionId,
-                        FurnitureID = furnitureId,
-                        Quantity = quantity,
-                        DailyRate = Convert.ToDecimal(row.Cells["unitPriceColumn"].Value)
-                    });
+                        RentalTransaction rentalTransaction = new RentalTransaction()
+                        {
+                            MemberID = currentOrderCustomer.MemberID,
+                            EmployeeID = SessionManager.CurrentEmployeeID,
+                            RentalDate = DateTime.Now,
+                            DueDate = dueDateDatePicker.Value.Date,
+                            TotalCost = CalculateTotalCost()
+                        };
 
-                    bool updateSuccess = furnitureController.UpdateInStockNumber(furnitureId, quantity);
-                    if (!updateSuccess)
+                        transactionId = rentalController.InsertRentalTransaction(rentalTransaction, transaction);
+
+                        if (transactionId > 0)
+                        {
+                            List<RentalItem> items = new List<RentalItem>();
+                            foreach (DataGridViewRow row in cartDataGridView.Rows)
+                            {
+                                int furnitureId = Convert.ToInt32(row.Cells["furnitureIdColumn"].Value);
+                                int quantity = Convert.ToInt32(row.Cells["quantityColumn"].Value);
+
+                                furnitureController.UpdateInStockNumber(furnitureId, -quantity, transaction);
+
+                                items.Add(new RentalItem()
+                                {
+                                    RentalTransactionID = transactionId,
+                                    FurnitureID = furnitureId,
+                                    Quantity = quantity,
+                                    DailyRate = Convert.ToDecimal(row.Cells["unitPriceColumn"].Value)
+                                });
+                            }
+
+                            rentalController.InsertRentalItems(items, transaction);
+
+                            transaction.Commit();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed to save the rental transaction.", "Transaction Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            transaction.Rollback();
+                            return -1;
+                        }
+                    }
+                    catch (Exception ex)
                     {
-                        MessageBox.Show($"Failed to update inventory for furniture ID {furnitureId}.", "Inventory Update Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                        transaction.Rollback();
+                        MessageBox.Show($"An error occurred: {ex.Message}", "Transaction Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return -1;
                     }
                 }
-
-                rentalController.InsertRentalItems(items);
-
-                ClearTransaction();
-            }
-            else
-            {
-                MessageBox.Show("Failed to save the rental transaction.", "Transaction Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return -1;
             }
 
+            ClearTransaction();
             return transactionId;
         }
+
 
         private void DisplayReceipt(int transactionId)
         {
