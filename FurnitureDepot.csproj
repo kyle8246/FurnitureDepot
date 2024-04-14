@@ -116,6 +116,12 @@
     <Compile Include="UserControls\RentalTransactionUserControl.Designer.cs">
       <DependentUpon>RentalTransactionUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ReturnTransactionUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ReturnTransactionUserControl.Designer.cs">
+      <DependentUpon>ReturnTransactionUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\SearchCustomerUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -165,6 +171,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\RentalTransactionUserControl.resx">
       <DependentUpon>RentalTransactionUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ReturnTransactionUserControl.resx">
+      <DependentUpon>ReturnTransactionUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\SearchCustomerUserControl.resx">
       <DependentUpon>SearchCustomerUserControl.cs</DependentUpon>
