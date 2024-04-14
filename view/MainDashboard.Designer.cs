@@ -43,6 +43,9 @@ namespace FurnitureDepot.View
             this.rentalHistoryUserControl1 = new FurnitureDepot.UserControls.RentalHistoryUserControl();
             this.usernameLabel = new System.Windows.Forms.Label();
             this.logoutLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.returnManagementTabPage = new System.Windows.Forms.TabPage();
+            this.returnHistoryTabPage = new System.Windows.Forms.TabPage();
+            this.adminReportTabPage = new System.Windows.Forms.TabPage();
             this.dashboardTabControl.SuspendLayout();
             this.registrationTabPage.SuspendLayout();
             this.editTabPage.SuspendLayout();
@@ -63,6 +66,9 @@ namespace FurnitureDepot.View
             this.dashboardTabControl.Controls.Add(this.searchFurnitureTabPage);
             this.dashboardTabControl.Controls.Add(this.rentalTransactionTabPage);
             this.dashboardTabControl.Controls.Add(this.rentalHistoryTabPage);
+            this.dashboardTabControl.Controls.Add(this.returnManagementTabPage);
+            this.dashboardTabControl.Controls.Add(this.returnHistoryTabPage);
+            this.dashboardTabControl.Controls.Add(this.adminReportTabPage);
             this.dashboardTabControl.Location = new System.Drawing.Point(0, 33);
             this.dashboardTabControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dashboardTabControl.Name = "dashboardTabControl";
@@ -85,7 +91,7 @@ namespace FurnitureDepot.View
             // registerCustomerUserControl1
             // 
             this.registerCustomerUserControl1.Location = new System.Drawing.Point(0, 0);
-            this.registerCustomerUserControl1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.registerCustomerUserControl1.Margin = new System.Windows.Forms.Padding(5);
             this.registerCustomerUserControl1.Name = "registerCustomerUserControl1";
             this.registerCustomerUserControl1.Size = new System.Drawing.Size(1060, 480);
             this.registerCustomerUserControl1.TabIndex = 0;
@@ -105,7 +111,7 @@ namespace FurnitureDepot.View
             // editCustomerUserControl
             // 
             this.editCustomerUserControl.Location = new System.Drawing.Point(5, 6);
-            this.editCustomerUserControl.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.editCustomerUserControl.Margin = new System.Windows.Forms.Padding(5);
             this.editCustomerUserControl.Name = "editCustomerUserControl";
             this.editCustomerUserControl.Size = new System.Drawing.Size(1045, 466);
             this.editCustomerUserControl.TabIndex = 0;
@@ -162,7 +168,7 @@ namespace FurnitureDepot.View
             // rentalTransactionUserControl1
             // 
             this.rentalTransactionUserControl1.Location = new System.Drawing.Point(-5, 0);
-            this.rentalTransactionUserControl1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.rentalTransactionUserControl1.Margin = new System.Windows.Forms.Padding(5);
             this.rentalTransactionUserControl1.Name = "rentalTransactionUserControl1";
             this.rentalTransactionUserControl1.Size = new System.Drawing.Size(1055, 478);
             this.rentalTransactionUserControl1.TabIndex = 0;
@@ -205,6 +211,33 @@ namespace FurnitureDepot.View
             this.logoutLinkLabel.Text = "Logout";
             this.logoutLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LogoutLinkLabel_LinkClicked);
             // 
+            // returnManagementTabPage
+            // 
+            this.returnManagementTabPage.Location = new System.Drawing.Point(4, 25);
+            this.returnManagementTabPage.Name = "returnManagementTabPage";
+            this.returnManagementTabPage.Size = new System.Drawing.Size(1056, 481);
+            this.returnManagementTabPage.TabIndex = 6;
+            this.returnManagementTabPage.Text = "Return Management";
+            this.returnManagementTabPage.UseVisualStyleBackColor = true;
+            // 
+            // returnHistoryTabPage
+            // 
+            this.returnHistoryTabPage.Location = new System.Drawing.Point(4, 25);
+            this.returnHistoryTabPage.Name = "returnHistoryTabPage";
+            this.returnHistoryTabPage.Size = new System.Drawing.Size(1056, 481);
+            this.returnHistoryTabPage.TabIndex = 7;
+            this.returnHistoryTabPage.Text = "Return History";
+            this.returnHistoryTabPage.UseVisualStyleBackColor = true;
+            // 
+            // adminReportTabPage
+            // 
+            this.adminReportTabPage.Location = new System.Drawing.Point(4, 25);
+            this.adminReportTabPage.Name = "adminReportTabPage";
+            this.adminReportTabPage.Size = new System.Drawing.Size(1056, 481);
+            this.adminReportTabPage.TabIndex = 8;
+            this.adminReportTabPage.Text = "Admin Report";
+            this.adminReportTabPage.UseVisualStyleBackColor = true;
+            // 
             // MainDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -246,6 +279,8 @@ namespace FurnitureDepot.View
         private UserControls.RentalHistoryUserControl rentalHistoryUserControl1;
         private UserControls.RentalTransactionUserControl rentalTransactionUserControl1;
         private UserControls.SearchFurnitureUserControl searchFurnitureUserControl1;
-
+        private System.Windows.Forms.TabPage returnManagementTabPage;
+        private System.Windows.Forms.TabPage returnHistoryTabPage;
+        private System.Windows.Forms.TabPage adminReportTabPage;
     }
 }
