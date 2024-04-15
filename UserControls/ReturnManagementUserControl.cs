@@ -157,5 +157,12 @@ namespace FurnitureDepot.UserControls
             customerNameLabel.Text = "";
             customerIDTextBox.Text = "";
         }
+
+        public void Clear()
+        {
+            returnTransactionDataGridView.Rows.Clear();
+            customerNameLabel.Text = "";
+            customerIDTextBox.Text = "";
+        }
     }
 }

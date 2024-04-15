@@ -93,6 +93,18 @@ namespace FurnitureDepot.UserControls
             messageLabel.Text = "";
         }
 
+        /// <summary>
+        /// Clears this instance.
+        /// </summary>
+        public void Clear()
+        {
+            idTextBox.Clear();
+            categoryTextBox.Clear();
+            styleTextBox.Clear();
+            furnitureDataGridView.DataSource = null;
+            messageLabel.Text = "";
+        }
+
         private void IdTextBox_TextChanged(object sender, EventArgs e)
         {
             ClearResults();

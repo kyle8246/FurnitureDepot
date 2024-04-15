@@ -9,6 +9,9 @@ namespace FurnitureDepot.View
     /// <seealso cref="System.Windows.Forms.Form" />
     public partial class MainDashboard : Form
     {
+
+        private RegisterCustomerUserControl registerCustomerControl;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="MainDashboard"/> class.
         /// </summary>
@@ -46,7 +49,6 @@ namespace FurnitureDepot.View
 
         private void DashboardTabControl_Selected(object sender, TabControlEventArgs e)
         {
-
             if (e.TabPage == searchFurnitureTabPage)
             {
                 if (e.TabPage.Controls.Count == 0)
@@ -67,8 +69,11 @@ namespace FurnitureDepot.View
             this.editCustomerUserControl?.Clear();
             this.rentalTransactionUserControl1?.Clear();
             this.rentalTransactionUserControl1?.ClearMemberID();
+            this.registerCustomerUserControl1?.ClearStatusLabel();
+            this.searchCustomerUserControl1?.Clear();
+            this.searchFurnitureUserControl1?.Clear();
+            this.rentalHistoryUserControl1?.Clear();
+            this.returnManagementUserControl1?.Clear();
         }
-
-
     }
 }
