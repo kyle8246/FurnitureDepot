@@ -1,6 +1,7 @@
 ﻿using FurnitureDepot.DAL;
 using FurnitureDepot.Model;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 
 namespace FurnitureDepot.Controller
 {
@@ -42,20 +43,21 @@ namespace FurnitureDepot.Controller
         /// <summary>
         /// Inserts the rental transaction.
         /// </summary>
-        /// <param name="transaction">The transaction.</param>
+        /// <param name="rentalTransaction">The rental transaction.</param>
+        /// <param name="sqlTransaction">The SQL transaction.</param>
         /// <returns></returns>
-        public int InsertRentalTransaction(RentalTransaction transaction)
+        public int InsertRentalTransaction(RentalTransaction rentalTransaction, SqlTransaction sqlTransaction)
         {
-            return _rentalDAL.InsertRentalTransaction(transaction);
+            return _rentalDAL.InsertRentalTransaction(rentalTransaction, sqlTransaction);
         }
 
         /// <summary>
         /// Inserts the rental items.
         /// </summary>
         /// <param name="items">The items.</param>
-        public void InsertRentalItems(List<RentalItem> items)
+        public void InsertRentalItems(List<RentalItem> items, SqlTransaction transaction)
         {
-            _rentalDAL.InsertRentalItems(items);
+            _rentalDAL.InsertRentalItems(items, transaction);
         }
 
         /// <summary>

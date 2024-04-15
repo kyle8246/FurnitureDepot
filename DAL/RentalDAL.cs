@@ -101,35 +101,6 @@ namespace FurnitureDepot.DAL
         }
 
         /// <summary>
-        /// Inserts the rental transaction.
-        /// </summary>
-        /// <param name="transaction">The transaction.</param>
-        /// <returns></returns>
-        public int InsertRentalTransaction(RentalTransaction transaction)
-        {
-            using (SqlConnection connection = FurnitureDepotDBConnection.GetConnection())
-            {
-                string insertQuery = @"
-            INSERT INTO RentalTransaction (MemberID, EmployeeID, RentalDate, DueDate, TotalCost)
-            OUTPUT INSERTED.RentalTransactionID
-            VALUES (@MemberID, @EmployeeID, @RentalDate, @DueDate, @TotalCost);";
-
-                using (SqlCommand command = new SqlCommand(insertQuery, connection))
-                {
-                    command.Parameters.AddWithValue("@MemberID", transaction.MemberID);
-                    command.Parameters.AddWithValue("@EmployeeID", transaction.EmployeeID);
-                    command.Parameters.AddWithValue("@RentalDate", transaction.RentalDate);
-                    command.Parameters.AddWithValue("@DueDate", transaction.DueDate);
-                    command.Parameters.AddWithValue("@TotalCost", transaction.TotalCost);
-
-                    connection.Open();
-                    int insertedId = (int)command.ExecuteScalar();
-                    return insertedId;
-                }
-            }
-        }
-
-        /// <summary>
         /// Gets the rental transaction by identifier.
         /// </summary>
         /// <param name="transactionId">The transaction identifier.</param>
@@ -167,33 +138,54 @@ namespace FurnitureDepot.DAL
         }
 
         /// <summary>
-        /// Inserts the rental items.
+        /// Inserts the rental transaction.
         /// </summary>
-        /// <param name="items">The items.</param>
-        public void InsertRentalItems(List<RentalItem> items)
+        /// <param name="rentalTransaction">The rental transaction.</param>
+        /// <param name="sqlTransaction">The SQL transaction.</param>
+        /// <returns></returns>
+        public int InsertRentalTransaction(RentalTransaction rentalTransaction, SqlTransaction sqlTransaction)
         {
-            using (SqlConnection connection = FurnitureDepotDBConnection.GetConnection())
+            string insertQuery = @"
+        INSERT INTO RentalTransaction (MemberID, EmployeeID, RentalDate, DueDate, TotalCost)
+        OUTPUT INSERTED.RentalTransactionID
+        VALUES (@MemberID, @EmployeeID, @RentalDate, @DueDate, @TotalCost);";
+
+            using (SqlCommand command = new SqlCommand(insertQuery, sqlTransaction.Connection, sqlTransaction))
             {
-                connection.Open();
+                command.Parameters.AddWithValue("@MemberID", rentalTransaction.MemberID);
+                command.Parameters.AddWithValue("@EmployeeID", rentalTransaction.EmployeeID);
+                command.Parameters.AddWithValue("@RentalDate", rentalTransaction.RentalDate);
+                command.Parameters.AddWithValue("@DueDate", rentalTransaction.DueDate);
+                command.Parameters.AddWithValue("@TotalCost", rentalTransaction.TotalCost);
 
-                foreach (var item in items)
-                {
-                    string insertItemQuery = @"
-                INSERT INTO RentalItem (RentalTransactionID, FurnitureID, Quantity, DailyRate)
-                VALUES (@RentalTransactionID, @FurnitureID, @Quantity, @DailyRate);";
-
-                    using (SqlCommand command = new SqlCommand(insertItemQuery, connection))
-                    {
-                        command.Parameters.AddWithValue("@RentalTransactionID", item.RentalTransactionID);
-                        command.Parameters.AddWithValue("@FurnitureID", item.FurnitureID);
-                        command.Parameters.AddWithValue("@Quantity", item.Quantity);
-                        command.Parameters.AddWithValue("@DailyRate", item.DailyRate);
-
-                        command.ExecuteNonQuery();
-                    }
-                }
+                int insertedId = (int)command.ExecuteScalar();
+                return insertedId;
             }
         }
 
+        /// <summary>
+        /// Inserts the rental items.
+        /// </summary>
+        /// <param name="items">The items.</param>
+        /// <param name="transaction">The transaction.</param>
+        public void InsertRentalItems(List<RentalItem> items, SqlTransaction transaction)
+        {
+            foreach (var item in items)
+            {
+                string insertItemQuery = @"
+            INSERT INTO RentalItem (RentalTransactionID, FurnitureID, Quantity, DailyRate)
+            VALUES (@RentalTransactionID, @FurnitureID, @Quantity, @DailyRate);";
+
+                using (SqlCommand command = new SqlCommand(insertItemQuery, transaction.Connection, transaction))
+                {
+                    command.Parameters.AddWithValue("@RentalTransactionID", item.RentalTransactionID);
+                    command.Parameters.AddWithValue("@FurnitureID", item.FurnitureID);
+                    command.Parameters.AddWithValue("@Quantity", item.Quantity);
+                    command.Parameters.AddWithValue("@DailyRate", item.DailyRate);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }

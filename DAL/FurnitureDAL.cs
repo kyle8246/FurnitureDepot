@@ -140,24 +140,21 @@ namespace FurnitureDepot.DAL
         /// </summary>
         /// <param name="furnitureId">The furniture identifier.</param>
         /// <param name="quantityToSubtract">The quantity to subtract.</param>
+        /// <param name="transaction">The transaction.</param>
         /// <returns></returns>
-        public bool UpdateInStockNumber(int furnitureId, int quantityToSubtract)
+        public bool UpdateInStockNumber(int furnitureId, int quantityToSubtract, SqlTransaction transaction)
         {
-            using (SqlConnection connection = FurnitureDepotDBConnection.GetConnection())
-            {
-                string query = @"
-            UPDATE Furniture
-            SET InStockNumber = InStockNumber - @QuantityToSubtract
-            WHERE FurnitureID = @FurnitureID AND InStockNumber >= @QuantityToSubtract";
+            string query = @"
+        UPDATE Furniture
+        SET InStockNumber = InStockNumber - @QuantityToSubtract
+        WHERE FurnitureID = @FurnitureID AND InStockNumber >= @QuantityToSubtract";
 
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@FurnitureID", furnitureId);
-                command.Parameters.AddWithValue("@QuantityToSubtract", quantityToSubtract);
+            SqlCommand command = new SqlCommand(query, transaction.Connection, transaction);
+            command.Parameters.AddWithValue("@FurnitureID", furnitureId);
+            command.Parameters.AddWithValue("@QuantityToSubtract", quantityToSubtract);
 
-                connection.Open();
-                int rowsAffected = command.ExecuteNonQuery();
-                return rowsAffected > 0; // Return true if the update was successful
-            }
+            int rowsAffected = command.ExecuteNonQuery();
+            return rowsAffected > 0;
         }
 
 
