@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.messageLabel = new System.Windows.Forms.Label();
-            this.categoryTextBox = new System.Windows.Forms.TextBox();
             this.idTextBox = new System.Windows.Forms.TextBox();
             this.categoryLabel = new System.Windows.Forms.Label();
             this.furnitureIDLabel = new System.Windows.Forms.Label();
             this.styleLabel = new System.Windows.Forms.Label();
-            this.styleTextBox = new System.Windows.Forms.TextBox();
             this.clearButton = new System.Windows.Forms.Button();
             this.searchButton = new System.Windows.Forms.Button();
             this.furnitureDataGridView = new System.Windows.Forms.DataGridView();
+            this.styleComboBox = new System.Windows.Forms.ComboBox();
+            this.categoryComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.furnitureDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,15 +49,6 @@
             this.messageLabel.Name = "messageLabel";
             this.messageLabel.Size = new System.Drawing.Size(0, 13);
             this.messageLabel.TabIndex = 22;
-            // 
-            // categoryTextBox
-            // 
-            this.categoryTextBox.Location = new System.Drawing.Point(187, 46);
-            this.categoryTextBox.Margin = new System.Windows.Forms.Padding(2);
-            this.categoryTextBox.Name = "categoryTextBox";
-            this.categoryTextBox.Size = new System.Drawing.Size(150, 20);
-            this.categoryTextBox.TabIndex = 2;
-            this.categoryTextBox.TextChanged += new System.EventHandler(this.CategoryTextBox_TextChanged);
             // 
             // idTextBox
             // 
@@ -98,15 +89,6 @@
             this.styleLabel.TabIndex = 14;
             this.styleLabel.Text = "Style:";
             // 
-            // styleTextBox
-            // 
-            this.styleTextBox.Location = new System.Drawing.Point(435, 15);
-            this.styleTextBox.Margin = new System.Windows.Forms.Padding(2);
-            this.styleTextBox.Name = "styleTextBox";
-            this.styleTextBox.Size = new System.Drawing.Size(150, 20);
-            this.styleTextBox.TabIndex = 1;
-            this.styleTextBox.TextChanged += new System.EventHandler(this.StyleTextBox_TextChanged);
-            // 
             // clearButton
             // 
             this.clearButton.Location = new System.Drawing.Point(526, 76);
@@ -141,16 +123,34 @@
             this.furnitureDataGridView.Size = new System.Drawing.Size(795, 306);
             this.furnitureDataGridView.TabIndex = 25;
             // 
+            // styleComboBox
+            // 
+            this.styleComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.styleComboBox.FormattingEnabled = true;
+            this.styleComboBox.Location = new System.Drawing.Point(435, 15);
+            this.styleComboBox.Name = "styleComboBox";
+            this.styleComboBox.Size = new System.Drawing.Size(147, 21);
+            this.styleComboBox.TabIndex = 26;
+            // 
+            // categoryComboBox
+            // 
+            this.categoryComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.categoryComboBox.FormattingEnabled = true;
+            this.categoryComboBox.Location = new System.Drawing.Point(189, 46);
+            this.categoryComboBox.Name = "categoryComboBox";
+            this.categoryComboBox.Size = new System.Drawing.Size(148, 21);
+            this.categoryComboBox.TabIndex = 27;
+            // 
             // SearchFurnitureUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.categoryComboBox);
+            this.Controls.Add(this.styleComboBox);
             this.Controls.Add(this.furnitureDataGridView);
             this.Controls.Add(this.clearButton);
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.messageLabel);
-            this.Controls.Add(this.styleTextBox);
-            this.Controls.Add(this.categoryTextBox);
             this.Controls.Add(this.idTextBox);
             this.Controls.Add(this.styleLabel);
             this.Controls.Add(this.categoryLabel);
@@ -166,14 +166,14 @@
 
         #endregion
         private System.Windows.Forms.Label messageLabel;
-        private System.Windows.Forms.TextBox categoryTextBox;
         private System.Windows.Forms.TextBox idTextBox;
         private System.Windows.Forms.Label categoryLabel;
         private System.Windows.Forms.Label furnitureIDLabel;
         private System.Windows.Forms.Label styleLabel;
-        private System.Windows.Forms.TextBox styleTextBox;
         private System.Windows.Forms.Button clearButton;
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.DataGridView furnitureDataGridView;
+        private System.Windows.Forms.ComboBox styleComboBox;
+        private System.Windows.Forms.ComboBox categoryComboBox;
     }
 }
