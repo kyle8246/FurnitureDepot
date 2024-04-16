@@ -86,6 +86,7 @@
     <Compile Include="Controller\EmployeeController.cs" />
     <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Controller\RentalController.cs" />
+    <Compile Include="Controller\ReportController.cs" />
     <Compile Include="Controller\ReturnController.cs" />
     <Compile Include="DAL\CustomerDAL.cs" />
     <Compile Include="DAL\EmployeeDAL.cs" />
@@ -93,13 +94,21 @@
     <Compile Include="DAL\FurnitureDepotDBConnection.cs" />
     <Compile Include="DAL\LoginDAL.cs" />
     <Compile Include="DAL\RentalDAL.cs" />
+    <Compile Include="DAL\ReportDAL.cs" />
     <Compile Include="DAL\ReturnDAL.cs" />
     <Compile Include="Model\Customer.cs" />
     <Compile Include="Model\Furniture.cs" />
     <Compile Include="Model\RentalItem.cs" />
     <Compile Include="Model\RentalTransaction.cs" />
+    <Compile Include="Model\ReportData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControls\AdminReportUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\AdminReportUserControl.Designer.cs">
+      <DependentUpon>AdminReportUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\EditCustomerUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -165,6 +174,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UserControls\AdminReportUserControl.resx">
+      <DependentUpon>AdminReportUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\EditCustomerUserControl.resx">
       <DependentUpon>EditCustomerUserControl.cs</DependentUpon>
     </EmbeddedResource>

@@ -106,5 +106,36 @@ namespace FurnitureDepot.DAL
             }
             return null;
         }
+
+        /// <summary>
+        /// Gets the current employee role.
+        /// </summary>
+        /// <param name="employeeId">The employee identifier.</param>
+        /// <returns></returns>
+        public string GetCurrentEmployeeRole(int employeeId)
+        {
+            string role = string.Empty;
+
+            using (SqlConnection connection = FurnitureDepotDBConnection.GetConnection())
+            {
+                connection.Open();
+
+                string query = "SELECT Role FROM Employee WHERE EmployeeID = @EmployeeID";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.Add("@EmployeeID", SqlDbType.Int).Value = employeeId;
+
+                    object result = command.ExecuteScalar();
+                    if (result != null)
+                    {
+                        role = result.ToString();
+                    }
+                }
+            }
+
+            return role;
+        }
+
     }
 }
