@@ -138,5 +138,15 @@ namespace FurnitureDepot.View
         {
             ClearForm();
         }
+
+        /// <summary>
+        /// Clears the status label.
+        /// </summary>
+        public void ClearStatusLabel()
+        {
+            statusLabel.Text = "";
+            statusLabel.Visible = false;
+        }
+
     }
 }

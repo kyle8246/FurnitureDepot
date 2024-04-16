@@ -62,5 +62,16 @@ namespace FurnitureDepot.Controller
             return _furnitureDAL.UpdateInStockNumber(furnitureId, quantityToSubtract, transaction);
         }
 
+        public List<string> GetFurnitureCategories()
+        {
+            return _furnitureDAL.GetFurnitureCategories();
+        }
+
+        public List<string> GetFurnitureStyles()
+        {
+            return _furnitureDAL.GetFurnitureStyles();
+        }
+
+
     }
 }

@@ -86,12 +86,14 @@
     <Compile Include="Controller\EmployeeController.cs" />
     <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Controller\RentalController.cs" />
+    <Compile Include="Controller\ReturnController.cs" />
     <Compile Include="DAL\CustomerDAL.cs" />
     <Compile Include="DAL\EmployeeDAL.cs" />
     <Compile Include="DAL\FurnitureDAL.cs" />
     <Compile Include="DAL\FurnitureDepotDBConnection.cs" />
     <Compile Include="DAL\LoginDAL.cs" />
     <Compile Include="DAL\RentalDAL.cs" />
+    <Compile Include="DAL\ReturnDAL.cs" />
     <Compile Include="Model\Customer.cs" />
     <Compile Include="Model\Furniture.cs" />
     <Compile Include="Model\RentalItem.cs" />
@@ -127,6 +129,12 @@
     </Compile>
     <Compile Include="UserControls\SearchFurnitureUserControl.Designer.cs">
       <DependentUpon>SearchFurnitureUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ReturnManagementUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ReturnManagementUserControl.Designer.cs">
+      <DependentUpon>ReturnManagementUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Utilities\SessionManager.cs" />
     <Compile Include="View\LoginForm.cs">
@@ -171,6 +179,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\SearchFurnitureUserControl.resx">
       <DependentUpon>SearchFurnitureUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ReturnManagementUserControl.resx">
+      <DependentUpon>ReturnManagementUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
