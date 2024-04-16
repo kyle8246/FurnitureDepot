@@ -130,7 +130,7 @@
             this.styleComboBox.Location = new System.Drawing.Point(435, 15);
             this.styleComboBox.Name = "styleComboBox";
             this.styleComboBox.Size = new System.Drawing.Size(147, 21);
-            this.styleComboBox.TabIndex = 26;
+            this.styleComboBox.TabIndex = 1;
             // 
             // categoryComboBox
             // 
@@ -139,7 +139,7 @@
             this.categoryComboBox.Location = new System.Drawing.Point(189, 46);
             this.categoryComboBox.Name = "categoryComboBox";
             this.categoryComboBox.Size = new System.Drawing.Size(148, 21);
-            this.categoryComboBox.TabIndex = 27;
+            this.categoryComboBox.TabIndex = 2;
             // 
             // SearchFurnitureUserControl
             // 
