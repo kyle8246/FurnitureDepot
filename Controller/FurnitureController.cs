@@ -62,14 +62,33 @@ namespace FurnitureDepot.Controller
             return _furnitureDAL.UpdateInStockNumber(furnitureId, quantityToSubtract, transaction);
         }
 
+        /// <summary>
+        /// Gets the furniture categories.
+        /// </summary>
+        /// <returns></returns>
         public List<string> GetFurnitureCategories()
         {
             return _furnitureDAL.GetFurnitureCategories();
         }
 
+        /// <summary>
+        /// Gets the furniture styles.
+        /// </summary>
+        /// <returns></returns>
         public List<string> GetFurnitureStyles()
         {
             return _furnitureDAL.GetFurnitureStyles();
+        }
+
+        /// <summary>
+        /// Searches the furniture by category and style only.
+        /// </summary>
+        /// <param name="category">The category.</param>
+        /// <param name="style">The style.</param>
+        /// <returns></returns>
+        public List<Furniture> SearchFurnitureByCategoryAndStyleOnly(string category, string style)
+        {
+            return _furnitureDAL.SearchFurnitureByCategoryAndStyleOnly(category, style);
         }
 
 

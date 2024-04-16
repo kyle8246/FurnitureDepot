@@ -8,6 +8,7 @@ using FurnitureDepot.Utilities;
 using System.Text;
 using FurnitureDepot.DAL;
 using System.Data.SqlClient;
+using System.Linq;
 
 namespace FurnitureDepot.UserControls
 {
@@ -37,16 +38,43 @@ namespace FurnitureDepot.UserControls
             this.dueDateDatePicker.ValueChanged += new System.EventHandler(this.DueDateDatePicker_ValueChanged);
         }
 
-        private void PopulateFurnitureComboBox()
+        private void PopulateFurnitureCategoryComboBox()
         {
-            List<Furniture> furnitureItems = furnitureController.GetAllFurnitureItems();
-            furnitureItems.Insert(0, new Furniture { FurnitureID = 0, Name = " - - Select - - " });
+            List<String> furnitureCategories = furnitureController.GetFurnitureCategories();
+            furnitureCategories.Insert(0, "- - Select Category - -");
 
-            this.furnitureComboBox.DataSource = furnitureItems;
-            this.furnitureComboBox.DisplayMember = "Name";
-            this.furnitureComboBox.ValueMember = "FurnitureID";
+            this.categoryComboBox.DataSource = furnitureCategories;
+            this.categoryComboBox.SelectedIndex = 0;
+        }
 
-            this.furnitureComboBox.SelectedIndex = 0;
+        private void PopulateFurnitureStyleComboBox()
+        {
+            List<String> furnitureStyles = furnitureController.GetFurnitureStyles();
+            furnitureStyles.Insert(0, "- - Select Style - -");
+
+            this.styleComboBox.DataSource = furnitureStyles;
+            this.styleComboBox.SelectedIndex = 0;
+        }
+
+        private void UpdateFurnitureItemsComboBox()
+        {
+            string selectedCategory = categoryComboBox.SelectedIndex > 0 ? categoryComboBox.SelectedValue.ToString() : null;
+            string selectedStyle = styleComboBox.SelectedIndex > 0 ? styleComboBox.SelectedValue.ToString() : null;
+
+            var furnitureItems = furnitureController.SearchFurnitureByCategoryAndStyleOnly(selectedCategory, selectedStyle);
+
+            furnitureItemComboBox.DataSource = null;
+            furnitureItemComboBox.Items.Clear();
+            furnitureItemComboBox.Items.Add("- - Select Item - -");
+            
+            foreach (var item in furnitureItems)
+            {
+                furnitureItemComboBox.Items.Add(item);
+            }
+
+            furnitureItemComboBox.DisplayMember = "Name";
+            furnitureItemComboBox.ValueMember = "FurnitureID";
+            furnitureItemComboBox.SelectedIndex = 0;
         }
 
         private void SearchButton_Click(object sender, EventArgs e)
@@ -84,9 +112,9 @@ namespace FurnitureDepot.UserControls
             }
             else
             {
-                if (furnitureComboBox.SelectedIndex > 0)
+                if (furnitureItemComboBox.SelectedIndex > 0)
                 {
-                    var selectedFurniture = furnitureComboBox.SelectedItem as Furniture;
+                    var selectedFurniture = furnitureItemComboBox.SelectedItem as Furniture;
                     if (selectedFurniture != null)
                     {
                         int quantityToAdd = (int)quantityPicker.Value;
@@ -107,6 +135,7 @@ namespace FurnitureDepot.UserControls
                                     int currentQuantity = Convert.ToInt32(row.Cells["quantityColumn"].Value);
                                     row.Cells["quantityColumn"].Value = currentQuantity + quantityToAdd;
                                     itemFound = true;
+                                    ResetFurnitureComboBoxes();
                                     break;
                                 }
                             }
@@ -119,10 +148,11 @@ namespace FurnitureDepot.UserControls
                                 newRow.Cells["unitPriceColumn"].Value = selectedFurniture.DailyRentalRate;
                                 newRow.Cells["quantityColumn"].Value = quantityToAdd;
                                 newRow.Cells["furnitureIdColumn"].Value = selectedFurniture.FurnitureID;
+                                ResetFurnitureComboBoxes();
                             }
 
                             this.quantityPicker.Value = 1;
-                            this.furnitureComboBox.SelectedIndex = 0;
+                            ResetFurnitureComboBoxes();
                             UpdateTotalCost();
                         }
                         else
@@ -164,13 +194,13 @@ namespace FurnitureDepot.UserControls
                 MessageBox.Show("No items in cart to remove.", "Cart Empty", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            else if (this.furnitureComboBox.SelectedIndex <= 0)
+            else if (this.furnitureItemComboBox.SelectedIndex <= 0)
             {
-                MessageBox.Show("Please select a furniture item.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select a furniture item from the drop-down list that is in your cart.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            var selectedFurniture = furnitureComboBox.SelectedItem as Furniture;
+            var selectedFurniture = furnitureItemComboBox.SelectedItem as Furniture;
             if (selectedFurniture != null)
             {
                 bool itemFound = false;
@@ -190,14 +220,14 @@ namespace FurnitureDepot.UserControls
                         {
                             this.cartDataGridView.Rows.Remove(row);
                             this.quantityPicker.Value = 1;
-                            this.furnitureComboBox.SelectedIndex = 0;
+                            this.furnitureItemComboBox.SelectedIndex = 0;
                             UpdateTotalCost();
                         }
                         else
                         {
                             row.Cells["quantityColumn"].Value = currentQuantity - decrementValue;
                             this.quantityPicker.Value = 1;
-                            this.furnitureComboBox.SelectedIndex = 0;
+                            this.furnitureItemComboBox.SelectedIndex = 0;
                             UpdateTotalCost();
                         }
                         break;
@@ -388,7 +418,7 @@ namespace FurnitureDepot.UserControls
         private void ClearTransaction()
         {
             cartDataGridView.Rows.Clear();
-            furnitureComboBox.SelectedIndex = -1;
+            furnitureItemComboBox.SelectedIndex = 0;
             totalCostLabel.Text = "Total Cost: $0.00";
         }
 
@@ -396,11 +426,16 @@ namespace FurnitureDepot.UserControls
         {
             Clear();
             this.customerIDTextBox.Text = string.Empty;
+            this.categoryComboBox.SelectedIndex = 0;
+            this.styleComboBox.SelectedIndex = 0;
+            this.furnitureItemComboBox.SelectedIndex = 0;
         }
 
         private void RentalTransactionUserControl_Load(object sender, EventArgs e)
         {
-            PopulateFurnitureComboBox();
+            PopulateFurnitureCategoryComboBox();
+            PopulateFurnitureStyleComboBox();
+            UpdateFurnitureItemsComboBox();
             InitializeCartGridView();
             this.currentOrderCustomer = null;
             this.customerNameLabel.Text = "Please search a customer.";
@@ -410,6 +445,9 @@ namespace FurnitureDepot.UserControls
         {
             Clear();
             this.customerIDTextBox.Text = string.Empty;
+            this.categoryComboBox.SelectedIndex = 0;
+            this.styleComboBox.SelectedIndex = 0;
+            this.furnitureItemComboBox.SelectedIndex = 0;
         }
 
         private void InitializeCartGridView()
@@ -477,6 +515,72 @@ namespace FurnitureDepot.UserControls
             }
 
             totalCostLabel.Text = $"Total Cost: {totalCost:C}";
+        }
+
+        private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateFurnitureItemsComboBox();
+        }
+
+        private void StyleComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateFurnitureItemsComboBox();
+        }
+
+        private void ResetFurnitureComboBoxes()
+        {
+            this.categoryComboBox.SelectedIndex = 0;
+            this.styleComboBox.SelectedIndex = 0;
+            this.furnitureItemComboBox.SelectedIndex = 0;
+        }
+
+        private void FurnitureItemComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (furnitureItemComboBox.SelectedIndex > 0)
+            {
+                var selectedFurniture = furnitureItemComboBox.SelectedItem as Furniture;
+                if (selectedFurniture != null)
+                {
+                    int inStockAdjusted = CalculateInStock(selectedFurniture);
+                    inStockTextBox.Text = inStockAdjusted.ToString();
+                }
+                else
+                {
+                    inStockTextBox.Text = "N/A";
+                }
+            }
+            else
+            {
+                inStockTextBox.Clear();
+            }
+        }
+
+        private int CalculateInStock(Furniture selectedFurniture)
+        {
+            int inCartQuantity = GetQuantityFromCart(selectedFurniture.Name);
+            int inStockNumber = selectedFurniture.InStockNumber ?? 0;
+            return inStockNumber - inCartQuantity;
+        }
+
+        private void CartDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                var selectedRow = cartDataGridView.Rows[e.RowIndex];
+                if (selectedRow != null)
+                {
+                    var itemName = selectedRow.Cells["nameColumn"].Value.ToString();
+
+                    foreach (var item in furnitureItemComboBox.Items)
+                    {
+                        if (item is Furniture furniture && furniture.Name == itemName)
+                        {
+                            furnitureItemComboBox.SelectedItem = furniture;
+                            break;
+                        }
+                    }
+                }
+            }
         }
 
     }

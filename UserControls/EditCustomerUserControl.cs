@@ -147,6 +147,8 @@ namespace FurnitureDepot.UserControls
                 stateComboBox.SelectedItem = customer.State;
                 zipCodeTextBox.Text = customer.ZipCode;
                 contactPhoneTextBox.Text = customer.ContactPhone;
+
+                originalCustomerData = customer;
             }
             else
             {

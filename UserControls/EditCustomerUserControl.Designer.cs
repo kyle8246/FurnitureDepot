@@ -189,7 +189,7 @@
             this.sexComboBox.Location = new System.Drawing.Point(89, 126);
             this.sexComboBox.Name = "sexComboBox";
             this.sexComboBox.Size = new System.Drawing.Size(149, 21);
-            this.sexComboBox.TabIndex = 3;
+            this.sexComboBox.TabIndex = 4;
             // 
             // flowLayoutPanel1
             // 
@@ -227,7 +227,7 @@
             this.lastNameTextBox.Location = new System.Drawing.Point(89, 62);
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(149, 20);
-            this.lastNameTextBox.TabIndex = 1;
+            this.lastNameTextBox.TabIndex = 2;
             this.lastNameTextBox.TextChanged += new System.EventHandler(this.LastNameTextBox_TextChanged);
             // 
             // firstNameTextBox
@@ -236,7 +236,7 @@
             this.firstNameTextBox.Location = new System.Drawing.Point(89, 94);
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(149, 20);
-            this.firstNameTextBox.TabIndex = 2;
+            this.firstNameTextBox.TabIndex = 3;
             this.firstNameTextBox.TextChanged += new System.EventHandler(this.FirstNameTextBox_TextChanged);
             // 
             // idErrorLabel
@@ -338,7 +338,7 @@
             this.contactPhoneTextBox.Location = new System.Drawing.Point(89, 195);
             this.contactPhoneTextBox.Name = "contactPhoneTextBox";
             this.contactPhoneTextBox.Size = new System.Drawing.Size(149, 20);
-            this.contactPhoneTextBox.TabIndex = 5;
+            this.contactPhoneTextBox.TabIndex = 6;
             this.contactPhoneTextBox.TextChanged += new System.EventHandler(this.ContactPhoneTextBox_TextChanged);
             // 
             // cityTextBox
@@ -396,7 +396,7 @@
             this.editMemberButton.Location = new System.Drawing.Point(244, 230);
             this.editMemberButton.Name = "editMemberButton";
             this.editMemberButton.Size = new System.Drawing.Size(107, 20);
-            this.editMemberButton.TabIndex = 6;
+            this.editMemberButton.TabIndex = 12;
             this.editMemberButton.Text = "Edit";
             this.editMemberButton.UseVisualStyleBackColor = true;
             this.editMemberButton.Click += new System.EventHandler(this.EditMemberButton_Click);
@@ -430,7 +430,7 @@
             this.dobPicker.Location = new System.Drawing.Point(89, 161);
             this.dobPicker.Name = "dobPicker";
             this.dobPicker.Size = new System.Drawing.Size(149, 20);
-            this.dobPicker.TabIndex = 29;
+            this.dobPicker.TabIndex = 5;
             this.dobPicker.Value = new System.DateTime(2024, 3, 28, 0, 0, 0, 0);
             // 
             // EditCustomerUserControl
