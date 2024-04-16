@@ -90,6 +90,14 @@ namespace FurnitureDepot.UserControls
                    (!string.IsNullOrWhiteSpace(lastName) && !string.IsNullOrWhiteSpace(firstName));
         }
 
+        /// <summary>
+        /// Clears this instance.
+        /// </summary>
+        public void Clear()
+        {
+            searchDataGridView.DataSource = null;
+            messageLabel.Text = "";
+        }
         private void ClearForm()
         {
             searchDataGridView.DataSource = null;

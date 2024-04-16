@@ -107,7 +107,7 @@
             this.lowerLeftLayoutPanel.ColumnCount = 3;
             this.lowerLeftLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.94444F));
             this.lowerLeftLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 73.05556F));
-            this.lowerLeftLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 146F));
+            this.lowerLeftLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 148F));
             this.lowerLeftLayoutPanel.Controls.Add(this.dueDateLabel, 0, 0);
             this.lowerLeftLayoutPanel.Controls.Add(this.dueDateDatePicker, 1, 0);
             this.lowerLeftLayoutPanel.Controls.Add(this.totalCostLabel, 1, 1);
@@ -125,7 +125,7 @@
             this.dueDateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.dueDateLabel.AutoSize = true;
             this.dueDateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dueDateLabel.Location = new System.Drawing.Point(9, 9);
+            this.dueDateLabel.Location = new System.Drawing.Point(8, 9);
             this.dueDateLabel.Name = "dueDateLabel";
             this.dueDateLabel.Size = new System.Drawing.Size(67, 16);
             this.dueDateLabel.TabIndex = 0;
@@ -134,9 +134,9 @@
             // dueDateDatePicker
             // 
             this.dueDateDatePicker.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dueDateDatePicker.Location = new System.Drawing.Point(82, 3);
+            this.dueDateDatePicker.Location = new System.Drawing.Point(81, 3);
             this.dueDateDatePicker.Name = "dueDateDatePicker";
-            this.dueDateDatePicker.Size = new System.Drawing.Size(209, 20);
+            this.dueDateDatePicker.Size = new System.Drawing.Size(208, 20);
             this.dueDateDatePicker.TabIndex = 1;
             // 
             // totalCostLabel
@@ -144,7 +144,7 @@
             this.totalCostLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.totalCostLabel.AutoSize = true;
             this.totalCostLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalCostLabel.Location = new System.Drawing.Point(82, 32);
+            this.totalCostLabel.Location = new System.Drawing.Point(81, 32);
             this.totalCostLabel.Name = "totalCostLabel";
             this.totalCostLabel.Size = new System.Drawing.Size(85, 20);
             this.totalCostLabel.TabIndex = 2;

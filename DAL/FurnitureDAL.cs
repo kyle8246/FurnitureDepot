@@ -157,6 +157,49 @@ namespace FurnitureDepot.DAL
             return rowsAffected > 0;
         }
 
+        public List<string> GetFurnitureCategories()
+        {
+            List<string> categories = new List<string>();
+            using (SqlConnection connection = FurnitureDepotDBConnection.GetConnection())
+            {
+                string query = "SELECT DISTINCT CategoryName FROM Furniture ORDER BY CategoryName";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            categories.Add(reader["CategoryName"].ToString());
+                        }
+                    }
+                }
+            }
+            return categories;
+        }
+
+        public List<string> GetFurnitureStyles()
+        {
+            List<string> styles = new List<string>();
+            using (SqlConnection connection = FurnitureDepotDBConnection.GetConnection())
+            {
+                string query = "SELECT DISTINCT StyleName FROM Furniture ORDER BY StyleName";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            styles.Add(reader["StyleName"].ToString());
+                        }
+                    }
+                }
+            }
+            return styles;
+        }
+
+
 
     }
 }
