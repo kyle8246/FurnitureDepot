@@ -21,9 +21,13 @@ namespace FurnitureDepot.DAL
 
             using (SqlConnection connection = FurnitureDepotDBConnection.GetConnection())
             {
-                string query = @"SELECT rt.RentalTransactionID, rt.MemberID, rt.EmployeeID, rt.RentalDate, rt.DueDate, rt.TotalCost
-                                 FROM RentalTransaction rt
-                                 WHERE rt.MemberID = @MemberID";
+                string query = @"SELECT rt.RentalTransactionID, rt.MemberID, rt.EmployeeID, rt.RentalDate, rt.DueDate, rt.TotalCost,
+                                       e.FirstName + ' ' + e.LastName as EmployeeName,
+                                       c.FirstName + ' ' + c.LastName as CustomerName
+                                FROM RentalTransaction rt
+                                JOIN Employee e ON rt.EmployeeID = e.EmployeeID
+                                JOIN Member c ON rt.MemberID = c.MemberID
+                                WHERE rt.MemberID = @MemberID";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -42,6 +46,8 @@ namespace FurnitureDepot.DAL
                                 RentalDate = reader.GetDateTime(3),
                                 DueDate = reader.GetDateTime(4),
                                 TotalCost = reader.GetDecimal(5),
+                                EmployeeName = reader.GetString(6),
+                                CustomerName = reader.GetString(7)
                             };
 
                             transactions.Add(transaction);

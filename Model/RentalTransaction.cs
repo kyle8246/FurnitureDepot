@@ -13,5 +13,7 @@ namespace FurnitureDepot.Model
         public DateTime RentalDate { get; set; }
         public DateTime DueDate { get; set; }
         public decimal TotalCost { get; set; }
+        public string CustomerName { get; set; }
+        public string EmployeeName { get; set; }
     }
 }
