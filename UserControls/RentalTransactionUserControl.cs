@@ -8,6 +8,7 @@ using FurnitureDepot.Utilities;
 using System.Text;
 using FurnitureDepot.DAL;
 using System.Data.SqlClient;
+using System.Linq;
 
 namespace FurnitureDepot.UserControls
 {
@@ -195,7 +196,7 @@ namespace FurnitureDepot.UserControls
             }
             else if (this.furnitureItemComboBox.SelectedIndex <= 0)
             {
-                MessageBox.Show("Please select a furniture item.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select a furniture item from the drop-down list that is in your cart.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -516,12 +517,12 @@ namespace FurnitureDepot.UserControls
             totalCostLabel.Text = $"Total Cost: {totalCost:C}";
         }
 
-        private void categoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             UpdateFurnitureItemsComboBox();
         }
 
-        private void styleComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void StyleComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             UpdateFurnitureItemsComboBox();
         }
@@ -533,7 +534,7 @@ namespace FurnitureDepot.UserControls
             this.furnitureItemComboBox.SelectedIndex = 0;
         }
 
-        private void furnitureItemComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void FurnitureItemComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (furnitureItemComboBox.SelectedIndex > 0)
             {
@@ -560,5 +561,27 @@ namespace FurnitureDepot.UserControls
             int inStockNumber = selectedFurniture.InStockNumber ?? 0;
             return inStockNumber - inCartQuantity;
         }
+
+        private void CartDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                var selectedRow = cartDataGridView.Rows[e.RowIndex];
+                if (selectedRow != null)
+                {
+                    var itemName = selectedRow.Cells["nameColumn"].Value.ToString();
+
+                    foreach (var item in furnitureItemComboBox.Items)
+                    {
+                        if (item is Furniture furniture && furniture.Name == itemName)
+                        {
+                            furnitureItemComboBox.SelectedItem = furniture;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
     }
 }

@@ -224,6 +224,7 @@
             this.cartDataGridView.Name = "cartDataGridView";
             this.cartDataGridView.Size = new System.Drawing.Size(711, 118);
             this.cartDataGridView.TabIndex = 0;
+            this.cartDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CartDataGridView_CellClick);
             // 
             // upperTableLayoutPanel
             // 
@@ -332,7 +333,7 @@
             this.categoryComboBox.Name = "categoryComboBox";
             this.categoryComboBox.Size = new System.Drawing.Size(211, 21);
             this.categoryComboBox.TabIndex = 0;
-            this.categoryComboBox.SelectedIndexChanged += new System.EventHandler(this.categoryComboBox_SelectedIndexChanged);
+            this.categoryComboBox.SelectedIndexChanged += new System.EventHandler(this.CategoryComboBox_SelectedIndexChanged);
             // 
             // quantityPicker
             // 
@@ -360,7 +361,7 @@
             this.styleComboBox.Name = "styleComboBox";
             this.styleComboBox.Size = new System.Drawing.Size(211, 21);
             this.styleComboBox.TabIndex = 2;
-            this.styleComboBox.SelectedIndexChanged += new System.EventHandler(this.styleComboBox_SelectedIndexChanged);
+            this.styleComboBox.SelectedIndexChanged += new System.EventHandler(this.StyleComboBox_SelectedIndexChanged);
             // 
             // furnitureLabel
             // 
@@ -467,7 +468,7 @@
             this.furnitureItemComboBox.Name = "furnitureItemComboBox";
             this.furnitureItemComboBox.Size = new System.Drawing.Size(211, 21);
             this.furnitureItemComboBox.TabIndex = 1;
-            this.furnitureItemComboBox.SelectedIndexChanged += new System.EventHandler(this.furnitureItemComboBox_SelectedIndexChanged);
+            this.furnitureItemComboBox.SelectedIndexChanged += new System.EventHandler(this.FurnitureItemComboBox_SelectedIndexChanged);
             // 
             // tableLayoutPanel2
             // 
