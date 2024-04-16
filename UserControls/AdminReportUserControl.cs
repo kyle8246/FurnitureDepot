@@ -1,4 +1,5 @@
 ﻿using FurnitureDepot.Controller;
+using FurnitureDepot.Utilities;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -12,6 +13,7 @@ namespace FurnitureDepot.UserControls
     public partial class AdminReportUserControl : UserControl
     {
         private ReportController reportController;
+        private EmployeeController employeeController;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AdminReportUserControl"/> class.
@@ -20,14 +22,40 @@ namespace FurnitureDepot.UserControls
         {
             InitializeComponent();
             reportController = new ReportController();
+            employeeController = new EmployeeController();
+
             this.startDatePicker.ValueChanged += DateChanged;
             this.endDatePicker.ValueChanged += DateChanged;
             this.VisibleChanged += AdminReportUserControl_VisibleChanged;
+
+            SetupControlBasedOnUserRole();
+        }
+
+        private void SetupControlBasedOnUserRole()
+        {
+            if (!IsAdmin())
+            {
+                DisableReportingFeatures();
+            }
+        }
+
+        private bool IsAdmin()
+        {
+            return employeeController.GetCurrentEmployeeRole(SessionManager.CurrentEmployeeID) == "Administrator";
+        }
+
+        private void DisableReportingFeatures()
+        {
+            generateReportButton.Enabled = false;
+            startDatePicker.Enabled = false;
+            endDatePicker.Enabled = false;
+            messageLabel.Text = "You do not have permission to access this feature";
+            messageLabel.ForeColor = Color.Red;
         }
 
         private void AdminReportUserControl_VisibleChanged(object sender, EventArgs e)
         {
-            if (this.Visible)
+            if (this.Visible && IsAdmin())
             {
                 ResetView();
             }
@@ -65,8 +93,11 @@ namespace FurnitureDepot.UserControls
 
         private void DateChanged(object sender, EventArgs e)
         {
-            messageLabel.Text = "";
-            reportDataGridView.DataSource = null;
+            if (IsAdmin())
+            {
+                messageLabel.Text = "";
+                reportDataGridView.DataSource = null;
+            }
         }
 
         private void ResetView()
