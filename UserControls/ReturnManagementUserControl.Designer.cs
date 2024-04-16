@@ -43,9 +43,6 @@
             this.cancelButton = new System.Windows.Forms.Button();
             this.mainTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.returnTransactionDataGridView = new System.Windows.Forms.DataGridView();
-            this.upperTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.upperLeftLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.customerIDLabel = new System.Windows.Forms.Label();
             this.selectColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.transactionIDColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.itemIDColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,6 +51,10 @@
             this.dueDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dailyRateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.returnQuantityColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.upperTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.upperLeftLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.customerIDLabel = new System.Windows.Forms.Label();
+            this.feesValueLabel = new System.Windows.Forms.Label();
             this.upperRightLayoutPanel.SuspendLayout();
             this.customerFlowLayoutPanel.SuspendLayout();
             this.rentalTransactionTableLayout.SuspendLayout();
@@ -70,7 +71,8 @@
             // 
             this.customerNameLabel.AutoSize = true;
             this.customerNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customerNameLabel.Location = new System.Drawing.Point(3, 0);
+            this.customerNameLabel.Location = new System.Drawing.Point(4, 0);
+            this.customerNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.customerNameLabel.Name = "customerNameLabel";
             this.customerNameLabel.Size = new System.Drawing.Size(132, 20);
             this.customerNameLabel.TabIndex = 0;
@@ -82,27 +84,30 @@
             this.upperRightLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.upperRightLayoutPanel.Controls.Add(this.customerNameLabel, 0, 0);
             this.upperRightLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.upperRightLayoutPanel.Location = new System.Drawing.Point(431, 3);
+            this.upperRightLayoutPanel.Location = new System.Drawing.Point(575, 4);
+            this.upperRightLayoutPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.upperRightLayoutPanel.Name = "upperRightLayoutPanel";
             this.upperRightLayoutPanel.RowCount = 2;
             this.upperRightLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.upperRightLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.upperRightLayoutPanel.Size = new System.Drawing.Size(290, 44);
+            this.upperRightLayoutPanel.Size = new System.Drawing.Size(387, 52);
             this.upperRightLayoutPanel.TabIndex = 1;
             // 
             // customerIDTextBox
             // 
             this.customerIDTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.customerIDTextBox.Location = new System.Drawing.Point(3, 6);
+            this.customerIDTextBox.Location = new System.Drawing.Point(4, 10);
+            this.customerIDTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.customerIDTextBox.Name = "customerIDTextBox";
-            this.customerIDTextBox.Size = new System.Drawing.Size(126, 20);
+            this.customerIDTextBox.Size = new System.Drawing.Size(167, 22);
             this.customerIDTextBox.TabIndex = 0;
             // 
             // searchButton
             // 
-            this.searchButton.Location = new System.Drawing.Point(135, 3);
+            this.searchButton.Location = new System.Drawing.Point(179, 4);
+            this.searchButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(79, 23);
+            this.searchButton.Size = new System.Drawing.Size(105, 28);
             this.searchButton.TabIndex = 1;
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = true;
@@ -110,9 +115,10 @@
             // 
             // clearButton
             // 
-            this.clearButton.Location = new System.Drawing.Point(220, 3);
+            this.clearButton.Location = new System.Drawing.Point(292, 4);
+            this.clearButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.clearButton.Name = "clearButton";
-            this.clearButton.Size = new System.Drawing.Size(62, 23);
+            this.clearButton.Size = new System.Drawing.Size(83, 28);
             this.clearButton.TabIndex = 2;
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = true;
@@ -124,9 +130,10 @@
             this.customerFlowLayoutPanel.Controls.Add(this.searchButton);
             this.customerFlowLayoutPanel.Controls.Add(this.clearButton);
             this.customerFlowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.customerFlowLayoutPanel.Location = new System.Drawing.Point(119, 3);
+            this.customerFlowLayoutPanel.Location = new System.Drawing.Point(159, 4);
+            this.customerFlowLayoutPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.customerFlowLayoutPanel.Name = "customerFlowLayoutPanel";
-            this.customerFlowLayoutPanel.Size = new System.Drawing.Size(300, 29);
+            this.customerFlowLayoutPanel.Size = new System.Drawing.Size(400, 34);
             this.customerFlowLayoutPanel.TabIndex = 2;
             // 
             // rentalTransactionTableLayout
@@ -138,11 +145,12 @@
             this.rentalTransactionTableLayout.Controls.Add(this.mainTableLayoutPanel, 1, 0);
             this.rentalTransactionTableLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rentalTransactionTableLayout.Location = new System.Drawing.Point(0, 0);
+            this.rentalTransactionTableLayout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rentalTransactionTableLayout.Name = "rentalTransactionTableLayout";
             this.rentalTransactionTableLayout.RowCount = 2;
             this.rentalTransactionTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 78.24934F));
             this.rentalTransactionTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.75066F));
-            this.rentalTransactionTableLayout.Size = new System.Drawing.Size(745, 377);
+            this.rentalTransactionTableLayout.Size = new System.Drawing.Size(993, 464);
             this.rentalTransactionTableLayout.TabIndex = 1;
             // 
             // lowerTableLayoutPanel
@@ -153,12 +161,13 @@
             this.lowerTableLayoutPanel.Controls.Add(this.lowerLeftLayoutPanel, 0, 0);
             this.lowerTableLayoutPanel.Controls.Add(this.lowerRightLayoutPanel, 1, 0);
             this.lowerTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lowerTableLayoutPanel.Location = new System.Drawing.Point(12, 298);
+            this.lowerTableLayoutPanel.Location = new System.Drawing.Point(15, 367);
+            this.lowerTableLayoutPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lowerTableLayoutPanel.Name = "lowerTableLayoutPanel";
             this.lowerTableLayoutPanel.RowCount = 2;
             this.lowerTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 86.8421F));
             this.lowerTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.1579F));
-            this.lowerTableLayoutPanel.Size = new System.Drawing.Size(730, 76);
+            this.lowerTableLayoutPanel.Size = new System.Drawing.Size(974, 93);
             this.lowerTableLayoutPanel.TabIndex = 1;
             // 
             // lowerLeftLayoutPanel
@@ -166,15 +175,17 @@
             this.lowerLeftLayoutPanel.ColumnCount = 3;
             this.lowerLeftLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.94444F));
             this.lowerLeftLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 73.05556F));
-            this.lowerLeftLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 151F));
+            this.lowerLeftLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 203F));
             this.lowerLeftLayoutPanel.Controls.Add(this.feesLabel, 0, 0);
+            this.lowerLeftLayoutPanel.Controls.Add(this.feesValueLabel, 1, 0);
             this.lowerLeftLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lowerLeftLayoutPanel.Location = new System.Drawing.Point(3, 3);
+            this.lowerLeftLayoutPanel.Location = new System.Drawing.Point(4, 4);
+            this.lowerLeftLayoutPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lowerLeftLayoutPanel.Name = "lowerLeftLayoutPanel";
             this.lowerLeftLayoutPanel.RowCount = 2;
             this.lowerLeftLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 43.33333F));
             this.lowerLeftLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 56.66667F));
-            this.lowerLeftLayoutPanel.Size = new System.Drawing.Size(449, 60);
+            this.lowerLeftLayoutPanel.Size = new System.Drawing.Size(600, 72);
             this.lowerLeftLayoutPanel.TabIndex = 0;
             // 
             // feesLabel
@@ -182,11 +193,12 @@
             this.feesLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.feesLabel.AutoSize = true;
             this.feesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.feesLabel.Location = new System.Drawing.Point(36, 9);
+            this.feesLabel.Location = new System.Drawing.Point(61, 15);
+            this.feesLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.feesLabel.Name = "feesLabel";
             this.feesLabel.Size = new System.Drawing.Size(41, 16);
             this.feesLabel.TabIndex = 0;
-            this.feesLabel.Text = "Fees:";
+            this.feesLabel.Text = "Fees/Fines:";
             // 
             // lowerRightLayoutPanel
             // 
@@ -196,20 +208,22 @@
             this.lowerRightLayoutPanel.Controls.Add(this.processReturnButton, 0, 0);
             this.lowerRightLayoutPanel.Controls.Add(this.cancelButton, 1, 0);
             this.lowerRightLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lowerRightLayoutPanel.Location = new System.Drawing.Point(458, 3);
+            this.lowerRightLayoutPanel.Location = new System.Drawing.Point(612, 4);
+            this.lowerRightLayoutPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lowerRightLayoutPanel.Name = "lowerRightLayoutPanel";
             this.lowerRightLayoutPanel.RowCount = 2;
             this.lowerRightLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55F));
             this.lowerRightLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45F));
-            this.lowerRightLayoutPanel.Size = new System.Drawing.Size(269, 60);
+            this.lowerRightLayoutPanel.Size = new System.Drawing.Size(358, 72);
             this.lowerRightLayoutPanel.TabIndex = 1;
             // 
             // processReturnButton
             // 
             this.processReturnButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.processReturnButton.Location = new System.Drawing.Point(3, 3);
+            this.processReturnButton.Location = new System.Drawing.Point(4, 4);
+            this.processReturnButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.processReturnButton.Name = "processReturnButton";
-            this.processReturnButton.Size = new System.Drawing.Size(128, 27);
+            this.processReturnButton.Size = new System.Drawing.Size(171, 31);
             this.processReturnButton.TabIndex = 0;
             this.processReturnButton.Text = "Process Return";
             this.processReturnButton.UseVisualStyleBackColor = true;
@@ -217,9 +231,10 @@
             // cancelButton
             // 
             this.cancelButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cancelButton.Location = new System.Drawing.Point(137, 3);
+            this.cancelButton.Location = new System.Drawing.Point(183, 4);
+            this.cancelButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(129, 27);
+            this.cancelButton.Size = new System.Drawing.Size(171, 31);
             this.cancelButton.TabIndex = 1;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
@@ -232,12 +247,13 @@
             this.mainTableLayoutPanel.Controls.Add(this.returnTransactionDataGridView, 0, 1);
             this.mainTableLayoutPanel.Controls.Add(this.upperTableLayoutPanel, 0, 0);
             this.mainTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainTableLayoutPanel.Location = new System.Drawing.Point(12, 3);
+            this.mainTableLayoutPanel.Location = new System.Drawing.Point(15, 4);
+            this.mainTableLayoutPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.mainTableLayoutPanel.Name = "mainTableLayoutPanel";
             this.mainTableLayoutPanel.RowCount = 2;
             this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.14533F));
             this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 77.85467F));
-            this.mainTableLayoutPanel.Size = new System.Drawing.Size(730, 289);
+            this.mainTableLayoutPanel.Size = new System.Drawing.Size(974, 355);
             this.mainTableLayoutPanel.TabIndex = 2;
             // 
             // returnTransactionDataGridView
@@ -254,53 +270,11 @@
             this.dailyRateColumn,
             this.returnQuantityColumn});
             this.returnTransactionDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.returnTransactionDataGridView.Location = new System.Drawing.Point(3, 67);
+            this.returnTransactionDataGridView.Location = new System.Drawing.Point(4, 82);
+            this.returnTransactionDataGridView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.returnTransactionDataGridView.Name = "returnTransactionDataGridView";
-            this.returnTransactionDataGridView.Size = new System.Drawing.Size(724, 219);
+            this.returnTransactionDataGridView.Size = new System.Drawing.Size(966, 269);
             this.returnTransactionDataGridView.TabIndex = 0;
-            // 
-            // upperTableLayoutPanel
-            // 
-            this.upperTableLayoutPanel.ColumnCount = 2;
-            this.upperTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 59.15493F));
-            this.upperTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40.84507F));
-            this.upperTableLayoutPanel.Controls.Add(this.upperLeftLayoutPanel, 0, 0);
-            this.upperTableLayoutPanel.Controls.Add(this.upperRightLayoutPanel, 1, 0);
-            this.upperTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.upperTableLayoutPanel.Location = new System.Drawing.Point(3, 3);
-            this.upperTableLayoutPanel.Name = "upperTableLayoutPanel";
-            this.upperTableLayoutPanel.RowCount = 2;
-            this.upperTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 86.66666F));
-            this.upperTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.33333F));
-            this.upperTableLayoutPanel.Size = new System.Drawing.Size(724, 58);
-            this.upperTableLayoutPanel.TabIndex = 1;
-            // 
-            // upperLeftLayoutPanel
-            // 
-            this.upperLeftLayoutPanel.ColumnCount = 2;
-            this.upperLeftLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.53623F));
-            this.upperLeftLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 72.46377F));
-            this.upperLeftLayoutPanel.Controls.Add(this.customerIDLabel, 0, 0);
-            this.upperLeftLayoutPanel.Controls.Add(this.customerFlowLayoutPanel, 1, 0);
-            this.upperLeftLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.upperLeftLayoutPanel.Location = new System.Drawing.Point(3, 3);
-            this.upperLeftLayoutPanel.Name = "upperLeftLayoutPanel";
-            this.upperLeftLayoutPanel.RowCount = 2;
-            this.upperLeftLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 81.81818F));
-            this.upperLeftLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18.18182F));
-            this.upperLeftLayoutPanel.Size = new System.Drawing.Size(422, 44);
-            this.upperLeftLayoutPanel.TabIndex = 0;
-            // 
-            // customerIDLabel
-            // 
-            this.customerIDLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.customerIDLabel.AutoSize = true;
-            this.customerIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customerIDLabel.Location = new System.Drawing.Point(6, 7);
-            this.customerIDLabel.Name = "customerIDLabel";
-            this.customerIDLabel.Size = new System.Drawing.Size(103, 20);
-            this.customerIDLabel.TabIndex = 0;
-            this.customerIDLabel.Text = "Customer ID:";
             // 
             // selectColumn
             // 
@@ -354,13 +328,71 @@
             this.returnQuantityColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.returnQuantityColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
+            // upperTableLayoutPanel
+            // 
+            this.upperTableLayoutPanel.ColumnCount = 2;
+            this.upperTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 59.15493F));
+            this.upperTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40.84507F));
+            this.upperTableLayoutPanel.Controls.Add(this.upperLeftLayoutPanel, 0, 0);
+            this.upperTableLayoutPanel.Controls.Add(this.upperRightLayoutPanel, 1, 0);
+            this.upperTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.upperTableLayoutPanel.Location = new System.Drawing.Point(4, 4);
+            this.upperTableLayoutPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.upperTableLayoutPanel.Name = "upperTableLayoutPanel";
+            this.upperTableLayoutPanel.RowCount = 2;
+            this.upperTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 86.66666F));
+            this.upperTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.33333F));
+            this.upperTableLayoutPanel.Size = new System.Drawing.Size(966, 70);
+            this.upperTableLayoutPanel.TabIndex = 1;
+            // 
+            // upperLeftLayoutPanel
+            // 
+            this.upperLeftLayoutPanel.ColumnCount = 2;
+            this.upperLeftLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.53623F));
+            this.upperLeftLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 72.46377F));
+            this.upperLeftLayoutPanel.Controls.Add(this.customerIDLabel, 0, 0);
+            this.upperLeftLayoutPanel.Controls.Add(this.customerFlowLayoutPanel, 1, 0);
+            this.upperLeftLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.upperLeftLayoutPanel.Location = new System.Drawing.Point(4, 4);
+            this.upperLeftLayoutPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.upperLeftLayoutPanel.Name = "upperLeftLayoutPanel";
+            this.upperLeftLayoutPanel.RowCount = 2;
+            this.upperLeftLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 81.81818F));
+            this.upperLeftLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18.18182F));
+            this.upperLeftLayoutPanel.Size = new System.Drawing.Size(563, 52);
+            this.upperLeftLayoutPanel.TabIndex = 0;
+            // 
+            // customerIDLabel
+            // 
+            this.customerIDLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.customerIDLabel.AutoSize = true;
+            this.customerIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.customerIDLabel.Location = new System.Drawing.Point(26, 11);
+            this.customerIDLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.customerIDLabel.Name = "customerIDLabel";
+            this.customerIDLabel.Size = new System.Drawing.Size(103, 20);
+            this.customerIDLabel.TabIndex = 0;
+            this.customerIDLabel.Text = "Customer ID:";
+            // 
+            // feesValueLabel
+            // 
+            this.feesValueLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.feesValueLabel.AutoSize = true;
+            this.feesValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.feesValueLabel.Location = new System.Drawing.Point(110, 15);
+            this.feesValueLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.feesValueLabel.Name = "feesValueLabel";
+            this.feesValueLabel.Size = new System.Drawing.Size(0, 16);
+            this.feesValueLabel.TabIndex = 1;
+            // 
             // ReturnManagementUserControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.rentalTransactionTableLayout);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ReturnManagementUserControl";
-            this.Size = new System.Drawing.Size(745, 377);
+            this.Size = new System.Drawing.Size(993, 464);
             this.upperRightLayoutPanel.ResumeLayout(false);
             this.upperRightLayoutPanel.PerformLayout();
             this.customerFlowLayoutPanel.ResumeLayout(false);
@@ -406,5 +438,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dueDateColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dailyRateColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn returnQuantityColumn;
+        private System.Windows.Forms.Label feesValueLabel;
     }
 }

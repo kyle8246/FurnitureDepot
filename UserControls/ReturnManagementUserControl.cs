@@ -8,6 +8,7 @@ using FurnitureDepot.Utilities;
 using System.Text;
 using FurnitureDepot.DAL;
 using System.Data.SqlClient;
+using System.Globalization;
 
 namespace FurnitureDepot.UserControls
 {
@@ -142,6 +143,11 @@ namespace FurnitureDepot.UserControls
             {
                 returnTransactionDataGridView.CommitEdit(DataGridViewDataErrorContexts.Commit);
             }
+            if (e.ColumnIndex == returnTransactionDataGridView.Columns["selectColumn"].Index ||
+                e.ColumnIndex == returnTransactionDataGridView.Columns["returnQuantityColumn"].Index)
+            {
+                CalculateReturnFees();
+            }
         }
 
         private void clearButton_Click(object sender, EventArgs e)
@@ -149,6 +155,7 @@ namespace FurnitureDepot.UserControls
             returnTransactionDataGridView.Rows.Clear();
             customerNameLabel.Text = "";
             customerIDTextBox.Text = "";
+            feesValueLabel.Text = "";
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
@@ -156,6 +163,7 @@ namespace FurnitureDepot.UserControls
             returnTransactionDataGridView.Rows.Clear();
             customerNameLabel.Text = "";
             customerIDTextBox.Text = "";
+            feesValueLabel.Text = "";
         }
 
         public void Clear()
@@ -163,6 +171,32 @@ namespace FurnitureDepot.UserControls
             returnTransactionDataGridView.Rows.Clear();
             customerNameLabel.Text = "";
             customerIDTextBox.Text = "";
+            feesValueLabel.Text = "";
         }
+
+        private void CalculateReturnFees()
+        {
+            decimal totalFees = 0m;
+
+            foreach (DataGridViewRow row in returnTransactionDataGridView.Rows)
+            {
+                if (Convert.ToBoolean(row.Cells["selectColumn"].Value) &&
+                    row.Cells["returnQuantityColumn"].Value != null &&
+                    int.TryParse(row.Cells["returnQuantityColumn"].Value.ToString(), out int returnQuantity) &&
+                    returnQuantity > 0)
+                {
+                    if (Decimal.TryParse(row.Cells["dailyRateColumn"].Value.ToString(), NumberStyles.Currency, CultureInfo.CurrentCulture, out decimal dailyRate) &&
+                        DateTime.TryParse(row.Cells["dueDateColumn"].Value.ToString(), out DateTime dueDate))
+                    {
+                        int daysDifference = (DateTime.Now.Date - dueDate.Date).Days;
+                        decimal feeForThisItem = daysDifference * dailyRate * returnQuantity;
+                        totalFees += feeForThisItem;
+                    }
+                }
+            }
+
+            feesValueLabel.Text = $"{totalFees:C2}";
+        }
+
     }
 }
