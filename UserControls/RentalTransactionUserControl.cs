@@ -407,7 +407,7 @@ namespace FurnitureDepot.UserControls
 
             foreach (var item in items)
             {
-                receiptText.AppendLine($"{item.FurnitureName} x{item.Quantity} - {item.DailyRate:C} per day");
+                receiptText.AppendLine($"ID: {item.FurnitureID} - {item.FurnitureName} x{item.Quantity} - {item.DailyRate:C} per day");
             }
 
             MessageBox.Show(receiptText.ToString(), "Receipt", MessageBoxButtons.OK, MessageBoxIcon.Information);

@@ -48,22 +48,22 @@
             this.clearButton = new System.Windows.Forms.Button();
             this.furnitureFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.categoryComboBox = new System.Windows.Forms.ComboBox();
-            this.quantityPicker = new System.Windows.Forms.NumericUpDown();
             this.styleComboBox = new System.Windows.Forms.ComboBox();
+            this.inStockLabel = new System.Windows.Forms.Label();
             this.furnitureLabel = new System.Windows.Forms.Label();
             this.upperRightLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.customerNameLabel = new System.Windows.Forms.Label();
             this.addRemoveButtonLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.addItemButton = new System.Windows.Forms.Button();
+            this.quantityLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.removeItemButton = new System.Windows.Forms.Button();
+            this.addItemButton = new System.Windows.Forms.Button();
             this.furnitureItemLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.itemLabel = new System.Windows.Forms.Label();
             this.furnitureItemComboBox = new System.Windows.Forms.ComboBox();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.quantityLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.inStockLabel = new System.Windows.Forms.Label();
             this.inStockTextBox = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.quantityPicker = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
             this.rentalTransactionTableLayout.SuspendLayout();
             this.lowerTableLayoutPanel.SuspendLayout();
             this.lowerLeftLayoutPanel.SuspendLayout();
@@ -74,12 +74,12 @@
             this.upperLeftLayoutPanel.SuspendLayout();
             this.customerFlowLayoutPanel.SuspendLayout();
             this.furnitureFlowLayoutPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.quantityPicker)).BeginInit();
             this.upperRightLayoutPanel.SuspendLayout();
             this.addRemoveButtonLayoutPanel.SuspendLayout();
+            this.quantityLayoutPanel.SuspendLayout();
             this.furnitureItemLayoutPanel.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            this.quantityLayoutPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.quantityPicker)).BeginInit();
             this.SuspendLayout();
             // 
             // rentalTransactionTableLayout
@@ -119,7 +119,7 @@
             this.lowerLeftLayoutPanel.ColumnCount = 3;
             this.lowerLeftLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.94444F));
             this.lowerLeftLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 73.05556F));
-            this.lowerLeftLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.lowerLeftLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 151F));
             this.lowerLeftLayoutPanel.Controls.Add(this.dueDateLabel, 0, 0);
             this.lowerLeftLayoutPanel.Controls.Add(this.dueDateDatePicker, 1, 0);
             this.lowerLeftLayoutPanel.Controls.Add(this.totalCostLabel, 1, 1);
@@ -148,7 +148,7 @@
             this.dueDateDatePicker.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dueDateDatePicker.Location = new System.Drawing.Point(81, 3);
             this.dueDateDatePicker.Name = "dueDateDatePicker";
-            this.dueDateDatePicker.Size = new System.Drawing.Size(206, 20);
+            this.dueDateDatePicker.Size = new System.Drawing.Size(205, 20);
             this.dueDateDatePicker.TabIndex = 1;
             // 
             // totalCostLabel
@@ -335,24 +335,6 @@
             this.categoryComboBox.TabIndex = 0;
             this.categoryComboBox.SelectedIndexChanged += new System.EventHandler(this.CategoryComboBox_SelectedIndexChanged);
             // 
-            // quantityPicker
-            // 
-            this.quantityPicker.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.quantityPicker.Location = new System.Drawing.Point(116, 6);
-            this.quantityPicker.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.quantityPicker.Name = "quantityPicker";
-            this.quantityPicker.Size = new System.Drawing.Size(56, 20);
-            this.quantityPicker.TabIndex = 1;
-            this.quantityPicker.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
             // styleComboBox
             // 
             this.styleComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -362,6 +344,17 @@
             this.styleComboBox.Size = new System.Drawing.Size(211, 21);
             this.styleComboBox.TabIndex = 2;
             this.styleComboBox.SelectedIndexChanged += new System.EventHandler(this.StyleComboBox_SelectedIndexChanged);
+            // 
+            // inStockLabel
+            // 
+            this.inStockLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.inStockLabel.AutoSize = true;
+            this.inStockLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inStockLabel.Location = new System.Drawing.Point(220, 38);
+            this.inStockLabel.Name = "inStockLabel";
+            this.inStockLabel.Size = new System.Drawing.Size(57, 16);
+            this.inStockLabel.TabIndex = 3;
+            this.inStockLabel.Text = "In Stock:";
             // 
             // furnitureLabel
             // 
@@ -409,16 +402,19 @@
             this.addRemoveButtonLayoutPanel.Size = new System.Drawing.Size(279, 52);
             this.addRemoveButtonLayoutPanel.TabIndex = 1;
             // 
-            // addItemButton
+            // quantityLayoutPanel
             // 
-            this.addItemButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.addItemButton.Location = new System.Drawing.Point(11, 8);
-            this.addItemButton.Name = "addItemButton";
-            this.addItemButton.Size = new System.Drawing.Size(118, 32);
-            this.addItemButton.TabIndex = 0;
-            this.addItemButton.Text = "Add Item";
-            this.addItemButton.UseVisualStyleBackColor = true;
-            this.addItemButton.Click += new System.EventHandler(this.AddItemButton_Click);
+            this.quantityLayoutPanel.ColumnCount = 2;
+            this.quantityLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.72464F));
+            this.quantityLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.27536F));
+            this.quantityLayoutPanel.Controls.Add(this.removeItemButton, 1, 0);
+            this.quantityLayoutPanel.Controls.Add(this.addItemButton, 0, 0);
+            this.quantityLayoutPanel.Location = new System.Drawing.Point(3, 3);
+            this.quantityLayoutPanel.Name = "quantityLayoutPanel";
+            this.quantityLayoutPanel.RowCount = 1;
+            this.quantityLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.quantityLayoutPanel.Size = new System.Drawing.Size(276, 48);
+            this.quantityLayoutPanel.TabIndex = 0;
             // 
             // removeItemButton
             // 
@@ -431,12 +427,23 @@
             this.removeItemButton.UseVisualStyleBackColor = true;
             this.removeItemButton.Click += new System.EventHandler(this.RemoveItemButton_Click);
             // 
+            // addItemButton
+            // 
+            this.addItemButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.addItemButton.Location = new System.Drawing.Point(11, 8);
+            this.addItemButton.Name = "addItemButton";
+            this.addItemButton.Size = new System.Drawing.Size(118, 32);
+            this.addItemButton.TabIndex = 0;
+            this.addItemButton.Text = "Add Item";
+            this.addItemButton.UseVisualStyleBackColor = true;
+            this.addItemButton.Click += new System.EventHandler(this.AddItemButton_Click);
+            // 
             // furnitureItemLayoutPanel
             // 
             this.furnitureItemLayoutPanel.ColumnCount = 3;
             this.furnitureItemLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.94495F));
             this.furnitureItemLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66.05505F));
-            this.furnitureItemLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 84F));
+            this.furnitureItemLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 85F));
             this.furnitureItemLayoutPanel.Controls.Add(this.itemLabel, 0, 0);
             this.furnitureItemLayoutPanel.Controls.Add(this.furnitureItemComboBox, 1, 0);
             this.furnitureItemLayoutPanel.Controls.Add(this.inStockTextBox, 2, 0);
@@ -453,7 +460,7 @@
             this.itemLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.itemLabel.AutoSize = true;
             this.itemLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemLabel.Location = new System.Drawing.Point(5, 7);
+            this.itemLabel.Location = new System.Drawing.Point(4, 7);
             this.itemLabel.Name = "itemLabel";
             this.itemLabel.Size = new System.Drawing.Size(102, 18);
             this.itemLabel.TabIndex = 0;
@@ -464,11 +471,23 @@
             this.furnitureItemComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.furnitureItemComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.furnitureItemComboBox.FormattingEnabled = true;
-            this.furnitureItemComboBox.Location = new System.Drawing.Point(115, 5);
+            this.furnitureItemComboBox.Location = new System.Drawing.Point(114, 5);
             this.furnitureItemComboBox.Name = "furnitureItemComboBox";
             this.furnitureItemComboBox.Size = new System.Drawing.Size(211, 21);
             this.furnitureItemComboBox.TabIndex = 1;
             this.furnitureItemComboBox.SelectedIndexChanged += new System.EventHandler(this.FurnitureItemComboBox_SelectedIndexChanged);
+            // 
+            // inStockTextBox
+            // 
+            this.inStockTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.inStockTextBox.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.inStockTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.inStockTextBox.Location = new System.Drawing.Point(331, 6);
+            this.inStockTextBox.Name = "inStockTextBox";
+            this.inStockTextBox.ReadOnly = true;
+            this.inStockTextBox.Size = new System.Drawing.Size(79, 20);
+            this.inStockTextBox.TabIndex = 2;
+            this.inStockTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tableLayoutPanel2
             // 
@@ -485,53 +504,34 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(285, 32);
             this.tableLayoutPanel2.TabIndex = 3;
             // 
-            // quantityLayoutPanel
+            // quantityPicker
             // 
-            this.quantityLayoutPanel.ColumnCount = 2;
-            this.quantityLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.72464F));
-            this.quantityLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.27536F));
-            this.quantityLayoutPanel.Controls.Add(this.removeItemButton, 1, 0);
-            this.quantityLayoutPanel.Controls.Add(this.addItemButton, 0, 0);
-            this.quantityLayoutPanel.Location = new System.Drawing.Point(3, 3);
-            this.quantityLayoutPanel.Name = "quantityLayoutPanel";
-            this.quantityLayoutPanel.RowCount = 1;
-            this.quantityLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.quantityLayoutPanel.Size = new System.Drawing.Size(276, 48);
-            this.quantityLayoutPanel.TabIndex = 0;
+            this.quantityPicker.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.quantityPicker.Location = new System.Drawing.Point(115, 6);
+            this.quantityPicker.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.quantityPicker.Name = "quantityPicker";
+            this.quantityPicker.Size = new System.Drawing.Size(56, 20);
+            this.quantityPicker.TabIndex = 1;
+            this.quantityPicker.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label1
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 7);
+            this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(107, 18);
+            this.label1.Size = new System.Drawing.Size(106, 32);
             this.label1.TabIndex = 2;
             this.label1.Text = "Select quantity:";
-            // 
-            // inStockLabel
-            // 
-            this.inStockLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.inStockLabel.AutoSize = true;
-            this.inStockLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inStockLabel.Location = new System.Drawing.Point(220, 38);
-            this.inStockLabel.Name = "inStockLabel";
-            this.inStockLabel.Size = new System.Drawing.Size(57, 16);
-            this.inStockLabel.TabIndex = 3;
-            this.inStockLabel.Text = "In Stock:";
-            // 
-            // inStockTextBox
-            // 
-            this.inStockTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.inStockTextBox.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.inStockTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.inStockTextBox.Location = new System.Drawing.Point(332, 6);
-            this.inStockTextBox.Name = "inStockTextBox";
-            this.inStockTextBox.ReadOnly = true;
-            this.inStockTextBox.Size = new System.Drawing.Size(79, 20);
-            this.inStockTextBox.TabIndex = 2;
-            this.inStockTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // RentalTransactionUserControl
             // 
@@ -555,15 +555,15 @@
             this.customerFlowLayoutPanel.PerformLayout();
             this.furnitureFlowLayoutPanel.ResumeLayout(false);
             this.furnitureFlowLayoutPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.quantityPicker)).EndInit();
             this.upperRightLayoutPanel.ResumeLayout(false);
             this.upperRightLayoutPanel.PerformLayout();
             this.addRemoveButtonLayoutPanel.ResumeLayout(false);
+            this.quantityLayoutPanel.ResumeLayout(false);
             this.furnitureItemLayoutPanel.ResumeLayout(false);
             this.furnitureItemLayoutPanel.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
-            this.quantityLayoutPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.quantityPicker)).EndInit();
             this.ResumeLayout(false);
 
         }
