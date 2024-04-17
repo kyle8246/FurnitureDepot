@@ -47,6 +47,7 @@ namespace FurnitureDepot.UserControls
         private void DisableReportingFeatures()
         {
             generateReportButton.Enabled = false;
+            clearButton.Enabled = false;
             startDatePicker.Enabled = false;
             endDatePicker.Enabled = false;
             messageLabel.Text = "You do not have permission to access this feature";
@@ -106,6 +107,11 @@ namespace FurnitureDepot.UserControls
             endDatePicker.Value = DateTime.Today;
             messageLabel.Text = "";
             reportDataGridView.DataSource = null;
+        }
+
+        private void ClearButton_Click(object sender, EventArgs e)
+        {
+            ResetView();
         }
     }
 }
