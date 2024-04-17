@@ -46,5 +46,15 @@ namespace FurnitureDepot.Controller
         {
             return _employeeDAL.GetEmployeeFullNameById(employeeId);
         }
+
+        /// <summary>
+        /// Gets the current employee role.
+        /// </summary>
+        /// <param name="employeeId">The employee identifier.</param>
+        /// <returns></returns>
+        public string GetCurrentEmployeeRole(int employeeId)
+        {
+            return _employeeDAL.GetCurrentEmployeeRole(employeeId);
+        }
     }
 }
