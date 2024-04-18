@@ -49,7 +49,6 @@
             this.furnitureFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.categoryComboBox = new System.Windows.Forms.ComboBox();
             this.styleComboBox = new System.Windows.Forms.ComboBox();
-            this.inStockLabel = new System.Windows.Forms.Label();
             this.furnitureLabel = new System.Windows.Forms.Label();
             this.upperRightLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.customerNameLabel = new System.Windows.Forms.Label();
@@ -61,9 +60,10 @@
             this.itemLabel = new System.Windows.Forms.Label();
             this.furnitureItemComboBox = new System.Windows.Forms.ComboBox();
             this.inStockTextBox = new System.Windows.Forms.TextBox();
+            this.inStockLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.quantityPicker = new System.Windows.Forms.NumericUpDown();
             this.quantityLabel = new System.Windows.Forms.Label();
+            this.quantityPicker = new System.Windows.Forms.NumericUpDown();
             this.rentalTransactionTableLayout.SuspendLayout();
             this.lowerTableLayoutPanel.SuspendLayout();
             this.lowerLeftLayoutPanel.SuspendLayout();
@@ -119,7 +119,7 @@
             this.lowerLeftLayoutPanel.ColumnCount = 3;
             this.lowerLeftLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.94444F));
             this.lowerLeftLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 73.05556F));
-            this.lowerLeftLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 154F));
+            this.lowerLeftLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 155F));
             this.lowerLeftLayoutPanel.Controls.Add(this.dueDateLabel, 0, 0);
             this.lowerLeftLayoutPanel.Controls.Add(this.dueDateDatePicker, 1, 0);
             this.lowerLeftLayoutPanel.Controls.Add(this.totalCostLabel, 1, 1);
@@ -148,7 +148,7 @@
             this.dueDateDatePicker.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dueDateDatePicker.Location = new System.Drawing.Point(82, 3);
             this.dueDateDatePicker.Name = "dueDateDatePicker";
-            this.dueDateDatePicker.Size = new System.Drawing.Size(209, 20);
+            this.dueDateDatePicker.Size = new System.Drawing.Size(208, 20);
             this.dueDateDatePicker.TabIndex = 11;
             // 
             // totalCostLabel
@@ -344,17 +344,6 @@
             this.styleComboBox.TabIndex = 4;
             this.styleComboBox.SelectedIndexChanged += new System.EventHandler(this.StyleComboBox_SelectedIndexChanged);
             // 
-            // inStockLabel
-            // 
-            this.inStockLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.inStockLabel.AutoSize = true;
-            this.inStockLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inStockLabel.Location = new System.Drawing.Point(265, 8);
-            this.inStockLabel.Name = "inStockLabel";
-            this.inStockLabel.Size = new System.Drawing.Size(57, 16);
-            this.inStockLabel.TabIndex = 17;
-            this.inStockLabel.Text = "In Stock:";
-            // 
             // furnitureLabel
             // 
             this.furnitureLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -443,7 +432,7 @@
             this.furnitureItemLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 43.70079F));
             this.furnitureItemLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 56.29921F));
             this.furnitureItemLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 71F));
-            this.furnitureItemLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 77F));
+            this.furnitureItemLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 78F));
             this.furnitureItemLayoutPanel.Controls.Add(this.itemLabel, 0, 0);
             this.furnitureItemLayoutPanel.Controls.Add(this.furnitureItemComboBox, 1, 0);
             this.furnitureItemLayoutPanel.Controls.Add(this.inStockTextBox, 3, 0);
@@ -474,7 +463,7 @@
             this.furnitureItemComboBox.FormattingEnabled = true;
             this.furnitureItemComboBox.Location = new System.Drawing.Point(114, 5);
             this.furnitureItemComboBox.Name = "furnitureItemComboBox";
-            this.furnitureItemComboBox.Size = new System.Drawing.Size(137, 21);
+            this.furnitureItemComboBox.Size = new System.Drawing.Size(136, 21);
             this.furnitureItemComboBox.TabIndex = 5;
             this.furnitureItemComboBox.SelectedIndexChanged += new System.EventHandler(this.FurnitureItemComboBox_SelectedIndexChanged);
             // 
@@ -483,12 +472,23 @@
             this.inStockTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.inStockTextBox.BackColor = System.Drawing.SystemColors.ControlLight;
             this.inStockTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.inStockTextBox.Location = new System.Drawing.Point(336, 6);
+            this.inStockTextBox.Location = new System.Drawing.Point(335, 6);
             this.inStockTextBox.Name = "inStockTextBox";
             this.inStockTextBox.ReadOnly = true;
             this.inStockTextBox.Size = new System.Drawing.Size(56, 20);
             this.inStockTextBox.TabIndex = 6;
             this.inStockTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // inStockLabel
+            // 
+            this.inStockLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.inStockLabel.AutoSize = true;
+            this.inStockLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inStockLabel.Location = new System.Drawing.Point(264, 8);
+            this.inStockLabel.Name = "inStockLabel";
+            this.inStockLabel.Size = new System.Drawing.Size(57, 16);
+            this.inStockLabel.TabIndex = 17;
+            this.inStockLabel.Text = "In Stock:";
             // 
             // tableLayoutPanel2
             // 
@@ -496,7 +496,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.02564F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58.97436F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 86F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 77F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 78F));
             this.tableLayoutPanel2.Controls.Add(this.quantityLabel, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.quantityPicker, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -507,10 +507,21 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(309, 32);
             this.tableLayoutPanel2.TabIndex = 3;
             // 
+            // quantityLabel
+            // 
+            this.quantityLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.quantityLabel.AutoSize = true;
+            this.quantityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.quantityLabel.Location = new System.Drawing.Point(4, 0);
+            this.quantityLabel.Name = "quantityLabel";
+            this.quantityLabel.Size = new System.Drawing.Size(51, 32);
+            this.quantityLabel.TabIndex = 18;
+            this.quantityLabel.Text = "Select \r\nQuantity:";
+            // 
             // quantityPicker
             // 
             this.quantityPicker.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.quantityPicker.Location = new System.Drawing.Point(74, 6);
+            this.quantityPicker.Location = new System.Drawing.Point(73, 6);
             this.quantityPicker.Minimum = new decimal(new int[] {
             1,
             0,
@@ -524,17 +535,6 @@
             0,
             0,
             0});
-            // 
-            // quantityLabel
-            // 
-            this.quantityLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.quantityLabel.AutoSize = true;
-            this.quantityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.quantityLabel.Location = new System.Drawing.Point(4, 0);
-            this.quantityLabel.Name = "quantityLabel";
-            this.quantityLabel.Size = new System.Drawing.Size(51, 32);
-            this.quantityLabel.TabIndex = 18;
-            this.quantityLabel.Text = "Select \r\nQuantity:";
             // 
             // RentalTransactionUserControl
             // 

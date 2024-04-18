@@ -107,7 +107,7 @@
             this.searchButton.TabIndex = 1;
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = true;
-            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
+            this.searchButton.Click += new System.EventHandler(this.SearchButton_Click);
             // 
             // clearButton
             // 
@@ -117,7 +117,7 @@
             this.clearButton.TabIndex = 2;
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = true;
-            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
+            this.clearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
             // customerFlowLayoutPanel
             // 
@@ -167,7 +167,7 @@
             this.lowerLeftLayoutPanel.ColumnCount = 3;
             this.lowerLeftLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.94444F));
             this.lowerLeftLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 73.05556F));
-            this.lowerLeftLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 153F));
+            this.lowerLeftLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 154F));
             this.lowerLeftLayoutPanel.Controls.Add(this.feesLabel, 0, 0);
             this.lowerLeftLayoutPanel.Controls.Add(this.feesValueLabel, 1, 0);
             this.lowerLeftLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -225,6 +225,7 @@
             this.processReturnButton.TabIndex = 0;
             this.processReturnButton.Text = "Process Return";
             this.processReturnButton.UseVisualStyleBackColor = true;
+            this.processReturnButton.Click += new System.EventHandler(this.ProcessReturnButton_Click);
             // 
             // cancelButton
             // 
@@ -235,7 +236,7 @@
             this.cancelButton.TabIndex = 1;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
-            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
+            this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // mainTableLayoutPanel
             // 

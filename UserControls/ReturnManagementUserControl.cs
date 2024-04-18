@@ -34,12 +34,12 @@ namespace FurnitureDepot.UserControls
             customerController = new CustomerController();
             rentalController = new RentalController();
             returnController = new ReturnController();
-            this.searchButton.Click += new EventHandler(searchButton_Click);
-            returnTransactionDataGridView.DataError += returnTransactionDataGridView_DataError;
-            returnTransactionDataGridView.CurrentCellDirtyStateChanged += new EventHandler(returnTransactionDataGridView_CurrentCellDirtyStateChanged);
-            returnTransactionDataGridView.CellValueChanged += new DataGridViewCellEventHandler(returnTransactionDataGridView_CellValueChanged);
+            this.searchButton.Click += new EventHandler(SearchButton_Click);
+            returnTransactionDataGridView.DataError += ReturnTransactionDataGridView_DataError;
+            returnTransactionDataGridView.CurrentCellDirtyStateChanged += new EventHandler(ReturnTransactionDataGridView_CurrentCellDirtyStateChanged);
+            returnTransactionDataGridView.CellValueChanged += new DataGridViewCellEventHandler(ReturnTransactionDataGridView_CellValueChanged);
             InitializeDataGridView();
-            this.clearButton.Click += new EventHandler(clearButton_Click);
+            this.clearButton.Click += new EventHandler(ClearButton_Click);
         }
 
         private void InitializeDataGridView()
@@ -53,7 +53,7 @@ namespace FurnitureDepot.UserControls
             returnTransactionDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
-        private void searchButton_Click(object sender, EventArgs e)
+        private void SearchButton_Click(object sender, EventArgs e)
         {
             int customerId;
             if (int.TryParse(customerIDTextBox.Text, out customerId))
@@ -114,7 +114,7 @@ namespace FurnitureDepot.UserControls
             }
         }
 
-        private void returnTransactionDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        private void ReturnTransactionDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
             if (e.ColumnIndex == returnTransactionDataGridView.Columns["returnQuantityColumn"].Index)
             {
@@ -130,14 +130,14 @@ namespace FurnitureDepot.UserControls
             }
         }
 
-        private void returnTransactionDataGridView_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        private void ReturnTransactionDataGridView_CurrentCellDirtyStateChanged(object sender, EventArgs e)
         {
             if (returnTransactionDataGridView.IsCurrentCellDirty)
             {
                 returnTransactionDataGridView.CommitEdit(DataGridViewDataErrorContexts.Commit);
             }
         }
-        private void returnTransactionDataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        private void ReturnTransactionDataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.ColumnIndex == returnTransactionDataGridView.Columns["returnQuantityColumn"].Index)
             {
@@ -150,7 +150,7 @@ namespace FurnitureDepot.UserControls
             }
         }
 
-        private void clearButton_Click(object sender, EventArgs e)
+        private void ClearButton_Click(object sender, EventArgs e)
         {
             returnTransactionDataGridView.Rows.Clear();
             customerNameLabel.Text = "";
@@ -158,7 +158,7 @@ namespace FurnitureDepot.UserControls
             feesValueLabel.Text = "";
         }
 
-        private void cancelButton_Click(object sender, EventArgs e)
+        private void CancelButton_Click(object sender, EventArgs e)
         {
             returnTransactionDataGridView.Rows.Clear();
             customerNameLabel.Text = "";
@@ -198,5 +198,9 @@ namespace FurnitureDepot.UserControls
             feesValueLabel.Text = $"{totalFees:C2}";
         }
 
+        private void ProcessReturnButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
