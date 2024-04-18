@@ -5,10 +5,8 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using FurnitureDepot.Utilities;
-using System.Text;
-using FurnitureDepot.DAL;
-using System.Data.SqlClient;
 using System.Globalization;
+using System.Linq;
 
 namespace FurnitureDepot.UserControls
 {
@@ -65,6 +63,7 @@ namespace FurnitureDepot.UserControls
                     customerNameLabel.ForeColor = Color.Black;
 
                     var rentals = rentalController.GetRentalTransactionsByMemberID(customerId);
+                    currentOrderCustomer = customer;
 
                     PopulateRentalsDataGridView(rentals);
                 }
@@ -156,6 +155,7 @@ namespace FurnitureDepot.UserControls
             customerNameLabel.Text = "";
             customerIDTextBox.Text = "";
             feesValueLabel.Text = "";
+            currentOrderCustomer = null;
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
@@ -164,6 +164,7 @@ namespace FurnitureDepot.UserControls
             customerNameLabel.Text = "";
             customerIDTextBox.Text = "";
             feesValueLabel.Text = "";
+            currentOrderCustomer = null;
         }
 
         public void Clear()
@@ -172,6 +173,7 @@ namespace FurnitureDepot.UserControls
             customerNameLabel.Text = "";
             customerIDTextBox.Text = "";
             feesValueLabel.Text = "";
+            currentOrderCustomer = null;
         }
 
         private void CalculateReturnFees()
@@ -200,7 +202,50 @@ namespace FurnitureDepot.UserControls
 
         private void ProcessReturnButton_Click(object sender, EventArgs e)
         {
+            var itemsToReturn = new List<RentalItem>();
+            
+            foreach (DataGridViewRow row in returnTransactionDataGridView.Rows)
+            {
+                bool isSelected = Convert.ToBoolean(row.Cells["selectColumn"].Value);
+                if (isSelected)
+                {
+                    int rentalItemID = Convert.ToInt32(row.Cells["itemIDColumn"].Value);
+                    int returnQuantity = Convert.ToInt32(row.Cells["returnQuantityColumn"].Value);
 
+                    if (returnQuantity == 0) continue;
+
+                    var rentalItem = returnController.GetRentalItemsForReturnByTransactionId(rentalItemID)
+                                        .FirstOrDefault(ri => ri.RentalItemID == rentalItemID);
+                    if (rentalItem != null)
+                    {
+                        rentalItem.QuantityReturned = returnQuantity;
+                        itemsToReturn.Add(rentalItem);
+                    }
+                }
+            }
+            if (itemsToReturn.Count == 0)
+            {
+                MessageBox.Show("No items selected for return.", "Return Processing", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            var confirmResult = MessageBox.Show("Are you sure you want to process the selected returns?", "Confirm Return", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (confirmResult != DialogResult.Yes) { return;  }
+
+            int employeeID = SessionManager.CurrentEmployeeID;
+            int memberID = currentOrderCustomer.MemberID;
+
+            bool isReturnSuccessful = returnController.CompleteReturnProcess(employeeID, memberID, itemsToReturn);
+            if (isReturnSuccessful)
+            {
+                MessageBox.Show("Return processed successfully.", "Return Processed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Clear();
+            }
+            else
+            {
+                MessageBox.Show("Failed to process return.", "Return Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
     }
 }
