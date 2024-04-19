@@ -1,8 +1,7 @@
 ﻿namespace FurnitureDepot.Model
 {
-    /// <summary>
-    /// Returned Item Class
-    /// </summary>
+    /// <summary
+    ///Model of a returned item    /// </summary>
     public class ReturnedItem
     {
         /// <summary>
@@ -37,4 +36,5 @@
         /// </value>
         public int? QuantityReturned { get; set; }
     }
+
 }
