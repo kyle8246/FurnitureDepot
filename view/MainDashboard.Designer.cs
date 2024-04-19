@@ -30,24 +30,25 @@ namespace FurnitureDepot.View
         {
             this.dashboardTabControl = new System.Windows.Forms.TabControl();
             this.registrationTabPage = new System.Windows.Forms.TabPage();
-            this.registerCustomerUserControl1 = new FurnitureDepot.View.RegisterCustomerUserControl();
             this.editTabPage = new System.Windows.Forms.TabPage();
-            this.editCustomerUserControl = new FurnitureDepot.UserControls.EditCustomerUserControl();
             this.searchTabPage = new System.Windows.Forms.TabPage();
-            this.searchCustomerUserControl1 = new FurnitureDepot.UserControls.SearchCustomerUserControl();
             this.searchFurnitureTabPage = new System.Windows.Forms.TabPage();
-            this.searchFurnitureUserControl1 = new FurnitureDepot.UserControls.SearchFurnitureUserControl();
             this.rentalTransactionTabPage = new System.Windows.Forms.TabPage();
-            this.rentalTransactionUserControl1 = new FurnitureDepot.UserControls.RentalTransactionUserControl();
             this.rentalHistoryTabPage = new System.Windows.Forms.TabPage();
-            this.rentalHistoryUserControl1 = new FurnitureDepot.UserControls.RentalHistoryUserControl();
             this.returnManagementTabPage = new System.Windows.Forms.TabPage();
-            this.returnManagementUserControl1 = new FurnitureDepot.UserControls.ReturnManagementUserControl();
             this.returnHistoryTabPage = new System.Windows.Forms.TabPage();
             this.adminReportTabPage = new System.Windows.Forms.TabPage();
             this.usernameLabel = new System.Windows.Forms.Label();
             this.logoutLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.registerCustomerUserControl1 = new FurnitureDepot.View.RegisterCustomerUserControl();
+            this.editCustomerUserControl = new FurnitureDepot.UserControls.EditCustomerUserControl();
+            this.searchCustomerUserControl1 = new FurnitureDepot.UserControls.SearchCustomerUserControl();
+            this.searchFurnitureUserControl1 = new FurnitureDepot.UserControls.SearchFurnitureUserControl();
+            this.rentalTransactionUserControl1 = new FurnitureDepot.UserControls.RentalTransactionUserControl();
+            this.rentalHistoryUserControl1 = new FurnitureDepot.UserControls.RentalHistoryUserControl();
+            this.returnManagementUserControl1 = new FurnitureDepot.UserControls.ReturnManagementUserControl();
             this.adminReportUserControl1 = new FurnitureDepot.UserControls.AdminReportUserControl();
+            this.returnHistoryUserControl1 = new FurnitureDepot.UserControls.ReturnHistoryUserControl();
             this.dashboardTabControl.SuspendLayout();
             this.registrationTabPage.SuspendLayout();
             this.editTabPage.SuspendLayout();
@@ -56,6 +57,7 @@ namespace FurnitureDepot.View
             this.rentalTransactionTabPage.SuspendLayout();
             this.rentalHistoryTabPage.SuspendLayout();
             this.returnManagementTabPage.SuspendLayout();
+            this.returnHistoryTabPage.SuspendLayout();
             this.adminReportTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -73,154 +75,99 @@ namespace FurnitureDepot.View
             this.dashboardTabControl.Controls.Add(this.returnManagementTabPage);
             this.dashboardTabControl.Controls.Add(this.returnHistoryTabPage);
             this.dashboardTabControl.Controls.Add(this.adminReportTabPage);
-            this.dashboardTabControl.Location = new System.Drawing.Point(0, 33);
-            this.dashboardTabControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dashboardTabControl.Location = new System.Drawing.Point(0, 27);
+            this.dashboardTabControl.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dashboardTabControl.Name = "dashboardTabControl";
             this.dashboardTabControl.SelectedIndex = 0;
-            this.dashboardTabControl.Size = new System.Drawing.Size(1064, 510);
+            this.dashboardTabControl.Size = new System.Drawing.Size(798, 414);
             this.dashboardTabControl.TabIndex = 0;
             // 
             // registrationTabPage
             // 
             this.registrationTabPage.Controls.Add(this.registerCustomerUserControl1);
-            this.registrationTabPage.Location = new System.Drawing.Point(4, 25);
-            this.registrationTabPage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.registrationTabPage.Location = new System.Drawing.Point(4, 22);
+            this.registrationTabPage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.registrationTabPage.Name = "registrationTabPage";
-            this.registrationTabPage.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.registrationTabPage.Size = new System.Drawing.Size(1056, 481);
+            this.registrationTabPage.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.registrationTabPage.Size = new System.Drawing.Size(790, 388);
             this.registrationTabPage.TabIndex = 0;
             this.registrationTabPage.Text = "Customer Registration";
             this.registrationTabPage.UseVisualStyleBackColor = true;
             // 
-            // registerCustomerUserControl1
-            // 
-            this.registerCustomerUserControl1.Location = new System.Drawing.Point(0, 0);
-            this.registerCustomerUserControl1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.registerCustomerUserControl1.Name = "registerCustomerUserControl1";
-            this.registerCustomerUserControl1.Size = new System.Drawing.Size(1060, 480);
-            this.registerCustomerUserControl1.TabIndex = 0;
-            // 
             // editTabPage
             // 
             this.editTabPage.Controls.Add(this.editCustomerUserControl);
-            this.editTabPage.Location = new System.Drawing.Point(4, 25);
-            this.editTabPage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.editTabPage.Location = new System.Drawing.Point(4, 22);
+            this.editTabPage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.editTabPage.Name = "editTabPage";
-            this.editTabPage.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.editTabPage.Size = new System.Drawing.Size(1056, 481);
+            this.editTabPage.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.editTabPage.Size = new System.Drawing.Size(790, 388);
             this.editTabPage.TabIndex = 1;
             this.editTabPage.Text = "Edit Customer";
             this.editTabPage.UseVisualStyleBackColor = true;
             // 
-            // editCustomerUserControl
-            // 
-            this.editCustomerUserControl.Location = new System.Drawing.Point(5, 6);
-            this.editCustomerUserControl.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.editCustomerUserControl.Name = "editCustomerUserControl";
-            this.editCustomerUserControl.Size = new System.Drawing.Size(1045, 466);
-            this.editCustomerUserControl.TabIndex = 0;
-            // 
             // searchTabPage
             // 
             this.searchTabPage.Controls.Add(this.searchCustomerUserControl1);
-            this.searchTabPage.Location = new System.Drawing.Point(4, 25);
-            this.searchTabPage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.searchTabPage.Location = new System.Drawing.Point(4, 22);
+            this.searchTabPage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.searchTabPage.Name = "searchTabPage";
-            this.searchTabPage.Size = new System.Drawing.Size(1056, 481);
+            this.searchTabPage.Size = new System.Drawing.Size(790, 388);
             this.searchTabPage.TabIndex = 2;
             this.searchTabPage.Text = "Search Customer";
             this.searchTabPage.UseVisualStyleBackColor = true;
             // 
-            // searchCustomerUserControl1
-            // 
-            this.searchCustomerUserControl1.Location = new System.Drawing.Point(-4, 0);
-            this.searchCustomerUserControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.searchCustomerUserControl1.Name = "searchCustomerUserControl1";
-            this.searchCustomerUserControl1.Size = new System.Drawing.Size(1065, 478);
-            this.searchCustomerUserControl1.TabIndex = 0;
-            // 
             // searchFurnitureTabPage
             // 
             this.searchFurnitureTabPage.Controls.Add(this.searchFurnitureUserControl1);
-            this.searchFurnitureTabPage.Location = new System.Drawing.Point(4, 25);
-            this.searchFurnitureTabPage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.searchFurnitureTabPage.Location = new System.Drawing.Point(4, 22);
+            this.searchFurnitureTabPage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.searchFurnitureTabPage.Name = "searchFurnitureTabPage";
-            this.searchFurnitureTabPage.Size = new System.Drawing.Size(1056, 481);
+            this.searchFurnitureTabPage.Size = new System.Drawing.Size(790, 388);
             this.searchFurnitureTabPage.TabIndex = 3;
             this.searchFurnitureTabPage.Text = "Search Furniture";
             this.searchFurnitureTabPage.UseVisualStyleBackColor = true;
             // 
-            // searchFurnitureUserControl1
-            // 
-            this.searchFurnitureUserControl1.Location = new System.Drawing.Point(-5, 0);
-            this.searchFurnitureUserControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.searchFurnitureUserControl1.Name = "searchFurnitureUserControl1";
-            this.searchFurnitureUserControl1.Size = new System.Drawing.Size(1065, 519);
-            this.searchFurnitureUserControl1.TabIndex = 0;
-            // 
             // rentalTransactionTabPage
             // 
             this.rentalTransactionTabPage.Controls.Add(this.rentalTransactionUserControl1);
-            this.rentalTransactionTabPage.Location = new System.Drawing.Point(4, 25);
-            this.rentalTransactionTabPage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.rentalTransactionTabPage.Location = new System.Drawing.Point(4, 22);
+            this.rentalTransactionTabPage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.rentalTransactionTabPage.Name = "rentalTransactionTabPage";
-            this.rentalTransactionTabPage.Size = new System.Drawing.Size(1056, 481);
+            this.rentalTransactionTabPage.Size = new System.Drawing.Size(790, 388);
             this.rentalTransactionTabPage.TabIndex = 4;
             this.rentalTransactionTabPage.Text = "Rental Transaction";
             this.rentalTransactionTabPage.UseVisualStyleBackColor = true;
             // 
-            // rentalTransactionUserControl1
-            // 
-            this.rentalTransactionUserControl1.Location = new System.Drawing.Point(-5, 0);
-            this.rentalTransactionUserControl1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.rentalTransactionUserControl1.Name = "rentalTransactionUserControl1";
-            this.rentalTransactionUserControl1.Size = new System.Drawing.Size(1055, 478);
-            this.rentalTransactionUserControl1.TabIndex = 0;
-            // 
             // rentalHistoryTabPage
             // 
             this.rentalHistoryTabPage.Controls.Add(this.rentalHistoryUserControl1);
-            this.rentalHistoryTabPage.Location = new System.Drawing.Point(4, 25);
-            this.rentalHistoryTabPage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.rentalHistoryTabPage.Location = new System.Drawing.Point(4, 22);
+            this.rentalHistoryTabPage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.rentalHistoryTabPage.Name = "rentalHistoryTabPage";
-            this.rentalHistoryTabPage.Size = new System.Drawing.Size(1056, 481);
+            this.rentalHistoryTabPage.Size = new System.Drawing.Size(790, 388);
             this.rentalHistoryTabPage.TabIndex = 5;
             this.rentalHistoryTabPage.Text = "Rental History";
             this.rentalHistoryTabPage.UseVisualStyleBackColor = true;
             // 
-            // rentalHistoryUserControl1
-            // 
-            this.rentalHistoryUserControl1.Location = new System.Drawing.Point(0, 0);
-            this.rentalHistoryUserControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.rentalHistoryUserControl1.Name = "rentalHistoryUserControl1";
-            this.rentalHistoryUserControl1.Size = new System.Drawing.Size(1056, 478);
-            this.rentalHistoryUserControl1.TabIndex = 0;
-            // 
             // returnManagementTabPage
             // 
             this.returnManagementTabPage.Controls.Add(this.returnManagementUserControl1);
-            this.returnManagementTabPage.Location = new System.Drawing.Point(4, 25);
-            this.returnManagementTabPage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.returnManagementTabPage.Location = new System.Drawing.Point(4, 22);
+            this.returnManagementTabPage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.returnManagementTabPage.Name = "returnManagementTabPage";
-            this.returnManagementTabPage.Size = new System.Drawing.Size(1056, 481);
+            this.returnManagementTabPage.Size = new System.Drawing.Size(790, 388);
             this.returnManagementTabPage.TabIndex = 6;
             this.returnManagementTabPage.Text = "Return Management";
             this.returnManagementTabPage.UseVisualStyleBackColor = true;
             // 
-            // returnManagementUserControl1
-            // 
-            this.returnManagementUserControl1.Location = new System.Drawing.Point(-5, 0);
-            this.returnManagementUserControl1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.returnManagementUserControl1.Name = "returnManagementUserControl1";
-            this.returnManagementUserControl1.Size = new System.Drawing.Size(1049, 464);
-            this.returnManagementUserControl1.TabIndex = 0;
-            // 
             // returnHistoryTabPage
             // 
-            this.returnHistoryTabPage.Location = new System.Drawing.Point(4, 25);
-            this.returnHistoryTabPage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.returnHistoryTabPage.Controls.Add(this.returnHistoryUserControl1);
+            this.returnHistoryTabPage.Location = new System.Drawing.Point(4, 22);
+            this.returnHistoryTabPage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.returnHistoryTabPage.Name = "returnHistoryTabPage";
-            this.returnHistoryTabPage.Size = new System.Drawing.Size(1056, 481);
+            this.returnHistoryTabPage.Size = new System.Drawing.Size(790, 388);
             this.returnHistoryTabPage.TabIndex = 7;
             this.returnHistoryTabPage.Text = "Return History";
             this.returnHistoryTabPage.UseVisualStyleBackColor = true;
@@ -228,10 +175,10 @@ namespace FurnitureDepot.View
             // adminReportTabPage
             // 
             this.adminReportTabPage.Controls.Add(this.adminReportUserControl1);
-            this.adminReportTabPage.Location = new System.Drawing.Point(4, 25);
-            this.adminReportTabPage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.adminReportTabPage.Location = new System.Drawing.Point(4, 22);
+            this.adminReportTabPage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.adminReportTabPage.Name = "adminReportTabPage";
-            this.adminReportTabPage.Size = new System.Drawing.Size(1056, 481);
+            this.adminReportTabPage.Size = new System.Drawing.Size(790, 388);
             this.adminReportTabPage.TabIndex = 8;
             this.adminReportTabPage.Text = "Admin Report";
             this.adminReportTabPage.UseVisualStyleBackColor = true;
@@ -239,38 +186,104 @@ namespace FurnitureDepot.View
             // usernameLabel
             // 
             this.usernameLabel.AutoSize = true;
-            this.usernameLabel.Location = new System.Drawing.Point(828, 9);
+            this.usernameLabel.Location = new System.Drawing.Point(621, 7);
+            this.usernameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.usernameLabel.Name = "usernameLabel";
-            this.usernameLabel.Size = new System.Drawing.Size(0, 16);
+            this.usernameLabel.Size = new System.Drawing.Size(0, 13);
             this.usernameLabel.TabIndex = 0;
             // 
             // logoutLinkLabel
             // 
             this.logoutLinkLabel.AutoSize = true;
-            this.logoutLinkLabel.Location = new System.Drawing.Point(979, 9);
+            this.logoutLinkLabel.Location = new System.Drawing.Point(734, 7);
+            this.logoutLinkLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.logoutLinkLabel.Name = "logoutLinkLabel";
-            this.logoutLinkLabel.Size = new System.Drawing.Size(48, 16);
+            this.logoutLinkLabel.Size = new System.Drawing.Size(40, 13);
             this.logoutLinkLabel.TabIndex = 1;
             this.logoutLinkLabel.TabStop = true;
             this.logoutLinkLabel.Text = "Logout";
             this.logoutLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LogoutLinkLabel_LinkClicked);
             // 
+            // registerCustomerUserControl1
+            // 
+            this.registerCustomerUserControl1.Location = new System.Drawing.Point(0, 0);
+            this.registerCustomerUserControl1.Margin = new System.Windows.Forms.Padding(4);
+            this.registerCustomerUserControl1.Name = "registerCustomerUserControl1";
+            this.registerCustomerUserControl1.Size = new System.Drawing.Size(795, 390);
+            this.registerCustomerUserControl1.TabIndex = 0;
+            // 
+            // editCustomerUserControl
+            // 
+            this.editCustomerUserControl.Location = new System.Drawing.Point(4, 5);
+            this.editCustomerUserControl.Margin = new System.Windows.Forms.Padding(4);
+            this.editCustomerUserControl.Name = "editCustomerUserControl";
+            this.editCustomerUserControl.Size = new System.Drawing.Size(784, 379);
+            this.editCustomerUserControl.TabIndex = 0;
+            // 
+            // searchCustomerUserControl1
+            // 
+            this.searchCustomerUserControl1.Location = new System.Drawing.Point(-3, 0);
+            this.searchCustomerUserControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.searchCustomerUserControl1.Name = "searchCustomerUserControl1";
+            this.searchCustomerUserControl1.Size = new System.Drawing.Size(799, 388);
+            this.searchCustomerUserControl1.TabIndex = 0;
+            // 
+            // searchFurnitureUserControl1
+            // 
+            this.searchFurnitureUserControl1.Location = new System.Drawing.Point(-4, 0);
+            this.searchFurnitureUserControl1.Margin = new System.Windows.Forms.Padding(2);
+            this.searchFurnitureUserControl1.Name = "searchFurnitureUserControl1";
+            this.searchFurnitureUserControl1.Size = new System.Drawing.Size(799, 422);
+            this.searchFurnitureUserControl1.TabIndex = 0;
+            // 
+            // rentalTransactionUserControl1
+            // 
+            this.rentalTransactionUserControl1.Location = new System.Drawing.Point(-4, 0);
+            this.rentalTransactionUserControl1.Margin = new System.Windows.Forms.Padding(4);
+            this.rentalTransactionUserControl1.Name = "rentalTransactionUserControl1";
+            this.rentalTransactionUserControl1.Size = new System.Drawing.Size(791, 388);
+            this.rentalTransactionUserControl1.TabIndex = 0;
+            // 
+            // rentalHistoryUserControl1
+            // 
+            this.rentalHistoryUserControl1.Location = new System.Drawing.Point(0, 0);
+            this.rentalHistoryUserControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rentalHistoryUserControl1.Name = "rentalHistoryUserControl1";
+            this.rentalHistoryUserControl1.Size = new System.Drawing.Size(792, 388);
+            this.rentalHistoryUserControl1.TabIndex = 0;
+            // 
+            // returnManagementUserControl1
+            // 
+            this.returnManagementUserControl1.Location = new System.Drawing.Point(-4, 0);
+            this.returnManagementUserControl1.Margin = new System.Windows.Forms.Padding(4);
+            this.returnManagementUserControl1.Name = "returnManagementUserControl1";
+            this.returnManagementUserControl1.Size = new System.Drawing.Size(787, 377);
+            this.returnManagementUserControl1.TabIndex = 0;
+            // 
             // adminReportUserControl1
             // 
-            this.adminReportUserControl1.Location = new System.Drawing.Point(0, 3);
+            this.adminReportUserControl1.Location = new System.Drawing.Point(0, 2);
+            this.adminReportUserControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.adminReportUserControl1.Name = "adminReportUserControl1";
-            this.adminReportUserControl1.Size = new System.Drawing.Size(1056, 478);
+            this.adminReportUserControl1.Size = new System.Drawing.Size(792, 388);
             this.adminReportUserControl1.TabIndex = 0;
+            // 
+            // returnHistoryUserControl1
+            // 
+            this.returnHistoryUserControl1.Location = new System.Drawing.Point(0, 3);
+            this.returnHistoryUserControl1.Name = "returnHistoryUserControl1";
+            this.returnHistoryUserControl1.Size = new System.Drawing.Size(790, 385);
+            this.returnHistoryUserControl1.TabIndex = 0;
             // 
             // MainDashboard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1064, 542);
+            this.ClientSize = new System.Drawing.Size(798, 440);
             this.Controls.Add(this.logoutLinkLabel);
             this.Controls.Add(this.usernameLabel);
             this.Controls.Add(this.dashboardTabControl);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "MainDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FurnitureDepot - MainDashboard";
@@ -282,6 +295,7 @@ namespace FurnitureDepot.View
             this.rentalTransactionTabPage.ResumeLayout(false);
             this.rentalHistoryTabPage.ResumeLayout(false);
             this.returnManagementTabPage.ResumeLayout(false);
+            this.returnHistoryTabPage.ResumeLayout(false);
             this.adminReportTabPage.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -310,5 +324,6 @@ namespace FurnitureDepot.View
         private System.Windows.Forms.TabPage adminReportTabPage;
         private UserControls.ReturnManagementUserControl returnManagementUserControl1;
         private UserControls.AdminReportUserControl adminReportUserControl1;
+        private UserControls.ReturnHistoryUserControl returnHistoryUserControl1;
     }
 }

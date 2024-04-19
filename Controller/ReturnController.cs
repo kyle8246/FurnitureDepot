@@ -1,13 +1,12 @@
 ﻿using FurnitureDepot.DAL;
 using FurnitureDepot.Model;
-using FurnitureDepot.Utilities;
 using System.Collections.Generic;
-using System.Data.SqlClient;
+using System.Data;
 
 namespace FurnitureDepot.Controller
 {
     /// <summary>
-    /// Controller to manage returns
+    /// Return Controller
     /// </summary>
     public class ReturnController
     {
@@ -22,13 +21,23 @@ namespace FurnitureDepot.Controller
         }
 
         /// <summary>
-        /// Gets the rental items for return by transaction identifier.
+        /// Gets the return transactions by member identifier.
         /// </summary>
-        /// <param name="rentalTransactionID">The rental transaction identifier.</param>
-        /// <returns></returns>
-        public List<RentalItem> GetRentalItemsForReturnByTransactionId(int rentalTransactionID)
+        /// <param name="memberID">The member identifier.</param>
+        /// <returns>List of return transactions.</returns>
+        public List<ReturnTransaction> GetReturnTransactionsByMemberID(int memberID)
         {
-            return _returnDAL.GetRentalItemsByTransactionId(rentalTransactionID);
+            return _returnDAL.GetReturnTransactionsByMemberID(memberID);
+        }
+
+        /// <summary>
+        /// Gets the returned items by transaction identifier.
+        /// </summary>
+        /// <param name="returnTransactionID">The return transaction identifier.</param>
+        /// <returns>List of returned items.</returns>
+        public List<ReturnedItem> GetReturnedItemsByTransactionId(int returnTransactionID)
+        {
+            return _returnDAL.GetReturnedItemsByTransactionId(returnTransactionID);
         }
 
         /// <summary>
@@ -37,7 +46,7 @@ namespace FurnitureDepot.Controller
         /// <param name="employeeID">The employee identifier.</param>
         /// <param name="memberID">The member identifier.</param>
         /// <param name="itemsToReturn">The items to return.</param>
-        /// <returns></returns>
+        /// <returns>The result of the return process.</returns>
         public ReturnProcessResult CompleteReturnProcess(int employeeID, int memberID, List<RentalItem> itemsToReturn)
         {
             return _returnDAL.CompleteReturnProcess(employeeID, memberID, itemsToReturn);
@@ -49,7 +58,7 @@ namespace FurnitureDepot.Controller
         /// <param name="employeeID">The employee identifier.</param>
         /// <param name="memberID">The member identifier.</param>
         /// <param name="transaction">The transaction.</param>
-        /// <returns></returns>
+        /// <returns>The identifier of the created return transaction.</returns>
         public int CreateReturnTransaction(int employeeID, int memberID, SqlTransaction transaction)
         {
             return _returnDAL.CreateReturnTransaction(employeeID, memberID, transaction);
@@ -59,23 +68,20 @@ namespace FurnitureDepot.Controller
         /// Gets the rental item for return by rental item identifier.
         /// </summary>
         /// <param name="rentalItemID">The rental item identifier.</param>
-        /// <returns></returns>
+        /// <returns>The rental item for return.</returns>
         public RentalItem GetRentalItemForReturnByRentalItemID(int rentalItemID)
         {
             return _returnDAL.GetRentalItemForReturnByRentalItemID(rentalItemID);
         }
 
         /// <summary>
-        /// Determines whether [is rental transaction complete] [the specified rental transaction identifier].
+        /// Determines whether the rental transaction is complete.
         /// </summary>
         /// <param name="rentalTransactionID">The rental transaction identifier.</param>
-        /// <returns>
-        ///   <c>true</c> if [is rental transaction complete] [the specified rental transaction identifier]; otherwise, <c>false</c>.
-        /// </returns>
+        /// <returns>true if the rental transaction is complete; otherwise, false.</returns>
         public bool IsRentalTransactionComplete(int rentalTransactionID)
         {
             return _returnDAL.IsRentalTransactionComplete(rentalTransactionID);
         }
-
     }
 }
