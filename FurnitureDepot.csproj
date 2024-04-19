@@ -146,6 +146,7 @@
     <Compile Include="UserControls\ReturnManagementUserControl.Designer.cs">
       <DependentUpon>ReturnManagementUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\ReturnProcessResult.cs" />
     <Compile Include="Utilities\SessionManager.cs" />
     <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>

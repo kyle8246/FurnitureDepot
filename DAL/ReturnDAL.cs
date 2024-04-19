@@ -1,4 +1,5 @@
 ﻿using FurnitureDepot.Model;
+using FurnitureDepot.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -63,6 +64,11 @@ namespace FurnitureDepot.DAL
         /// <param name="quantityReturned">The quantity returned.</param>
         private bool UpdateReturnedQuantity(int rentalItemID, int quantityReturned, SqlTransaction transaction)
         {
+            if (!IsReturnQuantityValid(rentalItemID, quantityReturned, transaction))
+            {
+                throw new InvalidOperationException("The quantity returned exceeds initial rental quantity.");
+            }
+
             string query = @"
                     UPDATE RentalItem 
                     SET QuantityReturned = QuantityReturned + @QuantityReturned 
@@ -74,6 +80,35 @@ namespace FurnitureDepot.DAL
                 command.Parameters.AddWithValue("@QuantityReturned", quantityReturned);
                 return command.ExecuteNonQuery() > 0;
             }
+        }
+
+        /// <summary>
+        /// Checks if the quantity being returned does not exceed the quantity rented.
+        /// </summary>
+        /// <param name="rentalItemID">The rental item identifier.</param>
+        /// <param name="quantityReturned">The quantity returned.</param>
+        /// <param name="transaction">The SQL transaction.</param>
+        /// <returns>True if the quantity is valid, false otherwise.</returns>
+        private bool IsReturnQuantityValid(int rentalItemID, int quantityReturned, SqlTransaction transaction)
+        {
+            string query = @"SELECT Quantity, QuantityReturned FROM RentalItem 
+                        WHERE RentalItemID = @RentalItemID";
+            using (SqlCommand command = new SqlCommand(query, transaction.Connection, transaction))
+            {
+                command.Parameters.AddWithValue("@RentalItemID", rentalItemID);
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        int currentQuantity = reader.GetInt32(reader.GetOrdinal("Quantity"));
+                        int currentReturned = reader.GetInt32(reader.GetOrdinal("QuantityReturned"));
+
+                        return (currentReturned + quantityReturned <= currentQuantity);
+                    }
+                }
+            }
+            return false;
         }
 
         /// <summary>
@@ -133,8 +168,10 @@ namespace FurnitureDepot.DAL
         /// or
         /// Failed to update furniture stock.
         /// </exception>
-        public bool CompleteReturnProcess(int employeeID, int memberID, List<RentalItem> itemsToReturn)
+        public ReturnProcessResult CompleteReturnProcess(int employeeID, int memberID, List<RentalItem> itemsToReturn)
         {
+            var result = new ReturnProcessResult();
+
             using (SqlConnection connection = FurnitureDepotDBConnection.GetConnection())
             {
                 connection.Open();
@@ -170,12 +207,15 @@ namespace FurnitureDepot.DAL
                         }
 
                         transaction.Commit();
-                        return true;
+                        result.IsSuccessful = true;
+                        return result;
                     }
                     catch (Exception ex)
                     {
                         transaction.Rollback();
-                        return false;
+                        result.IsSuccessful = false;
+                        result.ErrorMessage = ex.Message;
+                        return result;
                     }
                 }
             }
@@ -204,6 +244,84 @@ namespace FurnitureDepot.DAL
                 return returnTransactionID;
             }
         }
+
+        /// <summary>
+        /// Gets the rental item for return by rental item identifier.
+        /// </summary>
+        /// <param name="rentalItemID">The rental item identifier.</param>
+        /// <returns></returns>
+        public RentalItem GetRentalItemForReturnByRentalItemID(int rentalItemID)
+        {
+            RentalItem rentalItem = null;
+
+            using (SqlConnection connection = FurnitureDepotDBConnection.GetConnection())
+            {
+                string query = @"SELECT RentalItemID, RentalTransactionID, FurnitureID, Quantity, DailyRate, QuantityReturned
+                            FROM RentalItem
+                            WHERE RentalItemID = @RentalItemID";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@RentalItemID", rentalItemID);
+
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            rentalItem = new RentalItem
+                            {
+                                RentalItemID = reader.GetInt32(reader.GetOrdinal("RentalItemID")),
+                                RentalTransactionID = reader.GetInt32(reader.GetOrdinal("RentalTransactionID")),
+                                FurnitureID = reader.GetInt32(reader.GetOrdinal("FurnitureID")),
+                                Quantity = reader.GetInt32(reader.GetOrdinal("Quantity")),
+                                DailyRate = reader.GetDecimal(reader.GetOrdinal("DailyRate")),
+                                QuantityReturned = reader.IsDBNull(reader.GetOrdinal("QuantityReturned")) ? 0 : reader.GetInt32(reader.GetOrdinal("QuantityReturned"))
+                            };
+                        }
+                    }
+                }
+            }
+
+            return rentalItem;
+        }
+
+        /// <summary>
+        /// Determines whether [is rental transaction complete] [the specified rental transaction identifier].
+        /// </summary>
+        /// <param name="rentalTransactionID">The rental transaction identifier.</param>
+        /// <returns>
+        ///   <c>true</c> if [is rental transaction complete] [the specified rental transaction identifier]; otherwise, <c>false</c>.
+        /// </returns>
+        public bool IsRentalTransactionComplete(int rentalTransactionID)
+        {
+            using (SqlConnection connection = FurnitureDepotDBConnection.GetConnection())
+            {
+                string query = @"
+            SELECT SUM(Quantity) as TotalQuantity, SUM(QuantityReturned) as TotalQuantityReturned
+            FROM RentalItem
+            WHERE RentalTransactionID = @RentalTransactionID
+            GROUP BY RentalTransactionID";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@RentalTransactionID", rentalTransactionID);
+
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            int totalQuantity = reader.GetInt32(reader.GetOrdinal("TotalQuantity"));
+                            int totalQuantityReturned = reader.GetInt32(reader.GetOrdinal("TotalQuantityReturned"));
+                            return totalQuantity == totalQuantityReturned;
+                        }
+                    }
+                }
+            }
+            return false; 
+        }
+
 
     }
 }
