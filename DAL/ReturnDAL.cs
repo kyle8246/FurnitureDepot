@@ -8,7 +8,8 @@ using System.Data.SqlClient;
 namespace FurnitureDepot.DAL
 {    /// <summary>
      /// DAL for returns
-     /// </summary>    public class ReturnDAL
+     /// </summary>    
+    public class ReturnDAL
     {
         /// <summary>
         /// Gets the rental items by transaction identifier.
@@ -318,7 +319,7 @@ namespace FurnitureDepot.DAL
                     }
                 }
             }
-            return false; 
+            return false;
         }
 
 
