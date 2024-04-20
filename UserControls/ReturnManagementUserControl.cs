@@ -349,8 +349,7 @@ namespace FurnitureDepot.UserControls
             }
 
             int daysLate = (DateTime.Now.Date - rentalTransaction.DueDate).Days;
-            decimal lateFeeRate = item.DailyRate * 2;
-            decimal fee = daysLate > 0 ? daysLate * lateFeeRate : 0m;
+            decimal fee = (decimal)(daysLate * item.DailyRate * item.QuantityReturned);
             return fee;
         }
 
