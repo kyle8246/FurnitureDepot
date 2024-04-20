@@ -4,8 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 
-
 namespace FurnitureDepot.DAL
+
 {    /// <summary>
      /// DAL for returns
      /// </summary>    
@@ -179,7 +179,7 @@ namespace FurnitureDepot.DAL
                 {
                     try
                     {
-                        int returnTransactionID = CreateReturnTransaction(employeeID, memberID, transaction);
+                        result.ReturnTransactionID = CreateReturnTransaction(employeeID, memberID, transaction);
 
                         foreach (var item in itemsToReturn)
                         {
@@ -190,7 +190,7 @@ namespace FurnitureDepot.DAL
 
                             ReturnedItem returnedItem = new ReturnedItem
                             {
-                                ReturnTransactionID = returnTransactionID,
+                                ReturnTransactionID = result.ReturnTransactionID,
                                 RentalItemID = item.RentalItemID,
                                 QuantityReturned = item.QuantityReturned
                             };
@@ -322,7 +322,11 @@ namespace FurnitureDepot.DAL
             return false;
         }
 
-
+        /// <summary>
+        /// Gets the returned items by transaction identifier.
+        /// </summary>
+        /// <param name="returnTransactionID">The return transaction identifier.</param>
+        /// <returns></returns>
         public List<ReturnedItem> GetReturnedItemsByTransactionId(int returnTransactionID)
         {
             List<ReturnedItem> returnedItems = new List<ReturnedItem>();
@@ -370,7 +374,11 @@ namespace FurnitureDepot.DAL
             return returnedItems;
         }
 
-
+        /// <summary>
+        /// Gets the return transactions by member identifier.
+        /// </summary>
+        /// <param name="memberID">The member identifier.</param>
+        /// <returns></returns>
         public List<ReturnTransaction> GetReturnTransactionsByMemberID(int memberID)
         {
             List<ReturnTransaction> returnTransactions = new List<ReturnTransaction>();
@@ -416,6 +424,41 @@ namespace FurnitureDepot.DAL
             }
 
             return returnTransactions;
+        }
+
+        /// <summary>
+        /// Gets the return transaction by identifier.
+        /// </summary>
+        /// <param name="returnTransactionID">The return transaction identifier.</param>
+        /// <returns></returns>
+        public ReturnTransaction GetReturnTransactionById(int returnTransactionID)
+        {
+            using (SqlConnection connection = FurnitureDepotDBConnection.GetConnection())
+            {
+                string query = @"SELECT ReturnTransactionID, EmployeeID, MemberID, ReturnDate
+                         FROM ReturnTransaction
+                         WHERE ReturnTransactionID = @TransactionID";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@TransactionID", returnTransactionID);
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return new ReturnTransaction
+                            {
+                                ReturnTransactionID = reader.GetInt32(reader.GetOrdinal("ReturnTransactionID")),
+                                EmployeeID = reader.GetInt32(reader.GetOrdinal("EmployeeID")),
+                                MemberID = reader.GetInt32(reader.GetOrdinal("MemberID")),
+                                ReturnDate = reader.GetDateTime(reader.GetOrdinal("ReturnDate"))
+                            };
+                        }
+                    }
+                }
+            }
+            return null;
         }
 
     }

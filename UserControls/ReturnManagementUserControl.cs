@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using FurnitureDepot.Utilities;
 using System.Globalization;
 using System.Linq;
+using System.Text;
 
 namespace FurnitureDepot.UserControls
 {
@@ -16,7 +17,6 @@ namespace FurnitureDepot.UserControls
     /// <seealso cref="System.Windows.Forms.UserControl" />
     public partial class ReturnManagementUserControl : UserControl
     {
-        private FurnitureController furnitureController;
         private CustomerController customerController;
         private Customer currentOrderCustomer;
         private RentalController rentalController;
@@ -32,6 +32,7 @@ namespace FurnitureDepot.UserControls
             customerController = new CustomerController();
             rentalController = new RentalController();
             returnController = new ReturnController();
+            employeeController = new EmployeeController();
             this.searchButton.Click += new EventHandler(SearchButton_Click);
             returnTransactionDataGridView.DataError += ReturnTransactionDataGridView_DataError;
             returnTransactionDataGridView.CurrentCellDirtyStateChanged += new EventHandler(ReturnTransactionDataGridView_CurrentCellDirtyStateChanged);
@@ -105,7 +106,7 @@ namespace FurnitureDepot.UserControls
                     if (transactionComplete)
                     {
                         row.DefaultCellStyle.BackColor = Color.LightGray;
-                        row.ReadOnly = true; 
+                        row.ReadOnly = true;
                         var completedCell = new DataGridViewTextBoxCell();
                         completedCell.Value = "Completed";
                         row.Cells["selectColumn"] = completedCell;
@@ -181,6 +182,9 @@ namespace FurnitureDepot.UserControls
             currentOrderCustomer = null;
         }
 
+        /// <summary>
+        /// Clears this instance.
+        /// </summary>
         public void Clear()
         {
             returnTransactionDataGridView.Rows.Clear();
@@ -257,6 +261,7 @@ namespace FurnitureDepot.UserControls
             {
                 MessageBox.Show("Return processed successfully.", "Return Processed", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 RefreshDataGridViewPostReturn(itemsToReturn);
+                DisplayReturnReceipt(returnProcessResult.ReturnTransactionID);
             }
             else
             {
@@ -283,6 +288,70 @@ namespace FurnitureDepot.UserControls
                     }
                 }
             }
+        }
+
+        private void DisplayReturnReceipt(int returnTransactionId)
+        {
+            ReturnTransaction returnTransaction = returnController.GetReturnTransactionByID(returnTransactionId);
+            if (returnTransaction == null)
+            {
+                MessageBox.Show("Error retrieving return transaction data.", "Receipt Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string customerName = customerController.GetCustomerFullNameById(returnTransaction.MemberID);
+            string employeeName = employeeController.GetEmployeeFullNameById(returnTransaction.EmployeeID);
+
+            List<ReturnedItem> returnedItems = returnController.GetReturnedItemsByTransactionId(returnTransactionId);
+
+            StringBuilder receiptText = new StringBuilder();
+            receiptText.AppendLine("Return Transaction Receipt");
+            receiptText.AppendLine("----------------------------");
+            receiptText.AppendLine($"Return Transaction ID: {returnTransaction.ReturnTransactionID}");
+            receiptText.AppendLine($"Customer: {customerName}");
+            receiptText.AppendLine($"Processed by: {employeeName}");
+            receiptText.AppendLine($"Return Date: {returnTransaction.ReturnDate:d}");
+
+            decimal totalFees = 0m;
+            receiptText.AppendLine("\nItems Returned:");
+
+            foreach (var item in returnedItems)
+            {
+                decimal feeForThisItem = CalculateReturnFeeForItem(item);
+                totalFees += feeForThisItem;
+
+                receiptText.AppendLine($"ID: {item.RentalItemID} - {item.FurnitureName} x{item.QuantityReturned} @ {item.DailyRate:C} per day - Fee: {feeForThisItem:C}");
+            }
+
+            receiptText.AppendLine("\nTotal Fees: " + $"{totalFees:C}");
+
+            MessageBox.Show(receiptText.ToString(), "Return Receipt", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private decimal CalculateReturnFeeForItem(ReturnedItem item)
+        {
+            if (!item.RentalItemID.HasValue)
+            {
+                throw new InvalidOperationException("RentalItemID is null for the returned item.");
+            }
+            int rentalItemID = item.RentalItemID.Value;
+
+            RentalItem rentalItem = returnController.GetRentalItemForReturnByRentalItemID(rentalItemID);
+            if (rentalItem == null)
+            {
+                throw new InvalidOperationException("Rental item not found for the given returned item.");
+            }
+
+            RentalTransaction rentalTransaction = rentalController.GetRentalTransactionById(rentalItem.RentalTransactionID);
+            if (rentalTransaction == null)
+            {
+                throw new InvalidOperationException("Rental transaction not found for the given rental item.");
+            }
+
+            int daysLate = (DateTime.Now.Date - rentalTransaction.DueDate).Days;
+            decimal lateFeeRate = item.DailyRate * 2;
+            decimal fee = daysLate > 0 ? daysLate * lateFeeRate : 0m;
+            return fee;
         }
 
     }
