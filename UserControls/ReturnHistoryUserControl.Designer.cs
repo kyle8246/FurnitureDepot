@@ -49,10 +49,10 @@
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = true;
             this.clearButton.Click += new System.EventHandler(this.ClearButton_Click);
-
             // 
             // returnItemsDataGridView
             // 
+            this.returnItemsDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.returnItemsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.returnItemsDataGridView.Location = new System.Drawing.Point(2, 234);
             this.returnItemsDataGridView.Margin = new System.Windows.Forms.Padding(2);
@@ -82,7 +82,6 @@
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = true;
             this.searchButton.Click += new System.EventHandler(this.SearchButton_Click);
-
             // 
             // messageLabel
             // 
@@ -110,6 +109,8 @@
             this.customerIDTextBox.Name = "customerIDTextBox";
             this.customerIDTextBox.Size = new System.Drawing.Size(150, 20);
             this.customerIDTextBox.TabIndex = 7;
+            this.customerIDTextBox.TextChanged += new System.EventHandler(this.CustomerIDTextBox_TextChanged);
+
             // 
             // ReturnHistoryUserControl
             // 

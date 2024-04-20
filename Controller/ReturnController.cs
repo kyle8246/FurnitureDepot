@@ -1,7 +1,8 @@
 ﻿using FurnitureDepot.DAL;
 using FurnitureDepot.Model;
+using FurnitureDepot.Utilities;
 using System.Collections.Generic;
-using System.Data;
+using System.Data.SqlClient;
 
 namespace FurnitureDepot.Controller
 {
@@ -50,6 +51,16 @@ namespace FurnitureDepot.Controller
         public ReturnProcessResult CompleteReturnProcess(int employeeID, int memberID, List<RentalItem> itemsToReturn)
         {
             return _returnDAL.CompleteReturnProcess(employeeID, memberID, itemsToReturn);
+        }
+
+        /// <summary>
+        /// Gets the rental items for return by transaction identifier.
+        /// </summary>
+        /// <param name="rentalTransactionID">The rental transaction identifier.</param>
+        /// <returns></returns>
+        public List<RentalItem> GetRentalItemsForReturnByTransactionId(int rentalTransactionID)
+        {
+            return _returnDAL.GetRentalItemsByTransactionId(rentalTransactionID);
         }
 
         /// <summary>

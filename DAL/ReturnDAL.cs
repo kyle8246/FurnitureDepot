@@ -323,11 +323,6 @@ namespace FurnitureDepot.DAL
         }
 
 
-        /// <summary>
-        /// Gets the returned items by transaction identifier.
-        /// </summary>
-        /// <param name="returnTransactionID">The return transaction identifier.</param>
-        /// <returns></returns>
         public List<ReturnedItem> GetReturnedItemsByTransactionId(int returnTransactionID)
         {
             List<ReturnedItem> returnedItems = new List<ReturnedItem>();
@@ -335,9 +330,13 @@ namespace FurnitureDepot.DAL
             using (SqlConnection connection = FurnitureDepotDBConnection.GetConnection())
             {
                 string query = @"
-                    SELECT ReturnedItemID, ReturnTransactionID, RentalItemID, QuantityReturned
-                    FROM ReturnedItem
-                    WHERE ReturnTransactionID = @ReturnTransactionID";
+            SELECT ri.ReturnedItemID, ri.ReturnTransactionID, ri.RentalItemID, ri.QuantityReturned,
+                   f.Name AS FurnitureName, f.Description, f.CategoryName, f.StyleName, 
+                   f.DailyRentalRate AS DailyRate, r.Quantity
+            FROM ReturnedItem ri
+            INNER JOIN RentalItem r ON ri.RentalItemID = r.RentalItemID
+            INNER JOIN Furniture f ON r.FurnitureID = f.FurnitureID
+            WHERE ri.ReturnTransactionID = @ReturnTransactionID";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -353,9 +352,14 @@ namespace FurnitureDepot.DAL
                                 ReturnedItemID = reader.GetInt32(reader.GetOrdinal("ReturnedItemID")),
                                 ReturnTransactionID = reader.IsDBNull(reader.GetOrdinal("ReturnTransactionID")) ? null : (int?)reader.GetInt32(reader.GetOrdinal("ReturnTransactionID")),
                                 RentalItemID = reader.IsDBNull(reader.GetOrdinal("RentalItemID")) ? null : (int?)reader.GetInt32(reader.GetOrdinal("RentalItemID")),
-                                QuantityReturned = reader.IsDBNull(reader.GetOrdinal("QuantityReturned")) ? null : (int?)reader.GetInt32(reader.GetOrdinal("QuantityReturned"))
+                                QuantityReturned = reader.IsDBNull(reader.GetOrdinal("QuantityReturned")) ? null : (int?)reader.GetInt32(reader.GetOrdinal("QuantityReturned")),
+                                FurnitureName = reader.GetString(reader.GetOrdinal("FurnitureName")),
+                                Description = reader.GetString(reader.GetOrdinal("Description")),
+                                CategoryName = reader.GetString(reader.GetOrdinal("CategoryName")),
+                                StyleName = reader.GetString(reader.GetOrdinal("StyleName")),
+                                DailyRate = reader.GetDecimal(reader.GetOrdinal("DailyRate")),
+                                Quantity = reader.GetInt32(reader.GetOrdinal("Quantity"))
                             };
-
 
                             returnedItems.Add(returnedItem);
                         }
@@ -366,18 +370,23 @@ namespace FurnitureDepot.DAL
             return returnedItems;
         }
 
-        /// <summary>
-        /// Gets the return transactions by member identifier.
-        /// </summary>
-        /// <param name="memberID">The member identifier.</param>
-        /// <returns></returns>
+
         public List<ReturnTransaction> GetReturnTransactionsByMemberID(int memberID)
         {
             List<ReturnTransaction> returnTransactions = new List<ReturnTransaction>();
 
             using (SqlConnection connection = FurnitureDepotDBConnection.GetConnection())
             {
-                string query = @"SELECT * FROM ReturnTransaction WHERE MemberID = @MemberID";
+                string query = @"
+        SELECT rt.ReturnTransactionID, rt.EmployeeID, rt.MemberID, rt.ReturnDate,
+               e.FirstName + ' ' + e.LastName AS EmployeeName,
+               m.FirstName + ' ' + m.LastName AS CustomerName,
+               rt2.RentalDate, rt2.DueDate
+        FROM ReturnTransaction rt
+        INNER JOIN Employee e ON rt.EmployeeID = e.EmployeeID
+        INNER JOIN Member m ON rt.MemberID = m.MemberID
+        LEFT JOIN RentalTransaction rt2 ON rt2.MemberID = rt.MemberID
+        WHERE rt.MemberID = @MemberID";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -394,6 +403,10 @@ namespace FurnitureDepot.DAL
                                 EmployeeID = reader.GetInt32(reader.GetOrdinal("EmployeeID")),
                                 MemberID = reader.GetInt32(reader.GetOrdinal("MemberID")),
                                 ReturnDate = reader.IsDBNull(reader.GetOrdinal("ReturnDate")) ? (DateTime?)null : reader.GetDateTime(reader.GetOrdinal("ReturnDate")),
+                                EmployeeName = reader.GetString(reader.GetOrdinal("EmployeeName")),
+                                CustomerName = reader.GetString(reader.GetOrdinal("CustomerName")),
+                                RentalDate = reader.GetDateTime(reader.GetOrdinal("RentalDate")),
+                                DueDate = reader.GetDateTime(reader.GetOrdinal("DueDate"))
                             };
 
                             returnTransactions.Add(returnTransaction);
@@ -404,5 +417,6 @@ namespace FurnitureDepot.DAL
 
             return returnTransactions;
         }
+
     }
 }

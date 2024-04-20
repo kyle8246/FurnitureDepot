@@ -59,10 +59,123 @@ namespace FurnitureDepot.UserControls
                 DataPropertyName = "ReturnDate",
                 ReadOnly = true
             };
+            returnDateColumn.DefaultCellStyle.Format = "d";
             returnHistoryDataGridView.Columns.Add(returnDateColumn);
 
-            returnHistoryDataGridView.AutoGenerateColumns = false;        
-    }
+
+            DataGridViewTextBoxColumn returnedItemIdColumn = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Returned Item ID",
+                Name = "ReturnedItemID",
+                DataPropertyName = "ReturnedItemID",
+                ReadOnly = true
+            };
+            returnItemsDataGridView.Columns.Add(returnedItemIdColumn);
+
+            DataGridViewTextBoxColumn furnitureNameColumn = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Furniture Name",
+                Name = "FurnitureName",
+                DataPropertyName = "FurnitureName",
+                ReadOnly = true
+            };
+            returnItemsDataGridView.Columns.Add(furnitureNameColumn);
+
+            DataGridViewTextBoxColumn descriptionColumn = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Description",
+                Name = "Description",
+                DataPropertyName = "Description",
+                ReadOnly = true
+            };
+            returnItemsDataGridView.Columns.Add(descriptionColumn);
+
+            DataGridViewTextBoxColumn categoryNameColumn = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Category Name",
+                Name = "CategoryName",
+                DataPropertyName = "CategoryName",
+                ReadOnly = true
+            };
+            returnItemsDataGridView.Columns.Add(categoryNameColumn);
+
+            DataGridViewTextBoxColumn styleNameColumn = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Style Name",
+                Name = "StyleName",
+                DataPropertyName = "StyleName",
+                ReadOnly = true
+            };
+            returnItemsDataGridView.Columns.Add(styleNameColumn);
+
+            DataGridViewTextBoxColumn dailyRateColumn = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Daily Rate",
+                Name = "DailyRate",
+                DataPropertyName = "DailyRate",
+                ReadOnly = true
+            };
+            returnItemsDataGridView.Columns.Add(dailyRateColumn);
+
+            DataGridViewTextBoxColumn quantityColumn = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Quantity",
+                Name = "Quantity",
+                DataPropertyName = "Quantity",
+                ReadOnly = true
+            };
+            returnItemsDataGridView.Columns.Add(quantityColumn);
+
+            DataGridViewTextBoxColumn quantityReturnedColumn = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Quantity Returned",
+                Name = "QuantityReturned",
+                DataPropertyName = "QuantityReturned",
+                ReadOnly = true
+            };
+            returnItemsDataGridView.Columns.Add(quantityReturnedColumn);
+
+
+            DataGridViewTextBoxColumn rentalDateColumn = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Rental Date",
+                Name = "RentalDate",
+                DataPropertyName = "RentalDate",
+                ReadOnly = true
+            };
+            rentalDateColumn.DefaultCellStyle.Format = "d"; // Display only date
+            returnHistoryDataGridView.Columns.Add(rentalDateColumn);
+
+            DataGridViewTextBoxColumn dueDateColumn = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Due Date",
+                Name = "DueDate",
+                DataPropertyName = "DueDate",
+                ReadOnly = true
+            };
+            dueDateColumn.DefaultCellStyle.Format = "d"; // Display only date
+            returnHistoryDataGridView.Columns.Add(dueDateColumn);
+
+            DataGridViewTextBoxColumn customerNameColumn = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Customer Name",
+                Name = "CustomerName",
+                DataPropertyName = "CustomerName",
+                ReadOnly = true
+            };
+            returnHistoryDataGridView.Columns.Add(customerNameColumn);
+
+            DataGridViewTextBoxColumn employeeNameColumn = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Employee Name",
+                Name = "EmployeeName",
+                DataPropertyName = "EmployeeName",
+                ReadOnly = true
+            };
+            returnHistoryDataGridView.Columns.Add(employeeNameColumn);
+
+            returnItemsDataGridView.AutoGenerateColumns = false;
+        }
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
@@ -101,10 +214,15 @@ namespace FurnitureDepot.UserControls
             }
         }
 
-        private void ClearButton_Click(object sender, EventArgs e)
-
+        private void CustomerIDTextBox_TextChanged(object sender, EventArgs e)
         {
+            returnHistoryDataGridView.DataSource = null;
+            returnItemsDataGridView.DataSource = null;
+            messageLabel.Text = "";
+        }
 
+        private void ClearButton_Click(object sender, EventArgs e)
+        {
             returnHistoryDataGridView.DataSource = null;
             returnItemsDataGridView.DataSource = null;
             customerIDTextBox.Text = "";
