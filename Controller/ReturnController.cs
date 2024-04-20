@@ -94,5 +94,15 @@ namespace FurnitureDepot.Controller
         {
             return _returnDAL.IsRentalTransactionComplete(rentalTransactionID);
         }
+
+        /// <summary>
+        /// Gets the return transaction by identifier.
+        /// </summary>
+        /// <param name="returnTransactionID">The return transaction identifier.</param>
+        /// <returns></returns>
+        public ReturnTransaction GetReturnTransactionByID(int returnTransactionID)
+        {
+            return _returnDAL.GetReturnTransactionById(returnTransactionID);
+        }
     }
 }
