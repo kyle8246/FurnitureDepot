@@ -74,7 +74,7 @@
             this.customerNameLabel.Location = new System.Drawing.Point(3, 0);
             this.customerNameLabel.Name = "customerNameLabel";
             this.customerNameLabel.Size = new System.Drawing.Size(132, 20);
-            this.customerNameLabel.TabIndex = 0;
+            this.customerNameLabel.TabIndex = 12;
             this.customerNameLabel.Text = "Customer Name: ";
             // 
             // upperRightLayoutPanel
@@ -167,7 +167,7 @@
             this.lowerLeftLayoutPanel.ColumnCount = 3;
             this.lowerLeftLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.94444F));
             this.lowerLeftLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 73.05556F));
-            this.lowerLeftLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 154F));
+            this.lowerLeftLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 155F));
             this.lowerLeftLayoutPanel.Controls.Add(this.feesLabel, 0, 0);
             this.lowerLeftLayoutPanel.Controls.Add(this.feesValueLabel, 1, 0);
             this.lowerLeftLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -187,7 +187,7 @@
             this.feesLabel.Location = new System.Drawing.Point(8, 0);
             this.feesLabel.Name = "feesLabel";
             this.feesLabel.Size = new System.Drawing.Size(68, 25);
-            this.feesLabel.TabIndex = 0;
+            this.feesLabel.TabIndex = 10;
             this.feesLabel.Text = "Fees/Fines:";
             // 
             // feesValueLabel
@@ -222,7 +222,7 @@
             this.processReturnButton.Location = new System.Drawing.Point(3, 3);
             this.processReturnButton.Name = "processReturnButton";
             this.processReturnButton.Size = new System.Drawing.Size(128, 27);
-            this.processReturnButton.TabIndex = 0;
+            this.processReturnButton.TabIndex = 4;
             this.processReturnButton.Text = "Process Return";
             this.processReturnButton.UseVisualStyleBackColor = true;
             this.processReturnButton.Click += new System.EventHandler(this.ProcessReturnButton_Click);
@@ -233,7 +233,7 @@
             this.cancelButton.Location = new System.Drawing.Point(137, 3);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(129, 27);
-            this.cancelButton.TabIndex = 1;
+            this.cancelButton.TabIndex = 5;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
@@ -270,7 +270,7 @@
             this.returnTransactionDataGridView.Location = new System.Drawing.Point(3, 67);
             this.returnTransactionDataGridView.Name = "returnTransactionDataGridView";
             this.returnTransactionDataGridView.Size = new System.Drawing.Size(724, 219);
-            this.returnTransactionDataGridView.TabIndex = 0;
+            this.returnTransactionDataGridView.TabIndex = 3;
             // 
             // selectColumn
             // 
@@ -364,7 +364,7 @@
             this.customerIDLabel.Location = new System.Drawing.Point(6, 7);
             this.customerIDLabel.Name = "customerIDLabel";
             this.customerIDLabel.Size = new System.Drawing.Size(103, 20);
-            this.customerIDLabel.TabIndex = 0;
+            this.customerIDLabel.TabIndex = 15;
             this.customerIDLabel.Text = "Customer ID:";
             // 
             // ReturnManagementUserControl
