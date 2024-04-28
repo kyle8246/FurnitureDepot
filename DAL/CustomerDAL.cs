@@ -16,15 +16,16 @@ namespace FurnitureDepot.DAL
         /// </summary>
         /// <param name="customer">The customer.</param>
         /// <returns>Boolean indicating success or failure.</returns>
-        public bool AddCustomer(Customer customer)
+        public int AddCustomer(Customer customer)
         {
             using (SqlConnection connection = FurnitureDepotDBConnection.GetConnection())
             {
                 string query = @"
-                    INSERT INTO Member (LastName, FirstName, Sex, DateOfBirth, 
-                                        StreetAddress, City, State, ZipCode, ContactPhone)
-                    VALUES (@LastName, @FirstName, @Sex, @DateOfBirth, 
-                            @StreetAddress, @City, @State, @ZipCode, @ContactPhone)";
+            INSERT INTO Member (LastName, FirstName, Sex, DateOfBirth, 
+                                StreetAddress, City, State, ZipCode, ContactPhone)
+            OUTPUT INSERTED.MemberID
+            VALUES (@LastName, @FirstName, @Sex, @DateOfBirth, 
+                    @StreetAddress, @City, @State, @ZipCode, @ContactPhone)";
 
                 SqlCommand command = new SqlCommand(query, connection);
 
@@ -39,8 +40,8 @@ namespace FurnitureDepot.DAL
                 command.Parameters.Add(new SqlParameter("@ContactPhone", SqlDbType.NVarChar) { Value = customer.ContactPhone });
 
                 connection.Open();
-                int result = command.ExecuteNonQuery();
-                return result == 1;
+                object result = command.ExecuteScalar();
+                return (int)result;
             }
         }
 

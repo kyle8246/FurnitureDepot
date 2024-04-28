@@ -24,9 +24,10 @@ namespace FurnitureDepot.Controller
         /// </summary>
         /// <param name="customer">The customer.</param>
         /// <returns></returns>
-        public bool RegisterCustomer(Customer customer)
+        public int RegisterCustomer(Customer customer)
         {
-            return customerDAL.AddCustomer(customer);
+            int memberId = customerDAL.AddCustomer(customer);
+            return memberId;
         }
 
         /// <summary>

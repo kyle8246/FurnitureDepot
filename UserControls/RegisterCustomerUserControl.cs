@@ -56,10 +56,10 @@ namespace FurnitureDepot.View
                     ContactPhone = phoneTextBox.Text
                 };
 
-                bool success = customerController.RegisterCustomer(customer);
-                if (success)
+                int memberId = customerController.RegisterCustomer(customer);
+                if (memberId > 0)
                 {
-                    statusLabel.Text = "Customer registered successfully.";
+                    statusLabel.Text = $"Customer registered successfully. Member ID: {memberId}";
                     statusLabel.ForeColor = Color.Green;
                     ClearForm();
                 }
