@@ -84,6 +84,15 @@
         /// The quantity.
         /// </value>
         public int? Quantity { get; set; }
+
+        /// <summary>
+        /// Gets or sets the furniture identifier.
+        /// </summary>
+        /// <value>
+        /// The furniture identifier.
+        /// </value>
+        public int FurnitureID { get; set; }
+
     }
 
 }
