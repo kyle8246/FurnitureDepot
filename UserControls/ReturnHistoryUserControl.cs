@@ -20,6 +20,7 @@ namespace FurnitureDepot.UserControls
         {
             InitializeComponent();
             SetupDataGridView();
+            this.returnHistoryDataGridView.CellFormatting += new DataGridViewCellFormattingEventHandler(ReturnHistoryDataGridView_CellFormatting);
             this.returnHistoryDataGridView.CellClick += new DataGridViewCellEventHandler(this.ReturnHistoryDataGridView_CellClick);
         }
 
@@ -57,9 +58,8 @@ namespace FurnitureDepot.UserControls
                 HeaderText = "Date of Return",
                 Name = "ReturnDate",
                 DataPropertyName = "ReturnDate",
-                ReadOnly = true
+                ReadOnly = true,
             };
-            returnDateColumn.DefaultCellStyle.Format = "d";
             returnHistoryDataGridView.Columns.Add(returnDateColumn);
 
 
@@ -71,6 +71,15 @@ namespace FurnitureDepot.UserControls
                 ReadOnly = true
             };
             returnItemsDataGridView.Columns.Add(returnedItemIdColumn);
+
+            DataGridViewTextBoxColumn furnitureIdColumn = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Furniture ID",
+                Name = "FurnitureID",
+                DataPropertyName = "FurnitureID",
+                ReadOnly = true
+            };
+            returnItemsDataGridView.Columns.Add(furnitureIdColumn);
 
             DataGridViewTextBoxColumn furnitureNameColumn = new DataGridViewTextBoxColumn
             {
@@ -113,9 +122,14 @@ namespace FurnitureDepot.UserControls
                 HeaderText = "Daily Rate",
                 Name = "DailyRate",
                 DataPropertyName = "DailyRate",
-                ReadOnly = true
+                ReadOnly = true,
+                DefaultCellStyle = new DataGridViewCellStyle
+                {
+                    Format = "C2",
+                }
             };
             returnItemsDataGridView.Columns.Add(dailyRateColumn);
+
 
             DataGridViewTextBoxColumn quantityColumn = new DataGridViewTextBoxColumn
             {
@@ -143,7 +157,6 @@ namespace FurnitureDepot.UserControls
                 DataPropertyName = "RentalDate",
                 ReadOnly = true
             };
-            rentalDateColumn.DefaultCellStyle.Format = "d"; // Display only date
             returnHistoryDataGridView.Columns.Add(rentalDateColumn);
 
             DataGridViewTextBoxColumn dueDateColumn = new DataGridViewTextBoxColumn
@@ -151,9 +164,8 @@ namespace FurnitureDepot.UserControls
                 HeaderText = "Due Date",
                 Name = "DueDate",
                 DataPropertyName = "DueDate",
-                ReadOnly = true
+                ReadOnly = true,
             };
-            dueDateColumn.DefaultCellStyle.Format = "d"; // Display only date
             returnHistoryDataGridView.Columns.Add(dueDateColumn);
 
             DataGridViewTextBoxColumn customerNameColumn = new DataGridViewTextBoxColumn
@@ -227,6 +239,21 @@ namespace FurnitureDepot.UserControls
             returnItemsDataGridView.DataSource = null;
             customerIDTextBox.Text = "";
             messageLabel.Text = "";
+        }
+
+        private void ReturnHistoryDataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == returnHistoryDataGridView.Columns["ReturnDate"].Index ||
+                e.ColumnIndex == returnHistoryDataGridView.Columns["RentalDate"].Index ||
+                e.ColumnIndex == returnHistoryDataGridView.Columns["DueDate"].Index)
+            {
+                if (e.Value != null)
+                {
+                    DateTime date = (DateTime)e.Value;
+                    e.Value = date.ToString("d");
+                    e.FormattingApplied = true;
+                }
+            }
         }
     }
 }

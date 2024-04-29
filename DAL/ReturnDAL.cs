@@ -23,10 +23,10 @@ namespace FurnitureDepot.DAL
             using (SqlConnection connection = FurnitureDepotDBConnection.GetConnection())
             {
                 string query = @"SELECT ri.RentalItemID, ri.RentalTransactionID, ri.FurnitureID, f.Name, 
-                                ri.Quantity, ri.DailyRate, ri.QuantityReturned
-                                FROM RentalItem ri
-                                INNER JOIN Furniture f ON ri.FurnitureID = f.FurnitureID
-                                WHERE ri.RentalTransactionID = @RentalTransactionID";
+								ri.Quantity, ri.DailyRate, ri.QuantityReturned
+								FROM RentalItem ri
+								INNER JOIN Furniture f ON ri.FurnitureID = f.FurnitureID
+								WHERE ri.RentalTransactionID = @RentalTransactionID";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -70,9 +70,9 @@ namespace FurnitureDepot.DAL
             }
 
             string query = @"
-                    UPDATE RentalItem 
-                    SET QuantityReturned = QuantityReturned + @QuantityReturned 
-                    WHERE RentalItemID = @RentalItemID";
+					UPDATE RentalItem 
+					SET QuantityReturned = QuantityReturned + @QuantityReturned 
+					WHERE RentalItemID = @RentalItemID";
 
             using (SqlCommand command = new SqlCommand(query, transaction.Connection, transaction))
             {
@@ -92,7 +92,7 @@ namespace FurnitureDepot.DAL
         private bool IsReturnQuantityValid(int rentalItemID, int quantityReturned, SqlTransaction transaction)
         {
             string query = @"SELECT Quantity, QuantityReturned FROM RentalItem 
-                        WHERE RentalItemID = @RentalItemID";
+						WHERE RentalItemID = @RentalItemID";
             using (SqlCommand command = new SqlCommand(query, transaction.Connection, transaction))
             {
                 command.Parameters.AddWithValue("@RentalItemID", rentalItemID);
@@ -119,9 +119,9 @@ namespace FurnitureDepot.DAL
         private bool UpdateFurnitureStock(int furnitureID, int quantityReturned, SqlTransaction transaction)
         {
             string query = @"
-                    UPDATE Furniture 
-                    SET InStockNumber = InStockNumber + @QuantityReturned 
-                    WHERE FurnitureID = @FurnitureID";
+					UPDATE Furniture 
+					SET InStockNumber = InStockNumber + @QuantityReturned 
+					WHERE FurnitureID = @FurnitureID";
 
             using (SqlCommand command = new SqlCommand(query, transaction.Connection, transaction))
             {
@@ -140,8 +140,8 @@ namespace FurnitureDepot.DAL
         private bool InsertReturnedItem(ReturnedItem returnedItem, SqlTransaction transaction)
         {
             string query = @"
-            INSERT INTO ReturnedItem (ReturnTransactionID, RentalItemID, QuantityReturned)
-            VALUES (@ReturnTransactionID, @RentalItemID, @QuantityReturned);";
+			INSERT INTO ReturnedItem (ReturnTransactionID, RentalItemID, QuantityReturned)
+			VALUES (@ReturnTransactionID, @RentalItemID, @QuantityReturned);";
 
             using (SqlCommand command = new SqlCommand(query, transaction.Connection, transaction))
             {
@@ -231,9 +231,9 @@ namespace FurnitureDepot.DAL
         public int CreateReturnTransaction(int employeeID, int memberID, SqlTransaction transaction)
         {
             string query = @"
-                    INSERT INTO ReturnTransaction (EmployeeID, MemberID, ReturnDate) 
-                    OUTPUT INSERTED.ReturnTransactionID 
-                    VALUES (@EmployeeID, @MemberID, GETDATE());";
+					INSERT INTO ReturnTransaction (EmployeeID, MemberID, ReturnDate) 
+					OUTPUT INSERTED.ReturnTransactionID 
+					VALUES (@EmployeeID, @MemberID, GETDATE());";
 
             using (SqlCommand command = new SqlCommand(query, transaction.Connection, transaction))
             {
@@ -257,8 +257,8 @@ namespace FurnitureDepot.DAL
             using (SqlConnection connection = FurnitureDepotDBConnection.GetConnection())
             {
                 string query = @"SELECT RentalItemID, RentalTransactionID, FurnitureID, Quantity, DailyRate, QuantityReturned
-                            FROM RentalItem
-                            WHERE RentalItemID = @RentalItemID";
+							FROM RentalItem
+							WHERE RentalItemID = @RentalItemID";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -298,10 +298,10 @@ namespace FurnitureDepot.DAL
             using (SqlConnection connection = FurnitureDepotDBConnection.GetConnection())
             {
                 string query = @"
-            SELECT SUM(Quantity) as TotalQuantity, SUM(QuantityReturned) as TotalQuantityReturned
-            FROM RentalItem
-            WHERE RentalTransactionID = @RentalTransactionID
-            GROUP BY RentalTransactionID";
+			SELECT SUM(Quantity) as TotalQuantity, SUM(QuantityReturned) as TotalQuantityReturned
+			FROM RentalItem
+			WHERE RentalTransactionID = @RentalTransactionID
+			GROUP BY RentalTransactionID";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -334,13 +334,13 @@ namespace FurnitureDepot.DAL
             using (SqlConnection connection = FurnitureDepotDBConnection.GetConnection())
             {
                 string query = @"
-            SELECT ri.ReturnedItemID, ri.ReturnTransactionID, ri.RentalItemID, ri.QuantityReturned,
-                   f.Name AS FurnitureName, f.Description, f.CategoryName, f.StyleName, 
-                   f.DailyRentalRate AS DailyRate, r.Quantity
-            FROM ReturnedItem ri
-            INNER JOIN RentalItem r ON ri.RentalItemID = r.RentalItemID
-            INNER JOIN Furniture f ON r.FurnitureID = f.FurnitureID
-            WHERE ri.ReturnTransactionID = @ReturnTransactionID";
+        SELECT ri.ReturnedItemID, ri.ReturnTransactionID, ri.RentalItemID, ri.QuantityReturned,
+               f.FurnitureID, f.Name AS FurnitureName, f.Description, f.CategoryName, f.StyleName, 
+               f.DailyRentalRate AS DailyRate, r.Quantity
+        FROM ReturnedItem ri
+        INNER JOIN RentalItem r ON ri.RentalItemID = r.RentalItemID
+        INNER JOIN Furniture f ON r.FurnitureID = f.FurnitureID
+        WHERE ri.ReturnTransactionID = @ReturnTransactionID";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -357,6 +357,7 @@ namespace FurnitureDepot.DAL
                                 ReturnTransactionID = reader.IsDBNull(reader.GetOrdinal("ReturnTransactionID")) ? null : (int?)reader.GetInt32(reader.GetOrdinal("ReturnTransactionID")),
                                 RentalItemID = reader.IsDBNull(reader.GetOrdinal("RentalItemID")) ? null : (int?)reader.GetInt32(reader.GetOrdinal("RentalItemID")),
                                 QuantityReturned = reader.IsDBNull(reader.GetOrdinal("QuantityReturned")) ? null : (int?)reader.GetInt32(reader.GetOrdinal("QuantityReturned")),
+                                FurnitureID = reader.GetInt32(reader.GetOrdinal("FurnitureID")),
                                 FurnitureName = reader.GetString(reader.GetOrdinal("FurnitureName")),
                                 Description = reader.GetString(reader.GetOrdinal("Description")),
                                 CategoryName = reader.GetString(reader.GetOrdinal("CategoryName")),
@@ -374,6 +375,7 @@ namespace FurnitureDepot.DAL
             return returnedItems;
         }
 
+
         /// <summary>
         /// Gets the return transactions by member identifier.
         /// </summary>
@@ -386,15 +388,20 @@ namespace FurnitureDepot.DAL
             using (SqlConnection connection = FurnitureDepotDBConnection.GetConnection())
             {
                 string query = @"
-        SELECT rt.ReturnTransactionID, rt.EmployeeID, rt.MemberID, rt.ReturnDate,
-               e.FirstName + ' ' + e.LastName AS EmployeeName,
-               m.FirstName + ' ' + m.LastName AS CustomerName,
-               rt2.RentalDate, rt2.DueDate
-        FROM ReturnTransaction rt
-        INNER JOIN Employee e ON rt.EmployeeID = e.EmployeeID
-        INNER JOIN Member m ON rt.MemberID = m.MemberID
-        LEFT JOIN RentalTransaction rt2 ON rt2.MemberID = rt.MemberID
-        WHERE rt.MemberID = @MemberID";
+SELECT rt.ReturnTransactionID, rt.EmployeeID, rt.MemberID, rt.ReturnDate,
+	   e.FirstName + ' ' + e.LastName AS EmployeeName,
+	   m.FirstName + ' ' + m.LastName AS CustomerName,
+	   MIN(rtx.RentalDate) AS RentalDate, -- We use MIN to avoid duplicates
+	   MAX(rtx.DueDate) AS DueDate -- We use MAX to avoid duplicates
+FROM ReturnTransaction rt
+INNER JOIN Employee e ON rt.EmployeeID = e.EmployeeID
+INNER JOIN Member m ON rt.MemberID = m.MemberID
+LEFT JOIN ReturnedItem ri ON rt.ReturnTransactionID = ri.ReturnTransactionID
+LEFT JOIN RentalItem rit ON ri.RentalItemID = rit.RentalItemID
+LEFT JOIN RentalTransaction rtx ON rit.RentalTransactionID = rtx.RentalTransactionID
+WHERE rt.MemberID = @MemberID
+GROUP BY rt.ReturnTransactionID, rt.EmployeeID, rt.MemberID, rt.ReturnDate, e.FirstName, e.LastName, m.FirstName, m.LastName
+";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -413,8 +420,8 @@ namespace FurnitureDepot.DAL
                                 ReturnDate = reader.IsDBNull(reader.GetOrdinal("ReturnDate")) ? (DateTime?)null : reader.GetDateTime(reader.GetOrdinal("ReturnDate")),
                                 EmployeeName = reader.GetString(reader.GetOrdinal("EmployeeName")),
                                 CustomerName = reader.GetString(reader.GetOrdinal("CustomerName")),
-                                RentalDate = reader.GetDateTime(reader.GetOrdinal("RentalDate")),
-                                DueDate = reader.GetDateTime(reader.GetOrdinal("DueDate"))
+                                RentalDate = reader.IsDBNull(reader.GetOrdinal("RentalDate")) ? (DateTime?)null : reader.GetDateTime(reader.GetOrdinal("RentalDate")),
+                                DueDate = reader.IsDBNull(reader.GetOrdinal("DueDate")) ? (DateTime?)null : reader.GetDateTime(reader.GetOrdinal("DueDate"))
                             };
 
                             returnTransactions.Add(returnTransaction);
@@ -436,8 +443,8 @@ namespace FurnitureDepot.DAL
             using (SqlConnection connection = FurnitureDepotDBConnection.GetConnection())
             {
                 string query = @"SELECT ReturnTransactionID, EmployeeID, MemberID, ReturnDate
-                         FROM ReturnTransaction
-                         WHERE ReturnTransactionID = @TransactionID";
+						 FROM ReturnTransaction
+						 WHERE ReturnTransactionID = @TransactionID";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -460,6 +467,5 @@ namespace FurnitureDepot.DAL
             }
             return null;
         }
-
     }
 }
