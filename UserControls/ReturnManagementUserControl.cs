@@ -97,7 +97,7 @@ namespace FurnitureDepot.UserControls
 
                     row.Cells["selectColumn"].Value = false;
                     row.Cells["transactionIDColumn"].Value = rental.RentalTransactionID;
-                    row.Cells["itemIDColumn"].Value = item.RentalItemID;
+                    row.Cells["furnitureIDColumn"].Value = item.FurnitureID;
                     row.Cells["itemNameColumn"].Value = item.FurnitureName;
                     row.Cells["rentedQuantityColumn"].Value = item.Quantity;
                     row.Cells["dueDateColumn"].Value = rental.DueDate.ToString("d");
@@ -232,7 +232,7 @@ namespace FurnitureDepot.UserControls
                 {
                     if (int.TryParse(row.Cells["returnQuantityColumn"].Value?.ToString(), out int returnQuantity) && returnQuantity > 0)
                     {
-                        var rentalItem = returnController.GetRentalItemForReturnByRentalItemID(Convert.ToInt32(row.Cells["itemIDColumn"].Value));
+                        var rentalItem = returnController.GetRentalItemForReturnByRentalItemID(Convert.ToInt32(row.Cells["furnitureIDColumn"].Value));
                         if (rentalItem != null)
                         {
                             rentalItem.QuantityReturned = returnQuantity;
@@ -320,7 +320,7 @@ namespace FurnitureDepot.UserControls
                 decimal feeForThisItem = CalculateReturnFeeForItem(item);
                 totalFees += feeForThisItem;
 
-                receiptText.AppendLine($"ID: {item.RentalItemID} - {item.FurnitureName} x{item.QuantityReturned} @ {item.DailyRate:C} per day - Fee: {feeForThisItem:C}");
+                receiptText.AppendLine($"Furniture ID: {item.FurnitureID} - {item.FurnitureName} x{item.QuantityReturned} @ {item.DailyRate:C} per day - Fee: {feeForThisItem:C}");
             }
 
             receiptText.AppendLine("\nTotal Fees: " + $"{totalFees:C}");

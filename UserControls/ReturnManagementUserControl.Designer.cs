@@ -44,17 +44,17 @@
             this.cancelButton = new System.Windows.Forms.Button();
             this.mainTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.returnTransactionDataGridView = new System.Windows.Forms.DataGridView();
+            this.upperTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.upperLeftLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.customerIDLabel = new System.Windows.Forms.Label();
             this.selectColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.transactionIDColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.itemIDColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.furnitureIDColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.itemNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rentedQuantityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dueDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dailyRateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.returnQuantityColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.upperTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.upperLeftLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.customerIDLabel = new System.Windows.Forms.Label();
             this.upperRightLayoutPanel.SuspendLayout();
             this.customerFlowLayoutPanel.SuspendLayout();
             this.rentalTransactionTableLayout.SuspendLayout();
@@ -167,7 +167,7 @@
             this.lowerLeftLayoutPanel.ColumnCount = 3;
             this.lowerLeftLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.94444F));
             this.lowerLeftLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 73.05556F));
-            this.lowerLeftLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 155F));
+            this.lowerLeftLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 156F));
             this.lowerLeftLayoutPanel.Controls.Add(this.feesLabel, 0, 0);
             this.lowerLeftLayoutPanel.Controls.Add(this.feesValueLabel, 1, 0);
             this.lowerLeftLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -184,7 +184,7 @@
             this.feesLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.feesLabel.AutoSize = true;
             this.feesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.feesLabel.Location = new System.Drawing.Point(8, 0);
+            this.feesLabel.Location = new System.Drawing.Point(7, 0);
             this.feesLabel.Name = "feesLabel";
             this.feesLabel.Size = new System.Drawing.Size(68, 25);
             this.feesLabel.TabIndex = 10;
@@ -195,7 +195,7 @@
             this.feesValueLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.feesValueLabel.AutoSize = true;
             this.feesValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.feesValueLabel.Location = new System.Drawing.Point(82, 9);
+            this.feesValueLabel.Location = new System.Drawing.Point(81, 9);
             this.feesValueLabel.Name = "feesValueLabel";
             this.feesValueLabel.Size = new System.Drawing.Size(0, 16);
             this.feesValueLabel.TabIndex = 1;
@@ -260,7 +260,7 @@
             this.returnTransactionDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.selectColumn,
             this.transactionIDColumn,
-            this.itemIDColumn,
+            this.furnitureIDColumn,
             this.itemNameColumn,
             this.rentedQuantityColumn,
             this.dueDateColumn,
@@ -271,58 +271,6 @@
             this.returnTransactionDataGridView.Name = "returnTransactionDataGridView";
             this.returnTransactionDataGridView.Size = new System.Drawing.Size(724, 219);
             this.returnTransactionDataGridView.TabIndex = 3;
-            // 
-            // selectColumn
-            // 
-            this.selectColumn.HeaderText = "Select";
-            this.selectColumn.Name = "selectColumn";
-            this.selectColumn.Width = 50;
-            // 
-            // transactionIDColumn
-            // 
-            this.transactionIDColumn.HeaderText = "Transaction ID";
-            this.transactionIDColumn.Name = "transactionIDColumn";
-            this.transactionIDColumn.ReadOnly = true;
-            this.transactionIDColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.transactionIDColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // itemIDColumn
-            // 
-            this.itemIDColumn.HeaderText = "Item ID";
-            this.itemIDColumn.Name = "itemIDColumn";
-            this.itemIDColumn.ReadOnly = true;
-            // 
-            // itemNameColumn
-            // 
-            this.itemNameColumn.HeaderText = "Item Name";
-            this.itemNameColumn.Name = "itemNameColumn";
-            this.itemNameColumn.ReadOnly = true;
-            // 
-            // rentedQuantityColumn
-            // 
-            this.rentedQuantityColumn.HeaderText = "Rented Quantity";
-            this.rentedQuantityColumn.Name = "rentedQuantityColumn";
-            this.rentedQuantityColumn.ReadOnly = true;
-            // 
-            // dueDateColumn
-            // 
-            this.dueDateColumn.HeaderText = "Due Date";
-            this.dueDateColumn.Name = "dueDateColumn";
-            this.dueDateColumn.ReadOnly = true;
-            // 
-            // dailyRateColumn
-            // 
-            this.dailyRateColumn.HeaderText = "Daily Rate";
-            this.dailyRateColumn.Name = "dailyRateColumn";
-            this.dailyRateColumn.ReadOnly = true;
-            // 
-            // returnQuantityColumn
-            // 
-            this.returnQuantityColumn.HeaderText = "Return Quantity";
-            this.returnQuantityColumn.MaxDropDownItems = 100;
-            this.returnQuantityColumn.Name = "returnQuantityColumn";
-            this.returnQuantityColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.returnQuantityColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // upperTableLayoutPanel
             // 
@@ -366,6 +314,58 @@
             this.customerIDLabel.Size = new System.Drawing.Size(103, 20);
             this.customerIDLabel.TabIndex = 15;
             this.customerIDLabel.Text = "Customer ID:";
+            // 
+            // selectColumn
+            // 
+            this.selectColumn.HeaderText = "Select";
+            this.selectColumn.Name = "selectColumn";
+            this.selectColumn.Width = 50;
+            // 
+            // transactionIDColumn
+            // 
+            this.transactionIDColumn.HeaderText = "Transaction ID";
+            this.transactionIDColumn.Name = "transactionIDColumn";
+            this.transactionIDColumn.ReadOnly = true;
+            this.transactionIDColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.transactionIDColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // furnitureIDColumn
+            // 
+            this.furnitureIDColumn.HeaderText = "Furniture ID";
+            this.furnitureIDColumn.Name = "furnitureIDColumn";
+            this.furnitureIDColumn.ReadOnly = true;
+            // 
+            // itemNameColumn
+            // 
+            this.itemNameColumn.HeaderText = "Item Name";
+            this.itemNameColumn.Name = "itemNameColumn";
+            this.itemNameColumn.ReadOnly = true;
+            // 
+            // rentedQuantityColumn
+            // 
+            this.rentedQuantityColumn.HeaderText = "Rented Quantity";
+            this.rentedQuantityColumn.Name = "rentedQuantityColumn";
+            this.rentedQuantityColumn.ReadOnly = true;
+            // 
+            // dueDateColumn
+            // 
+            this.dueDateColumn.HeaderText = "Due Date";
+            this.dueDateColumn.Name = "dueDateColumn";
+            this.dueDateColumn.ReadOnly = true;
+            // 
+            // dailyRateColumn
+            // 
+            this.dailyRateColumn.HeaderText = "Daily Rate";
+            this.dailyRateColumn.Name = "dailyRateColumn";
+            this.dailyRateColumn.ReadOnly = true;
+            // 
+            // returnQuantityColumn
+            // 
+            this.returnQuantityColumn.HeaderText = "Return Quantity";
+            this.returnQuantityColumn.MaxDropDownItems = 100;
+            this.returnQuantityColumn.Name = "returnQuantityColumn";
+            this.returnQuantityColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.returnQuantityColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // ReturnManagementUserControl
             // 
@@ -411,14 +411,14 @@
         private System.Windows.Forms.TableLayoutPanel upperTableLayoutPanel;
         private System.Windows.Forms.TableLayoutPanel upperLeftLayoutPanel;
         private System.Windows.Forms.Label customerIDLabel;
+        private System.Windows.Forms.Label feesValueLabel;
         private System.Windows.Forms.DataGridViewCheckBoxColumn selectColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn transactionIDColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn itemIDColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn furnitureIDColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn itemNameColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn rentedQuantityColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dueDateColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dailyRateColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn returnQuantityColumn;
-        private System.Windows.Forms.Label feesValueLabel;
     }
 }
