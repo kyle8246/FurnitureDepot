@@ -47,6 +47,7 @@
             this.clearButton = new System.Windows.Forms.Button();
             this.messageLabel = new System.Windows.Forms.Label();
             this.reportDataGridView = new System.Windows.Forms.DataGridView();
+            this.aboutLabel = new System.Windows.Forms.Label();
             this.mainLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.reportDataGridView)).BeginInit();
             this.SuspendLayout();
@@ -64,6 +65,7 @@
             this.mainLayoutPanel.Controls.Add(this.clearButton, 1, 2);
             this.mainLayoutPanel.Controls.Add(this.messageLabel, 1, 3);
             this.mainLayoutPanel.Controls.Add(this.reportDataGridView, 0, 4);
+            this.mainLayoutPanel.Controls.Add(this.aboutLabel, 0, 3);
             this.mainLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.mainLayoutPanel.Name = "mainLayoutPanel";
@@ -138,7 +140,7 @@
             // 
             this.messageLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.messageLabel.AutoSize = true;
-            this.messageLabel.Location = new System.Drawing.Point(795, 97);
+            this.messageLabel.Location = new System.Drawing.Point(533, 97);
             this.messageLabel.Name = "messageLabel";
             this.messageLabel.Size = new System.Drawing.Size(0, 16);
             this.messageLabel.TabIndex = 6;
@@ -152,6 +154,18 @@
             this.reportDataGridView.Name = "reportDataGridView";
             this.reportDataGridView.Size = new System.Drawing.Size(1054, 352);
             this.reportDataGridView.TabIndex = 7;
+            // 
+            // aboutLabel
+            // 
+            this.aboutLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.aboutLabel.AutoSize = true;
+            this.aboutLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.aboutLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.aboutLabel.Location = new System.Drawing.Point(209, 97);
+            this.aboutLabel.Name = "aboutLabel";
+            this.aboutLabel.Size = new System.Drawing.Size(318, 15);
+            this.aboutLabel.TabIndex = 8;
+            this.aboutLabel.Text = "Displays top rented furniture within a specified date range";
             // 
             // AdminReportUserControl
             // 
@@ -168,5 +182,7 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.Label aboutLabel;
     }
 }

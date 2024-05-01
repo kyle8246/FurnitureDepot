@@ -246,6 +246,7 @@
   <ItemGroup>
     <Content Include="DB\cs6232-g2-create-db-script.sql" />
     <Content Include="DB\cs6232-g2-populate-db-script.sql" />
+    <Content Include="DB\Database Diagram - SSMS.PNG" />
     <Content Include="read_me.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
