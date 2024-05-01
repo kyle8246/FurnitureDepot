@@ -119,7 +119,7 @@
             this.lowerLeftLayoutPanel.ColumnCount = 3;
             this.lowerLeftLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.94444F));
             this.lowerLeftLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 73.05556F));
-            this.lowerLeftLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 155F));
+            this.lowerLeftLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 156F));
             this.lowerLeftLayoutPanel.Controls.Add(this.dueDateLabel, 0, 0);
             this.lowerLeftLayoutPanel.Controls.Add(this.dueDateDatePicker, 1, 0);
             this.lowerLeftLayoutPanel.Controls.Add(this.totalCostLabel, 1, 1);
@@ -137,7 +137,7 @@
             this.dueDateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.dueDateLabel.AutoSize = true;
             this.dueDateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dueDateLabel.Location = new System.Drawing.Point(9, 9);
+            this.dueDateLabel.Location = new System.Drawing.Point(8, 9);
             this.dueDateLabel.Name = "dueDateLabel";
             this.dueDateLabel.Size = new System.Drawing.Size(67, 16);
             this.dueDateLabel.TabIndex = 20;
@@ -146,7 +146,7 @@
             // dueDateDatePicker
             // 
             this.dueDateDatePicker.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dueDateDatePicker.Location = new System.Drawing.Point(82, 3);
+            this.dueDateDatePicker.Location = new System.Drawing.Point(81, 3);
             this.dueDateDatePicker.Name = "dueDateDatePicker";
             this.dueDateDatePicker.Size = new System.Drawing.Size(208, 20);
             this.dueDateDatePicker.TabIndex = 11;
@@ -156,7 +156,7 @@
             this.totalCostLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.totalCostLabel.AutoSize = true;
             this.totalCostLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalCostLabel.Location = new System.Drawing.Point(82, 32);
+            this.totalCostLabel.Location = new System.Drawing.Point(81, 32);
             this.totalCostLabel.Name = "totalCostLabel";
             this.totalCostLabel.Size = new System.Drawing.Size(85, 20);
             this.totalCostLabel.TabIndex = 21;
@@ -432,7 +432,7 @@
             this.furnitureItemLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 43.70079F));
             this.furnitureItemLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 56.29921F));
             this.furnitureItemLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 71F));
-            this.furnitureItemLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 78F));
+            this.furnitureItemLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 79F));
             this.furnitureItemLayoutPanel.Controls.Add(this.itemLabel, 0, 0);
             this.furnitureItemLayoutPanel.Controls.Add(this.furnitureItemComboBox, 1, 0);
             this.furnitureItemLayoutPanel.Controls.Add(this.inStockTextBox, 3, 0);
@@ -461,7 +461,7 @@
             this.furnitureItemComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.furnitureItemComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.furnitureItemComboBox.FormattingEnabled = true;
-            this.furnitureItemComboBox.Location = new System.Drawing.Point(114, 5);
+            this.furnitureItemComboBox.Location = new System.Drawing.Point(113, 5);
             this.furnitureItemComboBox.Name = "furnitureItemComboBox";
             this.furnitureItemComboBox.Size = new System.Drawing.Size(136, 21);
             this.furnitureItemComboBox.TabIndex = 5;
@@ -484,7 +484,7 @@
             this.inStockLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.inStockLabel.AutoSize = true;
             this.inStockLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inStockLabel.Location = new System.Drawing.Point(264, 8);
+            this.inStockLabel.Location = new System.Drawing.Point(263, 8);
             this.inStockLabel.Name = "inStockLabel";
             this.inStockLabel.Size = new System.Drawing.Size(57, 16);
             this.inStockLabel.TabIndex = 17;
@@ -496,7 +496,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.02564F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58.97436F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 86F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 78F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 79F));
             this.tableLayoutPanel2.Controls.Add(this.quantityLabel, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.quantityPicker, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
