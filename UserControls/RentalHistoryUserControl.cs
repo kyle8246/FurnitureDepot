@@ -12,6 +12,7 @@ namespace FurnitureDepot.UserControls
     public partial class RentalHistoryUserControl : UserControl
     {
         private RentalController rentalController = new RentalController();
+        private CustomerController customerController = new CustomerController();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RentalHistoryUserControl"/> class.
@@ -30,10 +31,17 @@ namespace FurnitureDepot.UserControls
                 messageLabel.Text = "";
 
                 var rentalHistory = rentalController.GetRentalTransactionsByMemberID(customerId);
+                var customerInfo = customerController.GetCustomerByMemberID(customerId);
 
                 if (rentalHistory != null && rentalHistory.Count > 0)
                 {
                     rentalHistoryDataGridView.DataSource = rentalHistory;
+                    rentalHistoryDataGridView.Columns["CustomerName"].Visible = false;
+                    if (customerInfo != null)
+                    {
+                        customerNamePhoneLabel.Text = $"Name: {customerInfo.FirstName} {customerInfo.LastName}    Phone: {customerInfo.ContactPhone}";
+                        customerAddressLabel.Text = $"Address: {customerInfo.StreetAddress}, {customerInfo.City}, {customerInfo.State} {customerInfo.ZipCode}";
+                    }
                 }
                 else
                 {
@@ -53,6 +61,8 @@ namespace FurnitureDepot.UserControls
             rentalHistoryDataGridView.DataSource = null;
             rentalItemsDataGridView.DataSource = null;
             messageLabel.Text = "";
+            customerNamePhoneLabel.Text = "";
+            customerAddressLabel.Text = "";
         }
 
         private void RentalHistoryDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -74,6 +84,8 @@ namespace FurnitureDepot.UserControls
             rentalItemsDataGridView.DataSource = null;
             customerIDTextBox.Text = "";
             messageLabel.Text = "";
+            customerNamePhoneLabel.Text = "";
+            customerAddressLabel.Text = "";
         }
 
         /// <summary>
@@ -85,6 +97,8 @@ namespace FurnitureDepot.UserControls
             rentalItemsDataGridView.DataSource = null;
             customerIDTextBox.Text = "";
             messageLabel.Text = "";
+            customerNamePhoneLabel.Text = "";
+            customerAddressLabel.Text = "";
         }
     }
 }
