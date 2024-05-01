@@ -46,8 +46,7 @@ namespace FurnitureDepot.DAL
                                 RentalDate = reader.GetDateTime(3),
                                 DueDate = reader.GetDateTime(4),
                                 TotalCost = reader.GetDecimal(5),
-                                EmployeeName = reader.GetString(6),
-                                CustomerName = reader.GetString(7)
+                                EmployeeName = reader.GetString(6)
                             };
 
                             transactions.Add(transaction);
