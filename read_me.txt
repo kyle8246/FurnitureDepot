@@ -9,3 +9,6 @@
 
 ## SQL Scripts
 - It is recommended to reload the SQL scripts (data and schema, including stored procedure) to ensure that all features work seamlessly with the latest updates.
+
+## DB Changes
+- No DB change has been made since the iteration 3 and the final version.
