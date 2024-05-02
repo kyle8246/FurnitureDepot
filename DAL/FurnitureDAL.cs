@@ -247,6 +247,31 @@ namespace FurnitureDepot.DAL
             return styles;
         }
 
+        /// <summary>
+        /// Gets the name of the current in stock of furniture.
+        /// </summary>
+        /// <param name="furnitureName">Name of the furniture.</param>
+        /// <returns></returns>
+        public int GetCurrentInStockOfFurnitureName(string furnitureName)
+        {
+            int inStockNumber = 0;
+            using (SqlConnection connection = FurnitureDepotDBConnection.GetConnection()) 
+            {
+                connection.Open();
+                string query = "SELECT InStockNumber FROM Furniture WHERE Name = @FurnitureName";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@FurnitureName", furnitureName);
+                    var result = command.ExecuteScalar();
+                    if (result != null)
+                    {
+                        inStockNumber = Convert.ToInt32(result);
+                    }
+                }
+            }
+            return inStockNumber;
+        }
+
 
 
     }
