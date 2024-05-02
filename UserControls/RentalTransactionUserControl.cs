@@ -164,10 +164,10 @@ namespace FurnitureDepot.UserControls
             {
                 int rowIndex = this.cartDataGridView.Rows.Add();
                 DataGridViewRow newRow = cartDataGridView.Rows[rowIndex];
+                newRow.Cells["furnitureIdColumn"].Value = selectedFurniture.FurnitureID;
                 newRow.Cells["nameColumn"].Value = selectedFurniture.Name;
                 newRow.Cells["unitPriceColumn"].Value = selectedFurniture.DailyRentalRate;
                 newRow.Cells["quantityColumn"].Value = quantityToAdd;
-                newRow.Cells["furnitureIdColumn"].Value = selectedFurniture.FurnitureID;
             }
             this.quantityPicker.Value = 1;
         }
@@ -457,15 +457,15 @@ namespace FurnitureDepot.UserControls
         private void InitializeCartGridView()
         {
             this.cartDataGridView.Columns.Clear();
+            var furnitureIdColumn = new DataGridViewTextBoxColumn();
+            furnitureIdColumn.Name = "furnitureIdColumn";
+            furnitureIdColumn.HeaderText = "Furniture ID";
+            furnitureIdColumn.Visible = true;
+            this.cartDataGridView.Columns.Add(furnitureIdColumn);
 
             this.cartDataGridView.Columns.Add("nameColumn", "Item Name");
             this.cartDataGridView.Columns.Add("quantityColumn", "Quantity");
             this.cartDataGridView.Columns.Add("unitPriceColumn", "Daily Rate");
-
-            var furnitureIdColumn = new DataGridViewTextBoxColumn();
-            furnitureIdColumn.Name = "furnitureIdColumn";
-            furnitureIdColumn.Visible = false;
-            this.cartDataGridView.Columns.Add(furnitureIdColumn);
 
             this.cartDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
@@ -482,7 +482,7 @@ namespace FurnitureDepot.UserControls
         {
             this.currentOrderCustomer = null;
             this.cartDataGridView.Rows.Clear();
-
+            UpdateFurnitureItemsComboBox();
             this.customerNameLabel.ForeColor = Color.Black;
             this.customerNameLabel.Text = "Please search a customer.";
             this.totalCostLabel.Text = "Total Cost: ";
@@ -566,7 +566,7 @@ namespace FurnitureDepot.UserControls
         private int CalculateInStock(Furniture selectedFurniture)
         {
             int inCartQuantity = GetQuantityFromCart(selectedFurniture.Name);
-            int inStockNumber = selectedFurniture.InStockNumber ?? 0;
+            int inStockNumber = furnitureController.GetCurrentInStockOfFurnitureName(selectedFurniture.Name);
             int availableStock = Math.Max(0, inStockNumber - inCartQuantity);
             return availableStock;
         }

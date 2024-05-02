@@ -91,6 +91,14 @@ namespace FurnitureDepot.Controller
             return _furnitureDAL.SearchFurnitureByCategoryAndStyleOnly(category, style);
         }
 
-
+        /// <summary>
+        /// Gets the name of the current in stock of furniture.
+        /// </summary>
+        /// <param name="furnitureName">Name of the furniture.</param>
+        /// <returns></returns>
+        public int GetCurrentInStockOfFurnitureName(string furnitureName)
+        {
+            return _furnitureDAL.GetCurrentInStockOfFurnitureName(furnitureName);
+        }
     }
 }
